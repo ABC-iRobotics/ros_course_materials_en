@@ -31,22 +31,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://abc-irobotics.github.io/ros_course_materials_en/08_roslaunch/</loc>
+         <loc>https://abc-irobotics.github.io/ros_course_materials_en/06_roslaunch/</loc>
          <lastmod>2022-09-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://abc-irobotics.github.io/ros_course_materials_en/10_sensory_data/</loc>
+         <loc>https://abc-irobotics.github.io/ros_course_materials_en/07_robotics_principles/</loc>
          <lastmod>2022-09-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://abc-irobotics.github.io/ros_course_materials_en/12_robotics_principles/</loc>
+         <loc>https://abc-irobotics.github.io/ros_course_materials_en/08_sensory_data/</loc>
          <lastmod>2022-09-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://abc-irobotics.github.io/ros_course_materials_en/kotprog/</loc>
+         <loc>https://abc-irobotics.github.io/ros_course_materials_en/projects/</loc>
          <lastmod>2022-09-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
