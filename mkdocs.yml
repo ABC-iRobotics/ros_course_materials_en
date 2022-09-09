@@ -4,16 +4,16 @@ site_description: Programming robots in ROS
 site_author: Tamas D. Nagy
 
 nav:
-    - Kezdőlap: index.md
-    - Tananyagok: 
-        - 1. Bevezetés: 01_intro.md
-        - 2. Linux, ROS alapismeretek: 02_linux_ros_principles.md
-        - 3. Python alapismeretek,  ROS kommunikáció gyakorlása: 03_python_principles.md
-        - 4. Verziókövetés, Git: 04_git.md
-        - 5. Robotikai alapismeretek, Sebészrobot programozása: 05_da_vinci.md
-        - 8. Roslaunch, saját üzenetek, action, service: 08_roslaunch.md
-        - 12. Kinematika, inverz kinematika: 12_robotics_principles.md
-    - Kötelező program: kotprog.md
+    - Home: index.md
+    - Materials: 
+        - 1. Introduction: 01_intro.md
+        - 2. Linuxa and ROS principles: 02_linux_ros_principles.md
+        - 3. Python principles, ROS communication: 03_python_principles.md
+        - 4. Versioning, Git: 04_git.md
+        - 5. Principles of robotics, da Vinci: 05_da_vinci.md
+        - 8. Roslaunch, msg, action, service: 06_roslaunch.md
+        - 12. Kinematics, inverse kinematics: 07_robotics_principles.md
+    - Projects: projects.md
     
 
 theme:

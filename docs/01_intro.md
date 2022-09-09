@@ -1,7 +1,6 @@
 ---
-title: 01. Bevezetés
+title: Introduction
 author: Tamas D. Nagy
-tags: Lectures, ROS course
 ---
 
 # 01. Introduction
@@ -73,9 +72,8 @@ Recommended environment:
     source /opt/ros/noetic/setup.bash
     ```
 
-
-    A `source` parancs a környezeti változók beállításáért felelős, ezt minden új terminálablak megnyitásakor meg kell(ene) adni. Ez a parancs beilleszthető a `~/.bashrc` fájl végére, amely minden terminálablak megnyitásakor lefut, így nem kell mindig beírnunk:
-
+    The command `source` is responsible for setting environmental variables, and it has to be executed every time a new terminal window is opened. Alternatively, this command can be copied to the end of the file `~/.bashrc`. This script runs automatically every time when a terinal window is opened. To do that, type:
+    
 
     ```bash
     echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
@@ -95,7 +93,7 @@ Recommended environment:
     rosdep update
     ```
 
-    Ha ezzel megvagyunk, a következő parancssal tesztelhetjük a ROS telepítésünket:
+    Then test our ROS install by typing:
 
 
     ```bash
@@ -105,11 +103,10 @@ Recommended environment:
     ---
     
 
-3. További csomagok
+3. Further packages
 
 
-    Az alábbi csomagokra is szükség lesz a félév során, így ezeket is érdemes feltelepíteni:
-
+    The following packages are also going to be needed during the course, so it is recommended to install them:
 
     ```bash
     sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev python3-catkin-tools python3-osrf-pycommon libasound2-dev libgl1-mesa-dev xorg-dev
@@ -120,18 +117,19 @@ Recommended environment:
 
 4. QtCreator
 
-    ROS csomagok fejlesztéséhez jelenleg a leginkább használható IDE a QtCreator, melyhez ROS plugin is készült. Az installer az alábbi linken elérhető. A "18.04 **offline** installer"-t érdemes használni, ez működik Ubunutu 20.04-en is.
+    For the purpose of the development of ROS packages QtCreator is one of the best IDEs, a ROS plugin is also available for that. The one for Ubuntu 18.04 also works on 20.04, thus one can use the Bionic **Offline** Installer. It can be downloaded from the following link:
 
     [https://ros-qtc-plugin.readthedocs.io/en/latest/_source/How-to-Install-Users.html](https://ros-qtc-plugin.readthedocs.io/en/latest/_source/How-to-Install-Users.html)
 
-    Ha letöltöttük, az IDE az alábbi paranccsal telepíthető (fontos, hogy `cd`zzünk be a letöltés helyére):
+    After the installer is downloaded, the IDE can be installed by the following command (important to  navigate to the location of the download using `cd`:
 
 
     ```bash
     sudo ./qtcreator-ros-bionic-latest-online-installer.run
     ```
 
-    Amikor a telepítő kérdezi, hova telepítse, módosítsuk pl. `/home/<USER>/QtCreator` mappára. Ha a root-ba teléepítjük, nem fogjuk tudni futtatni. A telepítés után "Qt Creator (4.9.2)" néven keressük.
+    When the installer asks for a location to install, modify it to the  `/home/<USER>/QtCreator` folder, and not to root. After installing, the IDE can be find with the name "Qt Creator (4.9.2)"
+    
 
 ---
 
@@ -145,7 +143,7 @@ Recommended environment:
 
 ---
 
-## Useful links
+## Links
 
 - [https://www.ros.org/](https://www.ros.org/)
 - [https://www.ros.org/install/](https://www.ros.org/install/)

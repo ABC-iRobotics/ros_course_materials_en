@@ -1,14 +1,13 @@
 ---
-title: 02. Linux, ROS alapismeretek
+title: Linux and ROS principles
 author: Tamas D. Nagy
-tags: Lectures, ROS course
 ---
 
-# 02. Linux, ROS alapismeretek
+# 02. Linux and ROS principles
 
 ---
 
-## Elmélet
+## Theory
 
 ---
 
@@ -280,8 +279,8 @@ roscore
 
 ---
 
-!!! warning "Figyelem!"
-    Az óra végén a **forráskódokat** mindenkinek fel kell tölteni **Moodle**-re egy zip archívumba csomagolva!
+!!! warning "Warning!"
+    At the end of the lesson, everybody must upload their **sources** to **Moodle** as a zip archive!
 
 
 ---
@@ -291,11 +290,12 @@ roscore
 ---
 
 
-1. Indítsuk el a ROS mastert, `turtlesim_node`-ot és a `turtle_teleop_key` node-ot az alábbi parancsokkal, külö-külön terminál ablakokban:
+1. Launch ROS master, `turtlesim_node` and `turtle_teleop_key` node by typing the following commands to separate terminal windows:
+
 
 
     !!! tip
-        **Terminator**-ban `Ctrl-Shift-O`, `Ctrl-Shift-E` billentyű kombinációkkal oszthatjuk tovább az adott ablakot. `Ctrl-Shift-W` bezárja az aktív ablakot.
+        In **Terminator**, `Ctrl-Shift-O`, `Ctrl-Shift-E` divides the terimal window, `Ctrl-Shift-W` closes the current window.
 
 
     ```bash
@@ -304,13 +304,13 @@ roscore
     rosrun turtlesim turtle_teleop_key
     ```
 
-    !!! tip "Futtatás megszakítása"
+    !!! tip "To stup running"
         `Ctrl-C`
 
 
     ---
 
-2. Az alábbi parancs segítségével jeleníttessük meg a futó rendszer node-jait és topic-jait:
+2. Display the running nodes and topics using this command, in a separate terminal:
 
     ```bash
     rosrun rqt_graph rqt_graph
@@ -318,7 +318,7 @@ roscore
 
     ---
 
-3. Az alábbi ROS parancsok futtatása hasznos információkkal szolgálhat:
+3. Try the following commands to gain more information about the currently running system:
 
     ```bash
     roswtf
@@ -335,7 +335,7 @@ roscore
 
     ---
 
-4. Írjuk be a következő parancsot terminálba:
+4. Type (or copy) the following command to the terminal:
 
     ```bash
     rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
@@ -348,7 +348,7 @@ roscore
 ---
 
 
-1. Telepítsük a catkin build tools csomagot:
+1. Install the catkin build tools package:
 
     ```bash
     sudo apt update
@@ -357,7 +357,7 @@ roscore
 
     ---
 
-2. Másoljuk az alábbi sort a `~/.bashrc` fájl végére:
+2. Copy the follwoing file to the end of file `~/.bashrc`:
 
     ```bash
     source /opt/ros/noetic/setup.bash   # replace noetic by whatever your ROS distribution is
@@ -366,7 +366,7 @@ roscore
     ---
         
 
-3. Hozzuk létre a workspace-t:
+3. Create the workspace:
 
     ```bash
     source /opt/ros/noetic/setup.bash 
@@ -378,9 +378,9 @@ roscore
 ---
            
 
-### 3: ROS package létrehozása
+### 3: Create a new ROS package
 
-1. Hozzunk létre új ROS package-et `ros_course` névvel.
+1. Create a new ROS package named `ros_course`, depends packages `std_msgs`, `rospy` and `roscpp`:
 
     ```bash
     cd ~/catkin_ws/src
@@ -392,7 +392,7 @@ roscore
 
     ---
 
-2. Nyissuk meg a `package.xml` fájlt, és töltsük fel a következő tag-eket:
+2. Open the file `package.xml` and fill the following tags:
 
     ```xml
     <description>The beginner_tutorials package</description>
@@ -402,7 +402,7 @@ roscore
 
     ---
 
-3. Build-eljük a workspace-t.
+3. Build the workspace:
 
     ```bash
     cd ~/catkin_ws
@@ -410,11 +410,11 @@ roscore
     ```
 
     !!! danger
-        **Soha** ne használjuk a `catkin build` és a `catkin_make` parancsokat ugyanabban a workspace-ben!
+        The commands `catkin build` and `catkin_make` are not meant to be used within the same workspace!
 
     ---
 
-4. A `~/.bashrc` fájl végére illesszük be az alábbi sort:
+4. Append the following line to the file `~/.bashrc`:
 
     ```bash
     source ~/catkin_ws/devel/setup.bash
@@ -422,9 +422,9 @@ roscore
 
 ---
 
-### 4: Publisher implementálása Python-ban
+### 4: Implement a Publisher in Python
 
-1. Hozzunk létre egy mappát `scripts` névvel a `ros_course` package-ben.
+1. Create folder named `scripts` in the `ros_course` package:
 
     ```bash
     cd ~catkin_ws/src/ros_course
@@ -434,7 +434,7 @@ roscore
     
     ---
     
-2. Navigáljunk a `scripts` mappába és hozzuk létre a `talker.py` fájlt az alábbi tartalommal.
+2. Navigate to the `scripts` folder and create the file `talker.py`, fill it with the following content:
 
     ```python
     import rospy
@@ -464,7 +464,7 @@ roscore
     ---
     
     
-3. A `CMakeLists.txt`-hez adjuk hozzá a következőt:
+3. Open `CMakeLists.txt` and find the commented out line starting with `catkin_install_python` (it is near line 167). Uncomment and edit as the following:
 
     ```cmake
     catkin_install_python(PROGRAMS scripts/talker.py
@@ -476,27 +476,35 @@ roscore
         
         
 
-4. Build-eljük és futtassuk a node-ot:
+4. Build the node:
 
     ```bash
     cd ~/catkin_ws
     catkin build
+    ```
+    
+5. Start ROS master and run the node. In separate terminal windows:
+
+    ```bash
+    roscore
+    ```
+    
+    ```bash
     rosrun ros_course talker.py
     ```
 
-    !!! tip
-        A node futtatásához szükség van a ROS masterre. Egy külön terminál ablakban indítsuk el a `roscore` paranccsal.
-
-
     ---
     
-5. Ellenőrizzük le a node kimenetét a `rostopic echo` parancs használatával.
+5. Check the output of the node, in a separate terminal:
+    ```bash
+    rostopic echo chatter
+    ```
 
 ---
 
-### 5: Subscriber implementálása Python-ban
+### 5: Implement a Subscriber in Python
 
-1. Navigáljunk a `scripts` mappába és hozzuk létre a `listener.py` fájlt az alábbi tartalommal.
+1. Navigate to the `scripts` folder and create the file `listener.py`:
 
     ```python
     import rospy
@@ -528,7 +536,7 @@ roscore
     ---
     
     
-2. A `CMakeLists.txt`-hez adjuk hozzá a következőt:
+2. Modify `CMakeLists.txt`:
 
     ```cmake
     catkin_install_python(PROGRAMS scripts/talker.py scripts/listener.py
@@ -538,35 +546,42 @@ roscore
 
     ---
     
-3. Build-eljük és futtassuk mind a 2 node-ot:
+3. Build the workspace:
 
     ```bash
     cd ~/catkin_ws
     catkin build
+    ```
+
+    ---
+    
+4. Start ROS master and run the 2 nodes. In separate terminal windows:
+    ```bash
+    roscore
+    ```
+    ```bash
     rosrun ros_course talker.py
     ```
     
     ```bash
     rosrun ros_course listener.py
     ```
-    
-    ---
 
-4. `rqt_graph` használatával jeleníttessük meg a futó rendszer node-jait és topic-jait:
+4. Check the nodes and topic of the system:
 
     ```bash
     rosrun rqt_graph rqt_graph
     ```
 
 
-!!! warning "Figyelem!"
-    Az óra végén a forráskódokat mindenkinek fel kell tölteni Moodle-re egy zip archívumba csomagolva!
+!!! warning "Warning!"
+    At the end of the lesson, everybody must upload their **sources** to **Moodle** as a zip archive!
 
 
 ---
 
 
-## Hasznos linkek
+## Links
 
 - [ROS Tutorials](http://wiki.ros.org/ROS/Tutorials)
 - [Curiosity rover simulation](https://www.tapatalk.com/groups/jpl_opensource_rover/real-curiosity-rover-simulation-in-gazebo-with-ros-t60.html)
