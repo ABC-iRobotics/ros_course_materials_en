@@ -387,7 +387,7 @@ roscore
     catkin create pkg ros_course --catkin-deps std_msgs rospy roscpp
     ```
 
-    !!! note "Szintaxis"
+    !!! note "Syntax"
         `catkin create pkg <PKG_NAME> --catkin-deps <DEP_1> <DEP_2>`
 
     ---
@@ -427,7 +427,7 @@ roscore
 1. Create folder named `scripts` in the `ros_course` package:
 
     ```bash
-    cd ~catkin_ws/src/ros_course
+    cd ~/catkin_ws/src/ros_course
     mkdir scripts
     cd scripts
     ```
@@ -511,7 +511,7 @@ roscore
     from std_msgs.msg import String
 
     def callback(data):
-        print(rospy.get_caller_id() + "I heard %s", data.data)
+        print(rospy.get_caller_id() + "I heard " + data.data)
     
     def listener():
 
