@@ -97,8 +97,9 @@ if __name__ == "__main__":
     ```bash
     python3 hello.py
     ```
-    
-   !!! tip
+
+
+    !!! tip
         In the case of issues with permissions, type the following to grant the file permission to execute: `chmod +x hello.py`
 
 
