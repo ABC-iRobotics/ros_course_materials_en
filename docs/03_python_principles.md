@@ -77,7 +77,9 @@ if __name__ == "__main__":
     cd catkin_ws/src/ros_course/scripts
     touch hello.py
     ```
-
+    
+    ---
+    
 2. Type or copy this line into the file `hello.py`:
 
     ```python
@@ -87,6 +89,8 @@ if __name__ == "__main__":
     !!! tip
         **In gedit:** Fix whitespace handling in gedit: Preferences -> Editor -> Insert spaces instead of tabs.
 
+    
+    ---
 
 3. To run the file, `cd` to the `scripts` directory and type:
 
@@ -95,11 +99,11 @@ if __name__ == "__main__":
     ```
     
    !!! tip
-        In the case of issues with permissions, type the following to grant the file permission to execute:
-        ```bash
-        chmod +x hello.py
-        ```
+        In the case of issues with permissions, type the following to grant the file permission to execute: `chmod +x hello.py`
 
+    ---
+    
+    
 4. Modify the script to replace the word "World" with a command line argument:
 
     ```python
@@ -109,12 +113,18 @@ if __name__ == "__main__":
     print("Hello," , msg, "!")
     ```
 
-6. Run the file:
+    
+    ---
+
+5. Run the file:
 
     ```bash
     python3 hello.py John
     ``` 
 
+    ---
+    
+    
 ### 2: Moving the turtle straight
 
 
