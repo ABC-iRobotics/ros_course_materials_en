@@ -614,6 +614,7 @@
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/ros_course/scripts
 touch hello.py
 </code></pre></div>
+<hr />
 </li>
 <li>
 <p>Type or copy this line into the file <code>hello.py</code>:</p>
@@ -623,6 +624,7 @@ touch hello.py
 <p class="admonition-title">Tip</p>
 <p><strong>In gedit:</strong> Fix whitespace handling in gedit: Preferences -&gt; Editor -&gt; Insert spaces instead of tabs.</p>
 </div>
+<hr />
 </li>
 <li>
 <p>To run the file, <code>cd</code> to the <code>scripts</code> directory and type:</p>
@@ -631,9 +633,9 @@ touch hello.py
 </li>
 </ol>
 <p>!!! tip
-        In the case of issues with permissions, type the following to grant the file permission to execute:
-        <div class="highlight"><pre><span></span><code>chmod +x hello.py
-</code></pre></div></p>
+        In the case of issues with permissions, type the following to grant the file permission to execute: <code>chmod +x hello.py</code></p>
+<pre><code>---
+</code></pre>
 <ol>
 <li>
 <p>Modify the script to replace the word "World" with a command line argument:</p>
@@ -642,11 +644,13 @@ touch hello.py
 <span class="n">msg</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello,&quot;</span> <span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="s2">&quot;!&quot;</span><span class="p">)</span>
 </code></pre></div>
+<hr />
 </li>
 <li>
 <p>Run the file:</p>
 <div class="highlight"><pre><span></span><code>python3 hello.py John
 </code></pre></div>
+<hr />
 </li>
 </ol>
 <h3 id="2-moving-the-turtle-straight">2: Moving the turtle straight</h3>
