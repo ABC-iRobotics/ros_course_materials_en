@@ -1,14 +1,13 @@
 ---
-title: 03. Python alapismeretek,  ROS kommunikáció gyakorlása
+title: Python principles, ROS Publisher, ROS Subscriber
 author: Tamas D. Nagy
-tags: Lectures, ROS course
 ---
 
-# 03. Python alapismeretek,  ROS kommunikáció gyakorlása
+# 03. Python principles, ROS Publisher, ROS Subscriber
 
 ---
 
-## Elmélet
+## Theory
 
 --- 
 
@@ -64,37 +63,44 @@ if __name__ == "__main__":
     a.count_to(10)
 ```
 
-## Gyakorlat
+## Practice
 
 
 ---
 
 ### 1: Hello, World!
 
-1. Nyissunk meg egy terminált. Huzzuk létre a *~/catkin_ws/src/ros_course/scripts/* könyvtárunkban a `hello.py` fájlt:
+1. Navigate to the `~/catkin_ws/src/ros_course/scripts/` folder and create the file `hello.py`:
+
 
     ```bash
     cd catkin_ws/src/ros_course/scripts
     touch hello.py
     ```
 
-2. Nyissuk meg a `hello.py` fájlt QtCreatorban, írjuk be a következő sort a `hello.py` fájlba:
+2. Type or copy this line into the file `hello.py`:
 
     ```python
     print("Hello, World!")
     ```
 
     !!! tip
-        **Aki gedit-et használ:** Preferences :arrow_forward: Editor :arrow_forward: Insert spaces instead of tabs.
+        **In gedit:** Fix whitespace handling in gedit: Preferences -> Editor -> Insert spaces instead of tabs.
 
 
-3. Futtassuk a fájlt, terminál:
+3. To run the file, `cd` to the `scripts` directory and type:
 
     ```bash
     python3 hello.py
     ```
+    
+   !!! tip
+        In the case of issues with permissions, type the following to grant the file permission to execute:
+        ```bash
+        chmod +x hello.py
+        ```
 
-4. Módosítsuk a programot úgy, hogy a *"World"* szót a parancssori argumentumként megadott szóval helyettesítse:
+4. Modify the script to replace the word "World" with a command line argument:
 
     ```python
     import sys
@@ -103,16 +109,17 @@ if __name__ == "__main__":
     print("Hello," , msg, "!")
     ```
 
-6. Futtassuk a fájlt, terminál:
+6. Run the file:
 
     ```bash
     python3 hello.py John
     ``` 
 
-### 2: Teknőc mozgatása egyenes mentén
+### 2: Moving the turtle straight
 
 
-1. Írjunk ROS node-ot, amely előre, egyenes mentén megadott távolságra mozgatja a teknőcöt. Nyissunk meg egy terminált. Huzzuk létre a *~/catkin_ws/src/ros_course/scripts* könyvtárunkban a `turtlesim_controller.py` fájlt:
+1.  Write a ROS node which communicates with the `turtlesim_node` and moves the turtle straight forward until it reaches the given distance. Open a terminal and create the file `turtlesim_controller.py` in the folder `~/catkin_ws/src/ros_course/scripts:
+
 
     ![](img/turtle_straight.png){:style="width:300px" align=right} 
 
@@ -124,7 +131,7 @@ if __name__ == "__main__":
    
     ---
     
-2. A `CMakeLists.txt`-hez adjuk hozzá a `turtlesim_controller.py`-t:
+2. Add `turtlesim_controller.py` to `CMakeLists.txt`:
 
     ```cmake
     catkin_install_python(PROGRAMS 
@@ -137,7 +144,7 @@ if __name__ == "__main__":
     
     ---
     
-3. Másoljuk be a `turtlesim_controller.py`-ba a program vázát:
+3. Copy the skeleton of the program into `turtlesim_controller.py`:
     
     ```python
     import rospy
@@ -164,7 +171,7 @@ if __name__ == "__main__":
     
     ---
 
-4. Indítsunk egy egy `turtlesim_node`-ot, majd vizsgáljuk meg a topic-ot, amellyel irányíthatjuk. Három külön terminálablakban:
+4. Launch a `turtlesim_node`, then find the topic we can use to control its movement. In three separate terminal windows:
 
     ```bash
     roscore
@@ -182,7 +189,7 @@ if __name__ == "__main__":
 
     ---
     
-5. Importáljuk a `geometry_msgs/Twist` üzenettípust és hozzuk létre a publishert a `turtlesim_controller.py`-ban:
+5. Import the message type `geometry_msgs/Twist` and create the publisher handle object for the topic named `turtlesim_controller.py`:
 
     ```python
     from geometry_msgs.msg import Twist
@@ -197,7 +204,7 @@ if __name__ == "__main__":
  
 
     
-6. Implementáljuk a `go_straight` metódust. Számítsuk ki, mennyi ideig tart, hogy a megadott távolságot a megadott sebességgel megtegye a teknőc. Publikáljunk üzenetet, amivel beállítjuk a sebességet, majd várjunk a kiszámított ideig, ezután küldjünk újabb üzenetet, amellyel nullázzuk a sebességet. Egy kis segítség az API használatához:
+6. Implement the `go_straight` method. Calculate how much time it takes for the turtle to move to the given distance with the given velocity. Publish  and repeat a message to set the velocity, and when the calculated time is up, send another message to set the velocity to 0. A little help on the usage of the API:
 
 
     
@@ -236,12 +243,20 @@ if __name__ == "__main__":
     
     ---
     
+7. Launch the node:
+
+    ```bash
+    rosrun ros_course turtlesim_controller.py
+    ```
+    
+    ---
+    
    
-### 3: Alakzatok rajolása
+### 3: Drawing polygons
 
 ![](img/turtle_hex.png){:style="width:300px" align=right} 
 
-1. Implementáljunk adott szöggel történő elfordulást megvalósító metódust a  `turtlesim_controller.py`-ban, az egyenes mozgásshoz hasonló módon.
+1. Implement a method to turn the turtle with a given angle in `turtlesim_controller.py` in a similar way to the straight movement. `Omega` refers to the angular velocity.
 
 
     ```python
@@ -251,7 +266,7 @@ if __name__ == "__main__":
     
     ---
     
-2. Implementáljunk a teknőccel négyzetet rajzoltató metódust az egyenes mozgást és a fordulást végrehajtó metódusok felhasználásával.
+2. Implement a method that draws a square with the turtle. Use the methods `go_straight` and `turn`.
 
     ```python
     def draw_square(self, speed, omega, a):
@@ -259,7 +274,7 @@ if __name__ == "__main__":
   
     ---
     
-4. Implementáljunk a teknőccel tetszőleges szabályos alakzatot rajzoltató metódust az egyenes mozgást és a fordulást végrehajtó metódusok felhasználásával.
+4. Implement a method to draw arbitrary regular polygons.
 
     ```python
     def draw_poly(self, speed, omega, N, a):
@@ -268,11 +283,11 @@ if __name__ == "__main__":
     ---
     
    
-### 4: Go to funkció implementálása
+### 4: Go to method
 
 ![](img/turtle_goto.png){:style="width:300px" align=right} 
 
-1. Vizsgáljuk meg a topic-ot, amelyen a `turtlesim_node` a pillanatnyi pozícióját publikálja. 
+1. Search for the topic turtlesim which publsihes the pose (position and orientation) of the turtle into: 
 
 
     ```bash
@@ -283,7 +298,7 @@ if __name__ == "__main__":
     
     --- 
  
-2. Definiáljunk subscriber-t a topichoz és írjuk meg a callback függvényt, majd implementáljuk a go to funkciót.
+2. Create a subscriber for the topic and write the callback function:
 
     ```python
     # Imports
@@ -294,8 +309,16 @@ if __name__ == "__main__":
     
         # New method for TurtlesimController
         def cb_pose(msg):
-            self.pose = msg
+            self.pose = msg  
+    ```
     
+    ---
+    
+3. Implement the method `go_to`. Test it by calling from the main.
+
+    ```python
+        # ...
+
         # Go to method
         def go_to(self, speed, omega, x, y):
             # Stuff
@@ -313,9 +336,9 @@ if __name__ == "__main__":
     ```
     
     
-### Bónusz: Advanced go to
+### Bonus exercise: Advanced go to
     
-Írjunk arányos szabályozót használó go to funckiót.
+Write a more accurate go to method using proportional controller.
     
     
 ---
