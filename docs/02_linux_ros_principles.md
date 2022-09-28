@@ -7,7 +7,7 @@ author: Tamas D. Nagy
 
 ---
 
-## Theory
+## Lecture
 
 ---
 

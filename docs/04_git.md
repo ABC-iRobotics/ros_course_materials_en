@@ -1,14 +1,13 @@
 ---
-title: 04. Verziókövetés, Git
+title: Versioning, Git
 author: Tamas D. Nagy
-tags: Lectures, ROS course
 ---
 
-# 04. Verziókövetés, Git
+# 04. Versioning, Git
 
 ---
 
-## Elmélet
+## Lecture
 
 --- 
 
