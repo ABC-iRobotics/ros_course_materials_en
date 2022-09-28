@@ -12,7 +12,7 @@ author: Tamas D. Nagy
 --- 
 
 !!! warning
-	**ZH1** (ROS principles, publisher, subscriber. Python principles. Principles of robotics.) **October 11.**
+	**Test 1** (ROS principles, publisher, subscriber. Python principles. Principles of robotics.) **October 11.**
 
 
 
@@ -51,7 +51,7 @@ author: Tamas D. Nagy
 
 ---
 
-### 3D transfomrations
+### 3D transformations
 
 ---
 
@@ -232,10 +232,12 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
     roslaunch dvrk_robot dvrk_arm_rviz.launch arm:=PSM1 config:=/home/$(whoami)/catkin_ws/src/cisst-saw/sawIntuitiveResearchKit/share/console/console-PSM1_KIN_SIMULATED.json
     ```
 
-    !!! tip
-        `Roslaunch` also launches the ROS master, if there is no ROS master running.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QksAVT0YMEo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    !!! tip
+        `Roslaunch` also launches the ROS master, if there is no ROS master running.
+        
 
     ---
 
@@ -309,7 +311,7 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
 
 1. Write a node that creates a virtual marker that can be grasped publishing`visualization_msgs/Marker` messages. Create a new file named `dummy_marker.py` in the `~/catkin_ws/src/ros_course/scripts` folder. Add it to the `CMakeLists.txt`, as usually. Copy the following code into the file `dummy_marker.py`:
 
-     ```python
+    ```python
     import rospy
     from visualization_msgs.msg import Marker
 
