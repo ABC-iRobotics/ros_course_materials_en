@@ -63,7 +63,7 @@ git config --global user.email "istvan.szabo@gmail.com"
 
 
 !!! tip
-    **Windows és Linux clock issue:** `timedatectl set-local-rtc 1 --adjust-system-clock`
+    **Windows and Linux clock issue:** `timedatectl set-local-rtc 1 --adjust-system-clock`
 
 ---
 
