@@ -19,7 +19,7 @@
     
     
       
-        <title>08. Roslaunch, saját üzenetek, action, service - Programming robots in ROS</title>
+        <title>Roslaunch, ROS parameter szerver, Rosbag - Programming robots in ROS</title>
       
     
     
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              08. Roslaunch, saját üzenetek, action, service
+              Roslaunch, ROS parameter szerver, Rosbag
             
           </span>
         </div>
@@ -417,11 +417,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#elmelet" class="md-nav__link">
-    Elmélet
+  <a href="#lecture" class="md-nav__link">
+    Lecture
   </a>
   
-    <nav class="md-nav" aria-label="Elmélet">
+    <nav class="md-nav" aria-label="Lecture">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -498,37 +498,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gyakorlat" class="md-nav__link">
-    Gyakorlat
+  <a href="#practice" class="md-nav__link">
+    Practice
   </a>
   
-    <nav class="md-nav" aria-label="Gyakorlat">
+    <nav class="md-nav" aria-label="Practice">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-marker-korlap" class="md-nav__link">
-    1: Marker: Körlap
+  <a href="#1-marker-disk" class="md-nav__link">
+    1: Marker: Disk
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-launchfile-es-parameterek-a-markerekhez" class="md-nav__link">
-    2: Launchfile és paraméterek a markerekhez
+  <a href="#2-launchfile-and-params-for-the-markers" class="md-nav__link">
+    2: Launchfile and params for the markers
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-navigacio-a-korlap-pereme-menten" class="md-nav__link">
-    3: Navigáció a körlap pereme mentén
+  <a href="#3-navigation-around-the-perimeter" class="md-nav__link">
+    3: Navigation around the perimeter
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-mentes-rosbag-be" class="md-nav__link">
-    4: Mentés rosbag-be
+  <a href="#4-record-with-rosbag" class="md-nav__link">
+    4: Record with rosbag
   </a>
   
 </li>
@@ -603,9 +603,9 @@
                 
 
 
-<h1 id="08-roslaunch-ros-parameter-szerver-rosbag">08. Roslaunch, ROS paraméter szerver, Rosbag</h1>
+<h1 id="08-roslaunch-ros-parameter-szerver-rosbag">08. Roslaunch, ROS parameter szerver, Rosbag</h1>
 <hr />
-<h2 id="elmelet">Elmélet</h2>
+<h2 id="lecture">Lecture</h2>
 <hr />
 <h3 id="roslaunch">Roslaunch</h3>
 <hr />
@@ -733,76 +733,70 @@
     rosbag play &lt;filename.bag&gt;
 </code></pre></div>
 <hr />
-<h2 id="gyakorlat">Gyakorlat</h2>
+<h2 id="practice">Practice</h2>
 <hr />
-<div class="admonition warning">
-<p class="admonition-title">Figyelem!</p>
-<p>Az óra végén a forráskódokat mindenkinek fel kell tölteni Moodle-re egy zip archívumba csomagolva!</p>
-</div>
-<h3 id="1-marker-korlap">1: Marker: Körlap</h3>
+<h3 id="1-marker-disk">1: Marker: Disk</h3>
 <hr />
 <ol>
 <li>
-<p>Hozzuk létre a szokásos helyen a <code>dummy_cylinder.py</code> fájlt. Publikáljunk egy lapos, henger alakú markert (0.05, 0.05, -0.15) pozícióval és 0.1 m sugárral.</p>
+<p>Create a new file named <code>dummy_cylinder.py</code> in the <code>scripts</code> folder. Publish disk shaped Marker with position (0.05, 0.05, -0.15) and radius of 0.1 m. </p>
 <hr />
 </li>
 </ol>
-<h3 id="2-launchfile-es-parameterek-a-markerekhez">2: Launchfile és paraméterek a markerekhez</h3>
+<h3 id="2-launchfile-and-params-for-the-markers">2: Launchfile and params for the markers</h3>
 <hr />
 <ol>
 <li>
-<p>Hozzunk létre fájlt <code>dummy_markers.launch</code> névvel a <code>~catkin_ws/src/ros_course/launch</code> mappában.</p>
+<p>Create a new file named <code>dummy_markers.launch</code> in the folder <code>~catkin_ws/src/ros_course/launch</code>. If the folder does not exist, create that as well. Write a launchfile, that launches both dummy marker publisher nodes.</p>
 <hr />
 </li>
 <li>
-<p>Írjunk launchfájlt, amely mind a két dummy marker publisher-t elindítja.</p>
+<p>Modify the launchfile and the Python scripts so the dummy marker publishers receive the position of the marker as a ROS parameter, that can also be set from the command line (see the example in Chapter 6). Let the position of the markers have default values too, sphere: (-0.05, 0.1, -0.12), disk: (0.05, 0.05, -0.15).</p>
 <hr />
 </li>
 <li>
-<p>Módosítsuk a launchfájlt és a Python szkripteket úgy, hogy a dummy marker publisher-ek a marker pozícióját ROS paraméterként kapják meg, mely a roslaunch parancssori argumentumaként is módosítható. A markerek pozíciójának legyen default értéke is, gömb: <code>(-0.05, 0.1, -0.12)</code>, körlap: <code>(0.05, 0.05, -0.15)</code>.</p>
-<hr />
-</li>
-<li>
-<p>Hozzunk létre YAML fájlt, amelyből a körlap marker mérete és színe kerül beolvasásra.</p>
+<p>Create a YAML file, containing the size and the color of the disk marker. Load those parameters in the Python script through roslaunch.</p>
 <hr />
 </li>
 </ol>
-<h3 id="3-navigacio-a-korlap-pereme-menten">3: Navigáció a körlap pereme mentén</h3>
+<h3 id="3-navigation-around-the-perimeter">3: Navigation around the perimeter</h3>
 <hr />
 <ol>
 <li>
-<p>Hozzunk létre launchfájlt <code>psm_grasp.launch</code> névvel.</p>
+<p>Create a new launchfile named <code>psm_grasp.launch</code> for the script <code>psm_grasp.py</code>. Let dt, velocity and angular velocity of the jaws be set as ROS parameters.</p>
 <hr />
 </li>
 <li>
-<p>Írjunk launchfájlt a <code>psm_grasp.py</code> szkripthez. A dt, sebesség és a pofák szögsebessége ROS paraméterként legyen állítható.</p>
+<p>Run <code>psm_grasp.launch</code> with different marker positions.</p>
 <hr />
 </li>
 <li>
-<p>Futtassuk a <code>psm_grasp.launch</code>-ot különböző marker pozíciók mellett.</p>
-<hr />
-</li>
-<li>
-<p>Módosítsuk a node-ot úgy, hogy a gömb marker megragadása előtt navigáljon körbe a korong alakú marker peremén.</p>
+<p>Modify <code>psm_grasp.py</code> so that the TCP moves around the perimeter of the disk marker before grasping the spherical one.</p>
 <hr />
 </li>
 </ol>
-<h3 id="4-mentes-rosbag-be">4: Mentés rosbag-be</h3>
+<h3 id="4-record-with-rosbag">4: Record with rosbag</h3>
 <hr />
 <ol>
 <li>
-<p>Az előző feladatban implementált program futása közben rögzítsük a topic-ok tartalmát egy rosbag fájlba.</p>
+<p>While running the program implemented in the previous exercise, record the contents of all topics to a bag file.</p>
+<div class="highlight"><pre><span></span><code>    rosbag record --all
+</code></pre></div>
 <hr />
 </li>
 <li>
-<p>Telepítsük az <code>rqt</code> csomagot.</p>
-<div class="highlight"><pre><span></span><code>    sudo apt-get install ros-noetic-rqt
+<p>Install the package <code>rqt</code>.</p>
+<div class="highlight"><pre><span></span><code>    sudo apt-get update
+    sudo apt-get install ros-noetic-rqt
     sudo apt-get install ros-noetic-rqt-common-plugins
 </code></pre></div>
 <hr />
 </li>
 <li>
-<p>Játsszuk vissza a rosbag fájlt és jelenítsük meg a PSM végpontjának koordinátáit <code>rqt_plot</code> segítségével.</p>
+<p>Play back the recorded bag file and echo some of the PSM1's topics (or visualize the coordinates of the PSM TCP using <code>rqt_plot</code>).</p>
+<div class="highlight"><pre><span></span><code>    rosbag play &lt;filename.bag&gt;
+    rostopic <span class="nb">echo</span> /PSM1/measured_cp
+</code></pre></div>
 </li>
 </ol>
 <hr />
