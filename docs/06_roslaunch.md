@@ -1,15 +1,14 @@
 ---
-title: 08. Roslaunch, saját üzenetek, action, service
+title: Roslaunch, ROS parameter szerver, Rosbag
 author: Tamas D. Nagy
-tags: Lectures, ROS course
 ---
 
-# 08. Roslaunch, ROS paraméter szerver, Rosbag
+# 08. Roslaunch, ROS parameter szerver, Rosbag
 
 ---
 
 
-## Elmélet
+## Lecture
 
 
 
@@ -170,82 +169,82 @@ tags: Lectures, ROS course
 
 ---
 
-## Gyakorlat
+## Practice
 
 ---
 
 
-!!! warning "Figyelem!"
-    Az óra végén a forráskódokat mindenkinek fel kell tölteni Moodle-re egy zip archívumba csomagolva!
 
-
-### 1: Marker: Körlap
+### 1: Marker: Disk
 
 ---
 
-1. Hozzuk létre a szokásos helyen a `dummy_cylinder.py` fájlt. Publikáljunk egy lapos, henger alakú markert (0.05, 0.05, -0.15) pozícióval és 0.1 m sugárral.
+1. Create a new file named `dummy_cylinder.py` in the `scripts` folder. Publish disk shaped Marker with position (0.05, 0.05, -0.15) and radius of 0.1 m. 
 
     ---
     
-### 2: Launchfile és paraméterek a markerekhez
+### 2: Launchfile and params for the markers
 
 ---
 
-1. Hozzunk létre fájlt `dummy_markers.launch` névvel a `~catkin_ws/src/ros_course/launch` mappában.
+1. Create a new file named `dummy_markers.launch` in the folder `~catkin_ws/src/ros_course/launch`. If the folder does not exist, create that as well. Write a launchfile, that launches both dummy marker publisher nodes.
 
     ---
 
-2. Írjunk launchfájlt, amely mind a két dummy marker publisher-t elindítja.
+2. Modify the launchfile and the Python scripts so the dummy marker publishers receive the position of the marker as a ROS parameter, that can also be set from the command line (see the example in Chapter 6). Let the position of the markers have default values too, sphere: (-0.05, 0.1, -0.12), disk: (0.05, 0.05, -0.15).
 
     ---
 
-3. Módosítsuk a launchfájlt és a Python szkripteket úgy, hogy a dummy marker publisher-ek a marker pozícióját ROS paraméterként kapják meg, mely a roslaunch parancssori argumentumaként is módosítható. A markerek pozíciójának legyen default értéke is, gömb: `(-0.05, 0.1, -0.12)`, körlap: `(0.05, 0.05, -0.15)`.
-
-    ---
-
-4. Hozzunk létre YAML fájlt, amelyből a körlap marker mérete és színe kerül beolvasásra.
+3. Create a YAML file, containing the size and the color of the disk marker. Load those parameters in the Python script through roslaunch.
 
     ---
     
     
-### 3: Navigáció a körlap pereme mentén
+### 3: Navigation around the perimeter
 
 ---
 
-1. Hozzunk létre launchfájlt `psm_grasp.launch` névvel.
+1. Create a new launchfile named `psm_grasp.launch` for the script `psm_grasp.py`. Let dt, velocity and angular velocity of the jaws be set as ROS parameters.
+  
 
     ---
     
-2. Írjunk launchfájlt a `psm_grasp.py` szkripthez. A dt, sebesség és a pofák szögsebessége ROS paraméterként legyen állítható.
+2. Run `psm_grasp.launch` with different marker positions.
 
     ---
     
-3. Futtassuk a `psm_grasp.launch`-ot különböző marker pozíciók mellett.
-
-    ---
-    
-4. Módosítsuk a node-ot úgy, hogy a gömb marker megragadása előtt navigáljon körbe a korong alakú marker peremén.
+4. Modify `psm_grasp.py` so that the TCP moves around the perimeter of the disk marker before grasping the spherical one.
 
     ---
 
-### 4: Mentés rosbag-be
+### 4: Record with rosbag
 
 ---
 
-1. Az előző feladatban implementált program futása közben rögzítsük a topic-ok tartalmát egy rosbag fájlba.
-    
-    ---
-
-2. Telepítsük az `rqt` csomagot.
+1. While running the program implemented in the previous exercise, record the contents of all topics to a bag file.
 
     ```bash
+        rosbag record --all
+    ```
+    
+    ---
+
+2. Install the package `rqt`.
+
+    ```bash
+        sudo apt-get update
         sudo apt-get install ros-noetic-rqt
         sudo apt-get install ros-noetic-rqt-common-plugins
     ```
 
     ---
 
-4. Játsszuk vissza a rosbag fájlt és jelenítsük meg a PSM végpontjának koordinátáit `rqt_plot` segítségével.
+4. Play back the recorded bag file and echo some of the PSM1's topics (or visualize the coordinates of the PSM TCP using `rqt_plot`).
+
+    ```bash
+        rosbag play <filename.bag>
+        rostopic echo /PSM1/measured_cp
+    ```
 
 
 ---
