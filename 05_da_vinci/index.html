@@ -497,101 +497,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#import-rospy-from-visualization_msgsmsg-import-marker-def-markerposition-rospyinit_nodedummy_target_publisher-anonymoustrue-pub-rospypublisherdummy_target_marker-marker-queue_size10-rate-rospyrate10-10hz-i-0-while-not-rospyis_shutdown-marker-marker-markerheaderframe_id-psm1_psm_base_link-markerheaderstamp-rospytime-markerns-dvrk_viz-markerid-i-markertype-markersphere-markeraction-markermodify-markerposepositionx-position0-markerposepositiony-position1-markerposepositionz-position2-markerposeorientationx-00-markerposeorientationy-00-markerposeorientationz-00-markerposeorientationw-10-markerscalex-0008-markerscaley-0008-markerscalez-0008-markercolora-10-dont-forget-to-set-the-alpha-markercolorr-00-markercolorg-10-markercolorb-00-rospyloginfomarker-pubpublishmarker-i-i-1-ratesleep-if-__name__-__main__-try-marker-005-008-012-except-rospyrosinterruptexception-pass" class="md-nav__link">
-    import rospy
-from visualization_msgs.msg import Marker
-
-def marker(position):
-    rospy.init_node(&#39;dummy_target_publisher&#39;, anonymous=True)
-    pub = rospy.Publisher(&#39;dummy_target_marker&#39;, Marker, queue_size=10)
-    rate = rospy.Rate(10) # 10hz
-    i = 0
-    while not rospy.is_shutdown():
-        marker = Marker()
-        marker.header.frame_id = &#39;PSM1_psm_base_link&#39;
-        marker.header.stamp = rospy.Time()
-        marker.ns = &quot;dvrk_viz&quot;
-        marker.id = i
-        marker.type = Marker.SPHERE
-        marker.action = Marker.MODIFY
-        marker.pose.position.x = position[0]
-        marker.pose.position.y = position[1]
-        marker.pose.position.z = position[2]
-        marker.pose.orientation.x = 0.0
-        marker.pose.orientation.y = 0.0
-        marker.pose.orientation.z = 0.0
-        marker.pose.orientation.w = 1.0
-        marker.scale.x = 0.008
-        marker.scale.y = 0.008
-        marker.scale.z = 0.008
-        marker.color.a = 1.0 # Don&#39;t forget to set the alpha!
-        marker.color.r = 0.0
-        marker.color.g = 1.0
-        marker.color.b = 0.0;
-
-        #rospy.loginfo(marker)
-        pub.publish(marker)
-        i = i + 1
-        rate.sleep()
-
-if __name__ == &#39;__main__&#39;:
-    try:
-        marker([-0.05, 0.08, -0.12])
-    except rospy.ROSInterruptException:
-        pass
-
-  </a>
-  
-    <nav class="md-nav" aria-label="import rospy
-from visualization_msgs.msg import Marker
-
-def marker(position):
-    rospy.init_node(&#39;dummy_target_publisher&#39;, anonymous=True)
-    pub = rospy.Publisher(&#39;dummy_target_marker&#39;, Marker, queue_size=10)
-    rate = rospy.Rate(10) # 10hz
-    i = 0
-    while not rospy.is_shutdown():
-        marker = Marker()
-        marker.header.frame_id = &#39;PSM1_psm_base_link&#39;
-        marker.header.stamp = rospy.Time()
-        marker.ns = &quot;dvrk_viz&quot;
-        marker.id = i
-        marker.type = Marker.SPHERE
-        marker.action = Marker.MODIFY
-        marker.pose.position.x = position[0]
-        marker.pose.position.y = position[1]
-        marker.pose.position.z = position[2]
-        marker.pose.orientation.x = 0.0
-        marker.pose.orientation.y = 0.0
-        marker.pose.orientation.z = 0.0
-        marker.pose.orientation.w = 1.0
-        marker.scale.x = 0.008
-        marker.scale.y = 0.008
-        marker.scale.z = 0.008
-        marker.color.a = 1.0 # Don&#39;t forget to set the alpha!
-        marker.color.r = 0.0
-        marker.color.g = 1.0
-        marker.color.b = 0.0;
-
-        #rospy.loginfo(marker)
-        pub.publish(marker)
-        i = i + 1
-        rate.sleep()
-
-if __name__ == &#39;__main__&#39;:
-    try:
-        marker([-0.05, 0.08, -0.12])
-    except rospy.ROSInterruptException:
-        pass
-">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#5-grasp-the-marker" class="md-nav__link">
     5. Grasp the marker
@@ -949,7 +854,7 @@ rosrun ros_course psm_grasp.py
 <ol>
 <li>
 <p>Write a node that creates a virtual marker that can be grasped publishing<code>visualization_msgs/Marker</code> messages. Create a new file named <code>dummy_marker.py</code> in the <code>~/catkin_ws/src/ros_course/scripts</code> folder. Add it to the <code>CMakeLists.txt</code>, as usually. Copy the following code into the file <code>dummy_marker.py</code>:</p>
-<h2 id="import-rospy-from-visualization_msgsmsg-import-marker-def-markerposition-rospyinit_nodedummy_target_publisher-anonymoustrue-pub-rospypublisherdummy_target_marker-marker-queue_size10-rate-rospyrate10-10hz-i-0-while-not-rospyis_shutdown-marker-marker-markerheaderframe_id-psm1_psm_base_link-markerheaderstamp-rospytime-markerns-dvrk_viz-markerid-i-markertype-markersphere-markeraction-markermodify-markerposepositionx-position0-markerposepositiony-position1-markerposepositionz-position2-markerposeorientationx-00-markerposeorientationy-00-markerposeorientationz-00-markerposeorientationw-10-markerscalex-0008-markerscaley-0008-markerscalez-0008-markercolora-10-dont-forget-to-set-the-alpha-markercolorr-00-markercolorg-10-markercolorb-00-rospyloginfomarker-pubpublishmarker-i-i-1-ratesleep-if-__name__-__main__-try-marker-005-008-012-except-rospyrosinterruptexception-pass"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">from</span> <span class="nn">visualization_msgs.msg</span> <span class="kn">import</span> <span class="n">Marker</span>
 
 <span class="k">def</span> <span class="nf">marker</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
@@ -990,7 +895,8 @@ rosrun ros_course psm_grasp.py
         <span class="n">marker</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.12</span><span class="p">])</span>
     <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSInterruptException</span><span class="p">:</span>
         <span class="k">pass</span>
-</code></pre></div></h2>
+</code></pre></div>
+<hr />
 </li>
 <li>
 <p>Build and run the node. Visualize the marker in RViz.</p>
