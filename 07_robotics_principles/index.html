@@ -664,6 +664,13 @@
 <p class="admonition-title">Def. Kinematics</p>
 <p>Calculation of the pose of the TCP from joint angles. (From joint space to task space)</p>
 </div>
+<ul>
+<li>Kinematic model<ul>
+<li>Denavit--Hartenberg (HD) convention</li>
+<li>URDF (Unified Robotics Description Format, XML-based)</li>
+</ul>
+</li>
+</ul>
 <p>If the frames attached to each segment are named <span class="arithmatex">\(base, 1, 2, 3, ..., TCP\)</span>, transformations between two neighboring segments <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(i+1\)</span>---dependent on the angle of the joint enclosed by them---are named <span class="arithmatex">\(T_{i+1,i}(q_{i+1})\)</span>, the transformation from the base frame to the TCP can be calculated as follows for a robot with <span class="arithmatex">\(n\)</span> joints:</p>
 <div class="arithmatex">\[
      T_{TCP,base}(q_1, \cdots, q_n) = T_{TCP,n-1}(q_{n}) \cdot T_{n-1,n-2}(q_{n-1}) \cdots T_{2,1}(q_2) \cdot T_{1,base}(q_1) \cdot base
