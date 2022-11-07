@@ -1,99 +1,105 @@
 ---
-title: Kinematika, inverz kienamtika
+title: Kinematics, Inverse kinematics
 author: Tamas D. Nagy
-tags: Lectures, ROS course
 ---
 
-# 12. Kinematika, inverz kienamtika, Szimulált robotkar programozása csukló-, és munkatérben
+# 07. Kinematics, inverse kinematics. Programming a simulated robot in joint space and task space
 
 !!! warning
-	**ZH2** (Roslaunch, ROS paraméter szerver. Kinematika, inverz kinematika.) és a **Kötelező program bemutatás** **május 9.**
+	**ZH2** (Roslaunch, ROS parameter szerver. ROS service. ROS action. Kinematics, inverse kinematics) and **project presentation**: **December 6.**
 
 
 ---
 
-## Ismétlés
+## Rehearsal
+
+
+### 3D transformations
 
 ---
 
 
-### 3D transzformációk
-
----
-
-
-- **Pozíció:** 3 elemű offszet vektor 
+- **Position:** 3D offset vector 
 ![](https://d2t1xqejof9utc.cloudfront.net/pictures/files/19711/original.png?1367580819){:style="width:250px" align=right}
-- **Orientáció:** 3 x 3 rotációs matrix
-    - további orientáció reprezentációk: Euler-szögek, RPY, angle axis, quaternion
+- **Orientation:** 3 x 3 rotation matrix
+    - further orientation representations: Euler-angles, RPY, angle axis, quaternion
 
-- **Helyzet** (pose): 4 × 4 transzformációs mártrix
-- **Koordináta rendszer** (frame): null pont, 3 tengely, 3 bázis vektor, jobbkéz-szabály
-- **Homogén transzformációk:** rotáció és transzláció együtt
-    - pl. $\mathbf{R}$ rotáció és $\mathbf{v}$ transzláció esetén:
+- **Pose**: 4 × 4 (homogenous) transformation matrix
+- **Frame**: origin, 3 axes, 3 base vectors, right hand rule
+- **Homogenous transformation:** rotation and translation in one transfromation
+    - e.g., for the rotation $\mathbf{R}$ and translation $\mathbf{v}$:
 
 $$
 \mathbf{T} = \left[\matrix{\mathbf{R} & \mathbf{v}\\\mathbf{0} & 1 }\right] = \left[\matrix{r_{1,1} & r_{1,2} & r_{1,3} & v_x\\r_{2,1} & r_{2,2} & r_{2,3} & v_y\\r_{3,1} & r_{3,2} & r_{3,3} & v_z\\\ 0 & 0 & 0 & 1 }\right]
 $$
 
-- **Homogén koordináták:** 
-    - **Vektor:** 0-val egészítjük ki, $\mathbf{a_H}=\left[\matrix{\mathbf{a} \\ 0}\right]=\left[\matrix{a_x \\ a_y \\ a_z \\ 0}\right]$
-    - **Pont:** 1-gyel egészítjük ki, $\mathbf{p_H}=\left[\matrix{\mathbf{p} \\ 1}\right]=\left[\matrix{p_x \\ p_y \\ p_z \\ 1}\right]$
-    - Transzformációk alkalmazása egyszerűbb:
+- **Homogenous coordinates:** 
+    - **Vector:** extended with 0, $\mathbf{a_H}=\left[\matrix{\mathbf{a} \\ 0}\right]=\left[\matrix{a_x \\ a_y \\ a_z \\ 0}\right]$
+    - **Point:** extended by 1, $\mathbf{p_H}=\left[\matrix{\mathbf{p} \\ 1}\right]=\left[\matrix{p_x \\ p_y \\ p_z \\ 1}\right]$
+    - Applying transfomrations is much easier:
 
 $$
 \mathbf{q} = \mathbf{R}\mathbf{p} + \mathbf{v} \to \left[\matrix{\mathbf{q} \\ 1}\right] = \left[\matrix{\mathbf{R} & \mathbf{v}\\\mathbf{0} & 1 }\right]\left[\matrix{\mathbf{p} \\ 1}\right]
 $$
 
-- **Szabadsági fok** (DoF): egymástól független mennyiségek száma.
+- **Degrees of Freedom** (DoF): the number of independent parameters.
 
 ---
 
-### Robotikai alapok
+### Principles of robotics
 
 ---
 
 ![](img/segments.png){:style="width:400px" align=right}
 
-- Robotok felépítése: **szegmensek** (segment, link) és **csuklók** (joints)
-- **Munkatér** (task space, cartesian space):  
-    - Háromdimenziós tér, ahol a feladat, trajektóriák, akadályok, stb. definiálásra kerülnek.
-    - **TCP** (Tool Center Point): az end effektorhoz rögzített koordináta rendszer (frame)
-    - **Base/world frame**
-- **Csuklótér** (joint space):
-    -  A robot csuklóihoz rendelt mennyiségek, melyeket a robot alacsony szintű irányító rendszere értelmezni képes.
-    -  csukló koordináták, sebességek, gyorsulások, nyomatékok...
+- Robots are built of: **segments** (or links) és **joints**
+- **Task space** (or cartesian space):
+    - 3D space around us, where the task, endpoint trajectories, obstacles are defined.
+    - **TCP** (Tool Center Point): Frame fixed to the end effector of the robot.
+    - **Base frame**, **world frame**
+- **Joint space**:
+    -  Properties or values regarding the joints.
+    -  Low-level controller.
+    -  Joint angles, joint velocities, accelerations, torques....
 
 
 
----
-
-## Elmélet
+## Lecture
 
 --- 
 
 
-### Kinematika, inverz kinematika
+### Kinematics, inverse kinematics
 
 ---
 
-!!! abstract "Def. Kinematika"
-    A TCP (vagy bármi más) helyzetének kiszámítása a csukló koordinátákból.
+!!! abstract "Def. Kinematics"
+    Calculation of the pose of the TCP from joint angles. (From joint space to task space)
+   
+- Kinematic model
+    - Denavit--Hartenberg (HD) convention
+    - URDF (Unified Robotics Description Format, XML-based)
+    
+If the frames attached to each segment are named $base, 1, 2, 3, ..., TCP$, transformations between two neighboring segments $i$ and $i+1$---dependent on the angle of the joint enclosed by them---are named $T_{i+1,i}(q_{i+1})$, the transformation from the base frame to the TCP can be calculated as follows for a robot with $n$ joints:
+ 
+$$
+     T_{TCP,base}(q_1, \cdots, q_n) = T_{TCP,n-1}(q_{n}) \cdot T_{n-1,n-2}(q_{n-1}) \cdots T_{2,1}(q_2) \cdot T_{1,base}(q_1) \cdot base
+$$
 
 
-!!! abstract "Def. Inverz kinematika"
-    Csukló koordináták kiszámítása a (kívánt)  TCP (vagy bármi más) pose eléréséhez.
+!!! abstract "Def. Inverse kinematics"
+    Calculation of the joint angles in order to reach desired (or any) TCP pose. (From task space to joint space)
 
 ---
 
-#### Differenciális inverz kinematika
+#### Differential inverse kinematics
 
 
-!!! abstract "Def. Differenciális inverz kinematika"
-    A csukló koordináták mely változtatása éri el a kívánt, **kis mértékű változást** a TCP helyzetében (rotáció és transzláció).
+!!! abstract "Def. Differential inverse kinematics"
+    How to change the joint angles to achieve the desired **small** change in TCP pose (including rotation and translation).
     
     
-- **Jacobi-mátrix** (Jacobian): egy vektorértékű függvény elsőrendű parciális deriváltjait tartalmazó mátrix. 
+- **Jacobian matrix** (Jacobian): The Jacobian matrix of a vector-valued function of several variables is the matrix of all its first-order partial derivatives.
 
 
     $$
@@ -105,7 +111,7 @@ $$
     $$
 
  
-- **Jacobi-mátrix jelentősége robotikában**: megadja az összefüggést a csuklósebességek és a TCP sebessége között.
+- **Jacobian matrix in robotics**: defines the relationship between the joint velocities and the velocity of the TCP:
 
     $$
     \left[\matrix{\mathbf{v} \\ \mathbf{\omega}}\right] =\mathbf{J}(\mathbf{q})\cdot \mathbf{\dot{q}}
@@ -113,17 +119,17 @@ $$
 
 ---
 
-#### Inverz kinematika Jacobi inverz felhasználásával
+#### Differential inverse kinematics using Jacobian inverse
 
-1. Számítsuk ki a kívánt és az aktuális pozíció különbségét: $\Delta\mathbf{r} = \mathbf{r}_{desired} - \mathbf{r}_0$
-2. Számítsuk ki a rotációk különbségét: $\Delta\mathbf{R} = \mathbf{R}_{desired}\mathbf{R}_{0}^{T}$, majd konvertáljuk át axis angle reprezentációba $(\mathbf{t},\phi)$
-3. Számítsuk ki $\Delta\mathbf{ q}=\mathbf{J}^{-1}(\mathbf{q_0})\cdot \left[\matrix{k_1 \cdot \Delta\mathbf{r} \\ k_2 \cdot \phi \cdot \mathbf{t}}\right]$, ahol az inverz lehet pszeudo-inverz, vagy transzponált
-4. $\mathbf{q}_{better} = \mathbf{q}_{0} + \Delta\mathbf{q}$
+1. Calculate the difference of the desired and the current position: $\Delta\mathbf{r} = \mathbf{r}_{desired} - \mathbf{r}_0$
+2. Calculate the rotation between the current orientation and the desired orientation: $\Delta\mathbf{R} = \mathbf{R}_{desired}\mathbf{R}_{0}^{T}$, majd konvertáljuk át axis angle reprezentációba $(\mathbf{t},\phi)$
+3. Calculate $\Delta\mathbf{ q}=\mathbf{J}^{-1}(\mathbf{q_0})\cdot \left[\matrix{k_1 \cdot \Delta\mathbf{r} \\ k_2 \cdot \phi \cdot \mathbf{t}}\right]$, where the inverse could be substituted by pseudo-inverse or transpose
+4. Change joint angles: $\mathbf{q}_{better} = \mathbf{q}_{0} + \Delta\mathbf{q}$
 
 
 ---
 
-## Gyakorlat
+## Practice
 
 ---
 
@@ -131,7 +137,7 @@ $$
 
 ---
 
-1. Telepítsük a dependency-ket.
+1. Install dependencies:
 
     ```bash
     sudo apt update
@@ -145,12 +151,12 @@ $$
     ```
 
     !!! tip
-        A `kinpy` csomag forrását is töltsük le, hasznos lehet az API megértése szempontjából: [https://pypi.org/project/kinpy/]()  
+        We will use the package `kinpy` to calculate forward kinematics. Download the source of the package `kinpy` and study the API: [https://pypi.org/project/kinpy/]()  
 
 
     ---
 
-2. Clone-ozzuk és build-eljük a repo-t.
+2. Clone and build the repo:
 
 
     ```bash
@@ -163,7 +169,7 @@ $$
     ---
     
 
-3. Teszteljük a szimulátort, új teminál ablakokban:
+3. Launch the simulator and move the arm:
 
     ```bash
     roslaunch rrr_arm view_arm_gazebo_control_empty_world.launch
@@ -174,11 +180,11 @@ $$
     ```
     
     !!! tip
-        A szimulátor panaszkodni fog, hogy "No p gain specified for pid...", de ez nem okoz gondot a működésében.
+        The simulator might raise errors like "No p gain specified for pid...", but those can be ignored as won't cause any issues.
 
     ---
 
-4. Állítsuk elő a robotot leíró urdf fájlt:
+4. Build the URDF file describes the robot:
 
     ```bash
     cd ~/catkin_ws/src/rrr-arm/urdf
@@ -188,34 +194,34 @@ $$
     ---
     
 
-### 2: Robot mozgatása csuklótérben
+### 2: Move the arm in joint space
 
 ---
 
-1. Iratkozzunk fel a robot csuklószögeit (konfigurációját) publikáló topicra. Hozzunk létre publisher-eket a csuklók szögeinek beállítására használható topic-okhoz.
+1. Create a new file named `rrr_arm_node` in the `scripts` folder. Add it to the `CMakeLists.txt`, as usual. Subscribe to the topic which publishes the joint angles (configuration) of the robot. Create publishers to the 4 topics setting the joint angles of the arm. Use the previous Python scripts as a template.
 
     !!! warning
-        A Kinpy és a ROS nem mindig azonos sorrendben kezeli a csuklószögeket. Az alábbi két sorrend fordul elő:
+         Gazebo and `kinpy` organized the joints in different orders: 
         **1. [gripper_joint_1, gripper_joint_2, joint_1, joint_2, joint_3, joint_4]**
-        - `/rrr_arm/joint_states` topic
-        - `kp.jacobian.calc_jacobian(...)` függvény
+        - topic `/rrr_arm/joint_states`
+        - method `kp.jacobian.calc_jacobian(...)`
 
         **2. [joint_1, joint_2, joint_3, joint_4, gripper_joint_1, gripper_joint_2]**
-        - `chain.forward_kinematics(...)` függvény
-        - `chain.inverse_kinematics(...)` függvény
+        - method `chain.forward_kinematics(...)`
+        - method `chain.inverse_kinematics(...)`
 
 
     ---
 
-2. Mozgassuk a robotot [1.0, 1.0, 1.5, 1.5] konfigurációba.
+2. Send the arm to the configuration [1.0, 1.0, 1.5, 1.5].
 
     ---
     
-### 3. Kinematika
+### 3. Kinematic task
 
 ---
 
-1. Importáljuk a `kinpy` csomagot és olvassuk be a robotot leíró urdf fájlt:
+1. Import `kinpy` and read the URDF of the robot:
 
     ```python
     import kinpy as kp
@@ -227,7 +233,8 @@ $$
     
     ---
     
-2. Számítsuk ki, majd irassuk ki a TCP pozícióját az adott konfigurációban a `kinpy` csomag segítségével. A https://pypi.org/project/kinpy/ oldalon lévő példa hibás, érdemes az alábbi példa kódból kiindulni:
+2. Calculate the TCP pose in the current configuration using `kinpy`. The example at https://pypi.org/project/kinpy/ is wrong, use the following example:
+
     ```python
         th1 = np.random.rand(2)
         tg = chain.forward_kinematics(th1)
@@ -238,50 +245,56 @@ $$
     ---
     
 
-### 4: Inverz kinematika Jacobi inverz módszerrel
+### 4: Inverse kinematics using Jacobian inverse
 
 ---
 
-Írjunk metódust, amely az előadásban bemutatott Jakobi inverz módszerrel valósítja meg az inverz kinematikai feladatot a roboton. Az orientációt hagyjuk figyelmen kívül. Mozgassuk a TCP-t a `(0.59840159, -0.21191189,  0.42244937)` pozícióba.
+Implement a method calculating inverse kinematics using Jacobian inverse for the robot. Ignore the orientation for now. Move the TCP to position `(0.59840159, -0.21191189,  0.42244937)`.
 
-1.  Írjunk egy ciklust, melynek megállási feltétele a `delta_r` megfelelő nagysága, vagy `rospy.is_shutdown()`.
+1.  Write a while loop stopping if the length of `delta_r` is below threshold or `rospy.is_shutdown()`.
 
-    ---
-
-2. Számítsuk ki a kívánt és a pillanatnyi TCP pozíciók különbségét (`delta_r`). Skálázzuk `k_1` konstanssal.
 
     ---
 
-3. `phi_dot_t` legyen `[0.0, 0.0, 0.0]` (ignoráljuk az orientációt).
+2. Calculate the difference of the desired and current TCP positions (`delta_r`). Scale by constant `k_1`.
+
 
     ---
 
-4. Konkatenáljuk `delta_r` és `phi_dot_t`-t.
+3. Let `phi_dot_t` be `[0.0, 0.0, 0.0]` (ignore the orientation).
 
     ---
 
-5. Számítsuk ki a Jacobi mátrixot az adott konfigurációban a `kp.jacobian.calc_jacobian(...)` függvény segítségével.
+4. Concatenate `delta_r` and `phi_dot_t`-t.
 
     ---
 
-6. Számítsuk ki Jacobi mátrix pszeudo-inverzét `np.linalg.pinv(...)`.
+5. Calculate the Jacobian matrix in the current configuration using the method `kp.jacobian.calc_jacobian(...)`.
+
+    ---
+
+6. Calculate the pseudo inverse of the Jacobian using `np.linalg.pinv(...)`.
 
     ---
     
-7. A fenti képlet segítségével számítsük ki `delta_q`-t, majd növeljük a csuklószögeket a kapott értékekkel.
+7. Calculate `delta_q`, use the `.dot(...)` method from Numpy.
+
+    ---
+    
+8. Increase the joint angles by `delta_q`.
 
     ---
 
-### *Bónusz:* Inverz kinematika orientációval
+### *Bonus exercise:* Inverse kinematics with orientation
 
 ---
 
-Egészítsük ki az előző feladat megoldását úgy, hogy az orientációt is figyelembe vesszük az inverz kinematikai számítás során.
+Extend the previous exercise by calculating both the TCP position and orientation.
 
 
 ---
 
-## Hasznos linkek
+## Useful links
 
 - [rrr-arm model](https://githubmemory.com/repo/Robotawi/rrr-arm)
 - [https://pypi.org/project/kinpy/]()
