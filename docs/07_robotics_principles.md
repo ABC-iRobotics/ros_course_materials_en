@@ -116,6 +116,12 @@ $$
     $$
     \left[\matrix{\mathbf{v} \\ \mathbf{\omega}}\right] =\mathbf{J}(\mathbf{q})\cdot \mathbf{\dot{q}}
     $$
+    
+If $\Delta{t}$ is small enough:
+
+    $$
+    \left[\matrix{{\Delta\mathbf{r}}\over{\Delta{t}} \\ {\Delta\mathbf{\theta}}\over{\Delta{t}}}\right] =\mathbf{J}(\mathbf{q})\cdot \Delta{\mathbf{q}\over{\Delta{t}}
+    $$
 
 ---
 
