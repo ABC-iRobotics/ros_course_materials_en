@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://abc-irobotics.github.io/ros_course_materials_en/01_intro/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.3">
     
     
       
@@ -23,28 +23,30 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.2b4465f4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6b80c2a2.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
         
           
           
           <meta name="theme-color" content="#546d78">
         
       
+      
     
     
     
       
         
+        
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -87,11 +89,11 @@
     <a href=".." title="Programming robots in ROS" class="md-header__button md-logo" aria-label="Programming robots in ROS" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -115,7 +117,7 @@
         <div class="md-select">
           
           <button class="md-header__button md-icon" aria-label="Select language">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
           </button>
           <div class="md-select__inner">
             <ul class="md-select__list">
@@ -139,7 +141,7 @@
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -147,13 +149,13 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -254,7 +256,7 @@
     <a href=".." title="Programming robots in ROS" class="md-nav__button md-logo" aria-label="Programming robots in ROS" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     Programming robots in ROS
@@ -384,6 +386,33 @@
   <a href="#development-system-build-homework" class="md-nav__link">
     Development system build -- homework
   </a>
+  
+    <nav class="md-nav" aria-label="Development system build -- homework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ros-2-humble-hawksbill" class="md-nav__link">
+    ROS 2 Humble Hawksbill
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tovabbi-csomagok" class="md-nav__link">
+    További csomagok
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ide" class="md-nav__link">
+    IDE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -521,6 +550,7 @@
               
                 
 
+
 <h1 id="01-introduction">01. Introduction</h1>
 <hr />
 <h2 id="robot-operating-system-ros-introduction">Robot Operating System (ROS) introduction</h2>
@@ -561,52 +591,89 @@
 <hr />
 <p>Recommended environment:</p>
 <ul>
-<li>Ubuntu 20.04</li>
-<li>ROS Noetic</li>
+<li>Ubuntu 22.04</li>
+<li>ROS2 Humble</li>
 <li><em>IDE: QtCreator</em></li>
 </ul>
 <hr />
+<h3 id="ros-2-humble-hawksbill">ROS 2 Humble Hawksbill</h3>
+<p><img align="right" alt="" src="https://www.therobotreport.com/wp-content/uploads/2022/05/ros-humble-hawksbill-featured.jpg" style="width:300px" /></p>
+<p>Setup locale.</p>
+<pre><code>```bash
+locale  # check for UTF-8
+
+sudo apt update &amp;&amp; sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+locale  # verify settings
+```
+
+---
+</code></pre>
 <ol>
 <li>
-<p>ROS</p>
-<div class="highlight"><pre><span></span><code>sudo sh -c <span class="s1">&#39;echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#39;</span>
-sudo apt install curl
+<p>ROS 2 Humble install</p>
+<div class="highlight"><pre><span></span><code>sudo apt install software-properties-common
+sudo add-apt-repository universe
+sudo apt update <span class="o">&amp;&amp;</span> sudo apt install curl -y
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+<span class="nb">echo</span> <span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu </span><span class="k">$(</span>. /etc/os-release <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="nv">$UBUNTU_CODENAME</span><span class="k">)</span><span class="s2"> main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null
 sudo apt update
-sudo apt install ros-noetic-desktop-full
-<span class="nb">source</span> /opt/ros/noetic/setup.bash
-</code></pre></div>
-<p>The command <code>source</code> is responsible for setting environmental variables, and it has to be executed every time a new terminal window is opened. Alternatively, this command can be copied to the end of the file <code>~/.bashrc</code>. This script runs automatically every time when a terinal window is opened. To do that, type:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;source /opt/ros/noetic/setup.bash&quot;</span> &gt;&gt; ~/.bashrc
-<span class="nb">source</span> ~/.bashrc
+sudo apt upgrade
+sudo apt install ros-humble-desktop
+sudo apt install ros-dev-tools
 </code></pre></div>
 <hr />
 </li>
 <li>
-<p>ROS dependencies</p>
-<div class="highlight"><pre><span></span><code>sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
-sudo rosdep init
-rosdep update
-</code></pre></div>
-<p>Then test our ROS install by typing:</p>
-<div class="highlight"><pre><span></span><code>roscore
+<p>Test the new ROS 2 install:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span> /opt/ros/humble/setup.bash
+ros2 run demo_nodes_py talker
 </code></pre></div>
 <hr />
 </li>
 <li>
-<p>Further packages</p>
-<p>The following packages are also going to be needed during the course, so it is recommended to install them:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev python3-catkin-tools python3-osrf-pycommon libasound2-dev libgl1-mesa-dev xorg-dev
+<p>The <code>source</code> command is responsible for setting the environment variables, which must be specified each time a new terminal window is opened. This command can be inserted at the end of the <code>~/.bashrc</code> file, which is run every time a terminal window is opened, so you don't have to type it every time (ROS 2 will be the default):</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;source /opt/ros/humble/setup.bash&quot;</span> &gt;&gt; ~/.bashrc
 </code></pre></div>
-<hr />
 </li>
+</ol>
+<hr />
+<h3 id="tovabbi-csomagok">További csomagok</h3>
+<ol>
+<li>
+<p>We will also need the following packages during the semester, so these should be installed as well:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev python3-osrf-pycommon libasound2-dev libgl1-mesa-dev xorg-dev python3-vcstool python3-colcon-common-extensions python3-pykdl libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev libbluetooth-dev ros-humble-joint-state-publisher* ros-humble-xacro gfortran-9
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h3 id="ide">IDE</h3>
+<ol>
 <li>
 <p>QtCreator</p>
-<p>For the purpose of the development of ROS packages QtCreator is one of the best IDEs, a ROS plugin is also available for that. The one for Ubuntu 18.04 also works on 20.04, thus one can use the Bionic <strong>Offline</strong> Installer. It can be downloaded from the following link:</p>
+<p>Currently, one of the most widely used IDEs for developing ROS packages is QtCreator, for which a ROS plugin has been developed. The installer is available at the link below. You should use the "18.04 <strong>offline</strong> installer", it also works on Ubuntu 22.04.</p>
 <p><a href="https://ros-qtc-plugin.readthedocs.io/en/latest/_source/How-to-Install-Users.html">https://ros-qtc-plugin.readthedocs.io/en/latest/_source/How-to-Install-Users.html</a></p>
-<p>After the installer is downloaded, the IDE can be installed by the following command (important to  navigate to the location of the download using <code>cd</code>:</p>
-<div class="highlight"><pre><span></span><code>sudo ./qtcreator-ros-bionic-latest-online-installer.run
+<p>Once downloaded, the IDE can be installed using the command below (it is important to put <code>cd</code> in the download location):</p>
+<div class="highlight"><pre><span></span><code>chmod +x qtcreator-ros-bionic-latest-offline-installer.run
+sudo ./qtcreator-ros-bionic-latest-offline-installer.run
 </code></pre></div>
-<p>When the installer asks for a location to install, modify it to the  <code>/home/&lt;USER&gt;/QtCreator</code> folder, and not to root. After installing, the IDE can be find with the name "Qt Creator (4.9.2)"</p>
+<p>When the installer asks you where to install it, change it to e.g. <code>/home/&lt;USER&gt;/QtCreator</code>. If you put it in root, you will not be able to run it. After installation, look for `Qt Creator (4.9.2)'.</p>
+<hr />
+</li>
+<li>
+<p>CLion</p>
+<p>CLion has a high level of ROS integration, and its use is most recommended for this course. A free student license can be obtained at <a href="https://www.jetbrains.com/community/education/#students">https://www.jetbrains.com/community/education/#students</a></p>
+<p>After installation, browse to the file <code>/var/lib/snapd/desktop/applications/clion_clion.desktop</code>. Copy the appropriate line here so that the IDE will use the environment set by the terminal:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">Exec</span><span class="o">=</span>bash -i -c <span class="s2">&quot;/snap/bin/clion&quot;</span> %f
+</code></pre></div>
+<hr />
+</li>
+<li>
+<p>Visual Studio</p>
+<p>Microsoft Visual Studio also supports source code for ROS, this IDE can also be used during the semester.</p>
 </li>
 </ol>
 <hr />
@@ -621,17 +688,17 @@ sudo apt install terminator
 <h2 id="links">Links</h2>
 <ul>
 <li><a href="https://www.ros.org/">https://www.ros.org/</a></li>
-<li><a href="https://www.ros.org/install/">https://www.ros.org/install/</a></li>
-<li><a href="http://wiki.ros.org/ROS/Tutorials">http://wiki.ros.org/ROS/Tutorials</a></li>
-<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a></li>
-<li><a href="https://hackmd.io/">Online MD editor: HackMD</a></li>
+<li><a href="https://docs.ros.org/en/humble/Installation.html">ROS 2 Humble installation</a></li>
 <li><a href="https://ros-qtc-plugin.readthedocs.io/en/latest/_source/How-to-Install-Users.html">QtCreator + ROS plugin</a></li>
 <li><a href="https://www.youtube.com/watch?v=8XmKGWBV5Nw">IROB virtual tour</a></li>
-<li><a href="https://www.youtube.com/watch?v=mDwZ21Zia8s">ROS 10 years montage</a></li>
 </ul>
+
+
+
 
               
             </article>
+            
           </div>
         </div>
         
@@ -639,12 +706,13 @@ sudo apt install terminator
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
         <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
           <div class="md-footer__title">
             <div class="md-ellipsis">
@@ -668,7 +736,7 @@ sudo apt install terminator
             </div>
           </div>
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
           </div>
         </a>
       
@@ -698,10 +766,11 @@ sudo apt install terminator
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "toc.integrate"], "search": "../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="../assets/javascripts/bundle.2ab50757.min.js"></script>
       
         <script src="../javascripts/mathjax.js"></script>
       
