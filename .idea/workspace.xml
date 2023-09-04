@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2cac63ef-dc08-4890-bc2e-ec74563698cc" name="Changes" comment="Add Google indexing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/01_intro.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01_intro.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05_da_vinci.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/05_da_vinci.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +33,11 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/tamas/Documents/mkdocs/ros_course_materials_en",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -59,6 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1677775569030</updated>
       <workItem from="1677775570071" duration="6000" />
+      <workItem from="1693839316061" duration="2872000" />
     </task>
     <task id="LOCAL-00001" summary="Add Google indexing">
       <created>1683023053423</created>

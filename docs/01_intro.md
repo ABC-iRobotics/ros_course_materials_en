@@ -54,82 +54,114 @@ author: Tamas D. Nagy
 
 Recommended environment:
     
-- Ubuntu 20.04
-- ROS Noetic
+- Ubuntu 22.04
+- ROS2 Humble
 - *IDE: QtCreator*
 
 ---
 
-1. ROS
+### ROS 2 Humble Hawksbill
 
+![](https://www.therobotreport.com/wp-content/uploads/2022/05/ros-humble-hawksbill-featured.jpg){:style="width:300px" align=right}
+
+
+Setup locale.
+
+    ```bash
+    locale  # check for UTF-8
+    
+    sudo apt update && sudo apt install locales
+    sudo locale-gen en_US en_US.UTF-8
+    sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    
+    locale  # verify settings
+    ```
+
+    ---
+
+2. ROS 2 Humble install
 
 
     ```bash
-    sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-    sudo apt install curl
+    sudo apt install software-properties-common
+    sudo add-apt-repository universe
+    sudo apt update && sudo apt install curl -y
+    sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
     sudo apt update
-    sudo apt install ros-noetic-desktop-full
-    source /opt/ros/noetic/setup.bash
+    sudo apt upgrade
+    sudo apt install ros-humble-desktop
+    sudo apt install ros-dev-tools
     ```
 
-    The command `source` is responsible for setting environmental variables, and it has to be executed every time a new terminal window is opened. Alternatively, this command can be copied to the end of the file `~/.bashrc`. This script runs automatically every time when a terinal window is opened. To do that, type:
+    ---
+
+3. Test the new ROS 2 install:
+
+
+    ```bash
+    source /opt/ros/humble/setup.bash
+    ros2 run demo_nodes_py talker
+    ```
+
+    ---
+
+4. The `source` command is responsible for setting the environment variables, which must be specified each time a new terminal window is opened. This command can be inserted at the end of the `~/.bashrc` file, which is run every time a terminal window is opened, so you don't have to type it every time (ROS 2 will be the default):
+
+    ```bash
+    echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+    ```
     
+---
 
-    ```bash
-    echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-    source ~/.bashrc
-    ```
-
-    ---
-
-2. ROS dependencies
+### További csomagok
 
 
+1. We will also need the following packages during the semester, so these should be installed as well:
 
 
     ```bash
-    sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
-    sudo rosdep init
-    rosdep update
+    sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev python3-osrf-pycommon libasound2-dev libgl1-mesa-dev xorg-dev python3-vcstool python3-colcon-common-extensions python3-pykdl libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev libbluetooth-dev ros-humble-joint-state-publisher* ros-humble-xacro gfortran-9
     ```
 
-    Then test our ROS install by typing:
+---
 
+### IDE
 
-    ```bash
-    roscore
-    ```
+1. QtCreator
 
-    ---
-    
-
-3. Further packages
-
-
-    The following packages are also going to be needed during the course, so it is recommended to install them:
-
-    ```bash
-    sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev python3-catkin-tools python3-osrf-pycommon libasound2-dev libgl1-mesa-dev xorg-dev
-    ```
-
-    ---
-
-
-4. QtCreator
-
-    For the purpose of the development of ROS packages QtCreator is one of the best IDEs, a ROS plugin is also available for that. The one for Ubuntu 18.04 also works on 20.04, thus one can use the Bionic **Offline** Installer. It can be downloaded from the following link:
+    Currently, one of the most widely used IDEs for developing ROS packages is QtCreator, for which a ROS plugin has been developed. The installer is available at the link below. You should use the "18.04 **offline** installer", it also works on Ubuntu 22.04.
 
     [https://ros-qtc-plugin.readthedocs.io/en/latest/_source/How-to-Install-Users.html](https://ros-qtc-plugin.readthedocs.io/en/latest/_source/How-to-Install-Users.html)
 
-    After the installer is downloaded, the IDE can be installed by the following command (important to  navigate to the location of the download using `cd`:
+    Once downloaded, the IDE can be installed using the command below (it is important to put `cd` in the download location):
 
 
     ```bash
-    sudo ./qtcreator-ros-bionic-latest-online-installer.run
+    chmod +x qtcreator-ros-bionic-latest-offline-installer.run
+    sudo ./qtcreator-ros-bionic-latest-offline-installer.run
     ```
 
-    When the installer asks for a location to install, modify it to the  `/home/<USER>/QtCreator` folder, and not to root. After installing, the IDE can be find with the name "Qt Creator (4.9.2)"
-    
+    When the installer asks you where to install it, change it to e.g. `/home/<USER>/QtCreator`. If you put it in root, you will not be able to run it. After installation, look for `Qt Creator (4.9.2)'.
+   
+    ---
+
+2. CLion
+
+    CLion has a high level of ROS integration, and its use is most recommended for this course. A free student license can be obtained at [https://www.jetbrains.com/community/education/#students](https://www.jetbrains.com/community/education/#students)
+
+    After installation, browse to the file `/var/lib/snapd/desktop/applications/clion_clion.desktop`. Copy the appropriate line here so that the IDE will use the environment set by the terminal:
+
+    ```bash
+    Exec=bash -i -c "/snap/bin/clion" %f
+    ```
+
+    ---
+
+3. Visual Studio
+
+    Microsoft Visual Studio also supports source code for ROS, this IDE can also be used during the semester.
 
 ---
 
@@ -146,13 +178,9 @@ Recommended environment:
 ## Links
 
 - [https://www.ros.org/](https://www.ros.org/)
-- [https://www.ros.org/install/](https://www.ros.org/install/)
-- [http://wiki.ros.org/ROS/Tutorials](http://wiki.ros.org/ROS/Tutorials)
-- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-- [Online MD editor: HackMD](https://hackmd.io/)
+- [ROS 2 Humble installation](https://docs.ros.org/en/humble/Installation.html)
 - [QtCreator + ROS plugin](https://ros-qtc-plugin.readthedocs.io/en/latest/_source/How-to-Install-Users.html)
 - [IROB virtual tour](https://www.youtube.com/watch?v=8XmKGWBV5Nw)
-- [ROS 10 years montage](https://www.youtube.com/watch?v=mDwZ21Zia8s)
 
 
 

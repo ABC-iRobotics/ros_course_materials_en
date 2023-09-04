@@ -196,48 +196,54 @@ pip3 install matplotlib
 ---
 
 
-### 1. DVRK install
-
-The da Vinci Surgical System is used to perform minimally invasive surgeries by teleoperation. The da Vinci Research Kit (DVRK) is an open-source hardware and software platform, offers, amongst others, reading and writing all the joints of the da Vinci, and also simulators for each arm. The DVRK software can be built as follows.
+### 1. dVRK ROS 2 install
 
 ---
 
-1. On Ubuntu 20.04 the following packages are required:
-
-
-    ```bash
-    sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev python3-wstool python3-catkin-tools python3-osrf-pycommon ros-noetic-rviz
-    ```
-    
-    ---
-    
-2. Download and install DVRK packages:
-
-    ```bash
-    cd ~/catkin_ws                     # go in the workspace
-    wstool init src                    # we're going to use wstool to pull all the code from github
-    catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release # all code should be compiled in release mode
-    cd src                             # go in source directory to pull code
-    wstool merge https://raw.githubusercontent.com/jhu-dvrk/dvrk-ros/master/dvrk_ros.rosinstall # or replace master by devel
-    wstool up                          # now wstool knows which repositories to pull, let's get the code
-    cd ~/catkin_ws
-    catkin build --summary             # ... and finally compile everything
-    ```
-
-    ---
-    
-3. Restart the terminal then launch the RViz simulation of the PSM1 (Patient Side Manipulator):
-
-    ```bash
-    roslaunch dvrk_robot dvrk_arm_rviz.launch arm:=PSM1 config:=/home/$(whoami)/catkin_ws/src/cisst-saw/sawIntuitiveResearchKit/share/console/console-PSM1_KIN_SIMULATED.json
-    ```
+The da Vinci Surgical System is used to perform minimally invasive surgeries by teleoperation. The da Vinci Research Kit (DVRK) is an open-source hardware and software platform, offers, amongst others, reading and writing all the joints of the da Vinci, and also simulators for each arm. The DVRK software can be built as follows.
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QksAVT0YMEo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-    !!! tip
-        `Roslaunch` also launches the ROS master, if there is no ROS master running.
-        
+
+
+1. Clone the dVRK (da Vinci Reserach Kit) using `vcs` into a new workspace, then build it:
+
+
+    ```bash
+    mkdir -p ~/dvrk2_ws/src
+    cd ~/dvrk2_ws/src                
+    vcs import --input https://raw.githubusercontent.com/jhu-dvrk/dvrk_robot_ros2/main/dvrk.vcs --recursive
+    cd ~/dvrk2_ws
+    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release   
+    source ~/dvrk2_ws/install/setup.bash
+    ```
+
+    ---
+    
+2. Add the following line to the end of the `.bashrc` file:
+
+    ```bash
+    # dVRK main console
+    ros2 run dvrk_robot dvrk_console_json -j ~/dvrk2_ws/install/sawIntuitiveResearchKitAll/share/sawIntuitiveResearchKit/share/console/console-PSM1_KIN_SIMULATED.json
+    ```
+
+    ```bash
+    # ROS 2 joint and robot state publishers
+    ros2 launch dvrk_model dvrk_state_publisher.launch.py arm:=PSM1
+    ```
+
+
+    ```bash
+    # RViz
+    ros2 run rviz2 rviz2 -d ~/dvrk2_ws/install/dvrk_model/share/dvrk_model/rviz/PSM1.rviz
+    ```
+
+
+    ```bash
+    # rqt_gui
+    ros2 run rqt_gui rqt_gui
+    ```
 
     ---
 
@@ -246,7 +252,7 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
 ---
 
     
-1. Create a new file named `psm_grasp.py` in the `~/catkin_ws/src/ros_course/scripts` folder. Add it to the `CMakeLists.txt`, as usually.
+1. Create a new file named `psm_grasp.py` in the `~/ros2_ws/src/ros2_course/ros2_course` folder. Add it to the `CMakeLists.txt`, as usually.
 
     ---
     
@@ -262,9 +268,10 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
 3. Build and run the node:
 
     ```bash
-    cd ~/catkin_ws
-    catkin build ros_course
-    rosrun ros_course psm_grasp.py 
+    source ros_setup.sh -v 2
+    cd ~/ros2_ws
+    colcon build --symlink-install
+    ros2 run ros2_course psm_grasp 
     ```
 
     ---
@@ -312,25 +319,31 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
 1. Write a node that creates a virtual marker that can be grasped publishing`visualization_msgs/Marker` messages. Create a new file named `dummy_marker.py` in the `~/catkin_ws/src/ros_course/scripts` folder. Add it to the `CMakeLists.txt`, as usually. Copy the following code into the file `dummy_marker.py`:
 
     ```python
-    import rospy
+    import rclpy
+    from rclpy.node import Node
     from visualization_msgs.msg import Marker
-
-    def marker(position):
-        rospy.init_node('dummy_target_publisher', anonymous=True)
-        pub = rospy.Publisher('dummy_target_marker', Marker, queue_size=10)
-        rate = rospy.Rate(10) # 10hz
-        i = 0
-        while not rospy.is_shutdown():
+    
+    class DummyMarker(Node):
+        def __init__(self, position):
+            super().__init__('minimal_publisher')
+            self.position = position
+            self.publisher_ = self.create_publisher(Marker, 'dummy_target_marker', 10)
+            timer_period = 0.1  # seconds
+            self.timer = self.create_timer(timer_period, self.timer_callback)
+            self.i = 0
+            i = 0
+    
+        def timer_callback(self):
             marker = Marker()
             marker.header.frame_id = 'PSM1_psm_base_link'
-            marker.header.stamp = rospy.Time()
+            marker.header.stamp = self.get_clock().now().to_msg()
             marker.ns = "dvrk_viz"
-            marker.id = i
+            marker.id = self.i
             marker.type = Marker.SPHERE
             marker.action = Marker.MODIFY
-            marker.pose.position.x = position[0]
-            marker.pose.position.y = position[1]
-            marker.pose.position.z = position[2]
+            marker.pose.position.x = self.position[0]
+            marker.pose.position.y = self.position[1]
+            marker.pose.position.z = self.position[2]
             marker.pose.orientation.x = 0.0
             marker.pose.orientation.y = 0.0
             marker.pose.orientation.z = 0.0
@@ -342,17 +355,24 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
             marker.color.r = 0.0
             marker.color.g = 1.0
             marker.color.b = 0.0;
-
-            #rospy.loginfo(marker)
-            pub.publish(marker)
-            i = i + 1
-            rate.sleep()
-
+    
+            self.publisher_.publish(marker)
+            self.i += 1
+    
+   
+    def main(args=None):
+        rclpy.init(args=args)
+        marker_publisher = DummyMarker([-0.05, 0.08, -0.12])
+        rclpy.spin(marker_publisher)
+    
+        # Destroy the node explicitly
+        # (optional - otherwise it will be done automatically
+        # when the garbage collector destroys the node object)
+        marker_publisher.destroy_node()
+        rclpy.shutdown()
+    
     if __name__ == '__main__':
-        try:
-            marker([-0.05, 0.08, -0.12])
-        except rospy.ROSInterruptException:
-            pass
+        main()
     ```
 
     ---
@@ -386,10 +406,11 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
 
 ## Links
 
-- [Download and compile dVRK](https://github.com/jhu-dvrk/sawIntuitiveResearchKit/wiki/CatkinBuild)
+- [Download and compile dVRK 2](https://github.com/jhu-dvrk/sawIntuitiveResearchKit/wiki/BuildROS2)
 - [Marker examples](https://www.programcreek.com/python/example/88812/visualization_msgs.msg.Marker)
 - [Numpy vector magnitude](https://numpy.org/doc/stable/reference/generated/numpy.linalg.norm.html)
 - [Numpy linspace](https://numpy.org/doc/stable/reference/generated/numpy.linspace.html)
+
 
 
 

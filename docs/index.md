@@ -8,19 +8,22 @@
 
 ---
 
-| Week | Date      | Topic | Test |
-|:--------:| ---------- | ------- | ----------- |
-|1.| Sept 6 | [Requirements. ROS introduction. Setup the development environment.](01_intro.md) | - |
-|2.| Sept 13 | [Setup the development environment. Linux principles. ROS principles. Running examples. ROS package. Basics of ROS communication, implementation of publisher and subscriber.](02_linux_ros_principles.md)| Project topic announcements.  |
-|3.| Sept 20 | [Python principles. Practicing ROS communication, solving examples.](03_python_principles.md) | - |
-|5.| Oct 4 | [Principles of robotics. Programming a da Vinci surgical robot in simulated environment I.](05_da_vinci.md) |  - |
-|6.| Oct 11 |[Principles of robotics. Programming a da Vinci surgical robot in simulated environment II.](05_da_vinci.md) | **Test 1**: ROS princiles, publisher, subscriber. Python principles. Principles of robotics.|
-|7.| Oct 18 |  [Versioning, Git.](04_git.md) Project labor I.  | - |
-|8.| Oct 25 | [Roslaunch, ROS parameter server. Rosbag.](06_roslaunch.md)  | - |
-|10.| Nov 8 |  [Kinematics, inverse kinematics, programming a simulated robot arm in joint space and workspace I.](07_robotics_principles.md)   | - |
-|11.| Nov 15 | [Kinematics, inverse kinematics, programming a simulated robot arm in joint space and workspace II.](07_robotics_principles.md) | - |
-|13.| Nov 29  | Project labor II.  | - |
-|14.| Nov 6| - | Project presentations. Retake. **Test 2**: Roslaunch, ROS parameter server. ROS service. ROS action. Kinematics, inverse kinematics.|
+| Week  | Date         | Topic                                                                                                                                                                                                      | Test                         |
+|:-----:|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
+|  1.   | Sept 15      | [Requirements. ROS introduction. Setup the development environment.](01_intro.md)                                                                                                                          | -                            |
+|  2.   | Sept 22      | [Setup the development environment. Linux principles. ROS principles. Running examples. ROS package. Basics of ROS communication, implementation of publisher and subscriber.](02_linux_ros_principles.md) | Project topic announcements. |
+|  4.   | Oct 6        | [Python principles. Practicing ROS communication, solving examples.](03_python_principles.md)                                                                                                              | -                            |
+|  5.   | Oct 13       | [ROS 2 Launch, Param, Bag](06_roslaunch.md)                                                                                                                                                                | -                            |
+|  6.   | Oct 20       | [Versioning, Git.](04_git.md) Project labor I.                                                                                                                                                             | -                            |
+|  7.   | Oct 27       | [Principles of robotics. Programming a da Vinci surgical robot in simulated environment I.](05_da_vinci.md)                                                                                                | **Test 1**                   |
+|  8.   | Nov 3        | [Principles of robotics. Programming a da Vinci surgical robot in simulated environment II.](05_da_vinci.md)                                                                                               | -                            |
+|  9.   | Nov 10       | [Kinematics, inverse kinematics, programming a simulated robot arm in joint space and task space I.](07_robotics_principles.md)                                                                            | -                            |
+|  10.  | Nov 17       | [Kinematics, inverse kinematics, programming a simulated robot arm in joint space and task space II.](07_robotics_principles.md)                                                                           | -                            |
+|  11.  | Nov 24       | [Kinematics, inverse kinematics, programming a simulated robot arm in joint space and task space III.](07_robotics_principles.md)                                                                          | -                            |
+|  12.  | Dec 1        | Project labor II.                                                                                                                                                                                          | -                            |
+|  13.  | Dec 8        | -                                                                                                                                                                                                          | **Test 2**                   |
+|  14.  | Dec 15       | Project presentations.                                                                                                                                                                                     | **Test retake**              |
+| 14+1. | Dec 19 (Tue) | -                                                                                                                                                                                                          | **Mid-term replacement**     |
 
 
 !!! warning
@@ -59,8 +62,8 @@ Dr. Péter Galambos
 ---
 
 ### Teachers
-Tamás D. Nagy    
-[tamas.daniel.nagy@irob.uni-obuda.hu](mailto:tamas.daniel.nagy@irob.uni-obuda.hu)
+Tamás Levendovics   
+[tamas.levendovics@irob.uni-obuda.hu](mailto:tamas.levendovics@irob.uni-obuda.hu)
 
 Borsa Détár    
 [detar.borsa@gmail.com](mailto:detar.borsa@gmail.com)
