@@ -1,9 +1,9 @@
 ---
-title: Linux and ROS principles
-author: Tamas D. Nagy
+title: Linux, ROS introduction
+author: Nagy Tamás
 ---
 
-# 02. Linux and ROS principles
+# 02. Linux, ROS introduction
 
 ---
 
@@ -17,7 +17,7 @@ author: Tamas D. Nagy
 
 ![](https://images.idgesg.net/images/article/2017/05/linux-distros-100724403-large.jpg){:style="width:400px" align=right}
 
-- Only OS supported by ROS
+- (Was) the only OS supported by ROS
 - Security
 - Efficieny
 - Open-source
@@ -47,6 +47,7 @@ See some basic commands below:
 - Package management `apt`, e.g. `apt update`, `apt install`
 - Navigation `cd`
 - List directory contents `ls`
+- Create file `touch`
 - Copy file `cp`
 - Move file `mv`
 - Remove file `rm`
@@ -59,13 +60,132 @@ See some basic commands below:
 
 ---
 
+### ROS 1 &rarr; ROS 2
+
+---
+
+
+- ROS 2 was rewritten from scratch
+- More modular architecture
+- Improved support for real-time systems
+- Support for multiple communication protocols
+- Better interoperability with other robotic systems
+- Focus on standardization and industry collaboration
+- No ROS Master
+- No Devel space
+- `rclpy`, `rclcpp`
+- More structured code (`Node` class)
+- Different build system
+- Platforms: Windows, OS X, Linux
+
+---
+
 ### ROS principles
 
 ---
 
-#### ROS file system
+#### ROS workspace
 
-----
+---
+
+!!! abstract "Colcon workspace"
+    A folder where packages are modified, built, and installed.
+
+
+
+```graphviz dot workspace.png
+digraph workspace {
+
+nodesep=1.0 // increases the separation between nodes
+node [color=Black,fontname=Courier,shape=folder] //All nodes will this shape and colour
+edge [color=Black, style=solid, arrowhead=open] //All the lines look like this
+
+workspace [label=<
+    <table border="0" cellborder="0" cellspacing="3">
+    <tr><td align="center"><b>Workspace</b></td></tr>
+    <tr><td align="center">ros2_ws/</td></tr>
+   </table>>, constraint=false]
+   
+   src [label=<
+    <table border="0" cellborder="0" cellspacing="3">
+    <tr><td align="center"><b>Source space</b></td></tr>
+    <tr><td align="center">src/</td></tr>
+   </table>>, constraint=false]
+   build [label=<
+    <table border="0" cellborder="0" cellspacing="3">
+    <tr><td align="center"><b>Build space</b></td></tr>
+    <tr><td align="center">build/</td></tr>
+   </table>>, constraint=false]
+   install [label=<
+    <table border="0" cellborder="0" cellspacing="3">
+    <tr><td align="center"><b>Install space</b></td></tr>
+    <tr><td align="center">install/</td></tr>
+   </table>>, constraint=false]
+   log [label=<
+    <table border="0" cellborder="0" cellspacing="3">
+    <tr><td align="center"><b>Log space</b></td></tr>
+    <tr><td align="center">log/</td></tr>
+   </table>>, constraint=false]
+   
+   pka [label=<package_a/>, constraint=false]
+   pkb [label=<package_b/>, constraint=false]
+   mpkc [label=<metapackage_c/>, constraint=false]
+  
+   
+   workspace->{src,build,install,log}
+   src->{pka,pkb, mpkc}
+
+}
+```
+
+- Source space:
+    - Source code of colcon packages
+    - Space where you can extract/checkout/clone source code for the packages you want to build
+- Build space
+    - Colcon is invoked here to build packages
+    - Colcon and CMake keep intermediate files here
+- Install space:
+    - Each package will be installed here; by default each package will be installed into a separate subdirectory
+- Log space:
+    - Contains various logging information about each colcon invocation
+
+---
+
+
+
+!!! Abstract "ROS package principle"
+    Enough functionality to be useful, but not too much that the package is heavyweight and difficult to use from other software.
+
+!!! Tip "ROS dependencies"
+    After cloning a new package, use the following command to install depenencies:
+    ```bash
+    rosdep install --from-paths src --ignore-src -r -y
+    ```
+
+---
+
+#### ROS package
+
+---
+
+- Main unit to organize software in ROS
+- Buildable and redistributable unit of ROS code
+- Consists of (in the case of Python packages):
+    - `package.xml` file containing meta information about the package
+        - name
+        - version
+        - description
+        - dependencies
+        - etc.
+    - `setup.py` containing instructions for how to install the package
+    - `setup.cfg` is required when a package has executables, so ros2 run can find them
+    - `/<package_name>` - a directory with the same name as your package, used by ROS 2 tools to find your package, contains `__init__.py`
+    - Anything else
+- `ros2 run turtlesim turtlesim_node`
+
+!!! note "CMake"
+    For CMake packages (C++), the package contents will be different.
+
 
 ```graphviz dot packages.png
 digraph packages {
@@ -88,10 +208,13 @@ cmake [label=<
    <table border="0" cellborder="0" cellspacing="3">
     <tr><td><table border="0" cellborder="0" cellspacing="3">
     <tr><td align="left">- package.xml</td></tr>
-    <tr><td align="left">- CMakeLists.txt</td></tr>
+    <tr><td align="left">- setup.py</td></tr>
+    <tr><td align="left">- setup.cfg</td></tr>
+    <tr><td align="left">- A</td></tr>
+    <tr><td align="left">    - __init__.py</td></tr>
+    <tr><td align="left">    - python scripts</td></tr>
    </table></td></tr>
    <tr><td><table border="1" cellborder="0" cellspacing="3">
-    <tr><td align="left">- ROS nodes</td></tr>
     <tr><td align="left">- ROS-independent libraries</td></tr>
     <tr><td align="left">- Launch files, config files...</td></tr>
    </table></td></tr>
@@ -105,35 +228,11 @@ cmake [label=<
 }
 ```
 
-
-!!! Abstract "ROS package principle"
-    Enough functionality to be useful, but not too much that the package is heavyweight and difficult to use from other software.
-
----
-
-#### ROS package
-
----
-
-- Main unit to organize software in ROS
-- Buildable and redistributable unit of ROS code
-- Consosts of:
-    - Manifest (package.xml): information about package
-        - name
-        - version
-        - description
-        - dependencies
-        - etc.
-    - CMakeLists.txt: *input for the CMake build system*
-    - Anything else
-- `rosrun turtlesim turtlesim_node`
-
 ---
 
 #### ROS node
 
 ---
-
 
 - Executable part of ROS:
     - python scripts
@@ -157,86 +256,33 @@ cmake [label=<
 
 ---
 
-#### ROS build system---Catkin
+#### ROS build system---Colcon
 
 ---
 
 - System for building software packages in ROS
 
-```graphviz dot catkin.png
-digraph catkin {
+```graphviz dot colcon.png
+digraph colcon {
 
 nodesep=0.1 // increases the separation between nodes
 node [color=Black,fontname=Arial,shape=ellipse,style=filled,fillcolor=moccasin] //All nodes will this shape and colour
 edge [color=Black, style=solid, arrowhead=open] //All the lines look like this
-   
-   install [label="install/g++"]
-   
-   catkin->CMake->make->install
-}
-```
-
----
-
-#### ROS workspace
-
----
-
-!!! abstract "Catkin workspace"
-    A folder where catkin packages are modified, built, and installed.
-
-
-
-```graphviz dot workspace.png
-digraph workspace {
-
-nodesep=1.0 // increases the separation between nodes
-node [color=Black,fontname=Courier,shape=folder] //All nodes will this shape and colour
-edge [color=Black, style=solid, arrowhead=open] //All the lines look like this
-
-workspace [label=<
-    <table border="0" cellborder="0" cellspacing="3">
-    <tr><td align="center"><b>Worksapce</b></td></tr>
-    <tr><td align="center">catkin_ws/</td></tr>
-   </table>>, constraint=false]
-   
-   src [label=<
-    <table border="0" cellborder="0" cellspacing="3">
-    <tr><td align="center"><b>Source space</b></td></tr>
-    <tr><td align="center">src/</td></tr>
-   </table>>, constraint=false]
-   build [label=<
-    <table border="0" cellborder="0" cellspacing="3">
-    <tr><td align="center"><b>Build space</b></td></tr>
-    <tr><td align="center">build/</td></tr>
-   </table>>, constraint=false]
-   devel [label=<
-    <table border="0" cellborder="0" cellspacing="3">
-    <tr><td align="center"><b>Development space</b></td></tr>
-    <tr><td align="center">devel/</td></tr>
-   </table>>, constraint=false]
-   
-   pka [label=<package_a/>, constraint=false]
-   pkb [label=<package_b/>, constraint=false]
-   mpkc [label=<metapackage_c/>, constraint=false]
   
+   amentpython [label="ament_python"]
+   amentcmake [label="ament_cmake"]
+   g [label="g++"]
    
-   workspace->{src,build,devel}
-   src->{pka,pkb, mpkc}
-
+   colcon->{amentpython,amentcmake}
+   amentpython->install
+   amentcmake->CMake->g
 }
 ```
 
-- Source space:
-    - Source code of catkin packages
-    - Space where you can extract/checkout/clone source code for the packages you want to build
-- Build space
-    - CMake is invoked here to build the catkin packages
-    - CMake and catkin keep intermediate files here
-- Devel space:
-    - Built target are placed here prior to being installed
 
 ---
+
+
 
 #### Environmental setup file
 
@@ -248,40 +294,14 @@ workspace [label=<
 - ROS can find any resources that have been installed or built to that location
 
 ```bash
-source ~/catkin_ws/devel/setup.bash
+source ~/ros2_ws/install/setup.bash
 ```
 
----
-
-#### ROS master
-
----
-
-```bash
-roscore
-```
-
-- Registers:
-
-    - Nodes
-    - Topics
-    - Services
-    - Parameters
-    
-- One per system
-- `roslaunch` launches ROS master automatically
-
 
 
 ---
 
-## Gyakorlat
-
----
-
-!!! warning "Warning!"
-    At the end of the lesson, everybody must upload their **sources** to **Moodle** as a zip archive!
-
+## Practice
 
 ---
 
@@ -290,302 +310,286 @@ roscore
 ---
 
 
-1. Launch ROS master, `turtlesim_node` and `turtle_teleop_key` node by typing the following commands to separate terminal windows:
-
-
-
-    !!! tip
-        In **Terminator**, `Ctrl-Shift-O`, `Ctrl-Shift-E` divides the terimal window, `Ctrl-Shift-W` closes the current window.
+1. Start `turtlesim_node` and `turtle_teleop_key` nodes with the following commands, in separate terminal windows:
 
 
     ```bash
-    roscore
-    rosrun turtlesim turtlesim_node
-    rosrun turtlesim turtle_teleop_key
+    ros2 run turtlesim turtlesim_node
     ```
 
-    !!! tip "To stup running"
+    ```bash
+    ros2 run turtlesim turtle_teleop_key
+    ```
+
+    !!! tip
+        In **Terminator**, you can further divide the given window with Ctrl-Shift-O, Ctrl-Shift-E key combinations. Ctrl-Shift-W closes the active window.
+
+
+
+    !!! tip "Abort execution"
         `Ctrl-C`
 
 
-    ---
 
-2. Display the running nodes and topics using this command, in a separate terminal:
-
-    ```bash
-    rosrun rqt_graph rqt_graph
-    ```
 
     ---
 
-3. Try the following commands to gain more information about the currently running system:
+2. Running the following ROS commands can provide useful information:
 
     ```bash
-    roswtf
-    rospack list
-    rospack find turtlesim
-    rosnode list
-    rosnode info
-    rosnode info /turtlesim
-    rostopic list
-    rostopic info /turtle1/cmd_vel
-    rosmsg show geometry_msgs/Twist
-    rostopic echo /turtle1/cmd_vel
+    ros2 wtf
+    ros2 node list
+    ros2 node info /turtlesim
+    ros2 topic list
+    ros2 topic info /turtle1/cmd_vel
+    ros2 interface show geometry_msgs/msg/Twist
+    ros2 topic echo /turtle1/cmd_vel
     ```
 
     ---
 
-4. Type (or copy) the following command to the terminal:
+3. Start `rqt_gui` with the following command:
 
     ```bash
-    rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
-    ```
-
----
-
-### 2: Catkin workspace
-
----
-
-
-1. Install the catkin build tools package:
-
-    ```bash
-    sudo apt update
-    sudo apt-get install python3-catkin-tools python3-osrf-pycommon
+    ros2 run rqt_gui rqt_gui
     ```
 
     ---
 
-2. Copy the follwoing file to the end of file `~/.bashrc`:
-
-    ```bash
-    source /opt/ros/noetic/setup.bash   # replace noetic by whatever your ROS distribution is
-    ```
+4. Display the running nodes and topics in `rqt_gui`: Plugins &rarr; Introspection &rarr; Node Graph.
     
     ---
-        
 
-3. Create the workspace:
+5. Publish to the `/turtle1/cmd_vel` topic also using `rqt_gui`: Plugins &rarr; Topics &rarr; Message Publisher.
 
-    ```bash
-    source /opt/ros/noetic/setup.bash 
-    mkdir -p ~/catkin_ws/src
-    cd ~/catkin_ws
-    catkin init
-    ```
-    
+   ![](img/screenshot_msg_publisher.png){:style="width:500px"}
+
+
 ---
-           
 
-### 3: Create a new ROS package
+### 2: ROS 2 workspace creation
 
-1. Create a new ROS package named `ros_course`, depends packages `std_msgs`, `rospy` and `roscpp`:
+---
+
+1. Let's create a new ROS2 workspace with the name `ros2_ws`.
 
     ```bash
-    cd ~/catkin_ws/src
-    catkin create pkg ros_course --catkin-deps std_msgs rospy roscpp
+    mkdir -p ~/ros2_ws/src
+    ```
+
+---           
+
+### 3: ROS 2 package creation
+
+---
+
+1. Let's create a new ROS2 package with the name `ros2_course` and a Hello World.
+
+    ```bash
+    cd ~/ros2_ws/src
+    ros2 pkg create --build-type ament_python --node-name hello ros2_course
     ```
 
     !!! note "Syntax"
-        `catkin create pkg <PKG_NAME> --catkin-deps <DEP_1> <DEP_2>`
+        `ros2 pkg create --build-type ament_python <package_name>`  
 
     ---
 
-2. Open the file `package.xml` and fill the following tags:
-
-    ```xml
-    <description>The beginner_tutorials package</description>
-
-    <maintainer email="you@yourdomain.tld">Your Name</maintainer>
-    ```
-
-    ---
-
-3. Build the workspace:
+2. Build the workspace.
 
     ```bash
-    cd ~/catkin_ws
-    catkin build
+    cd ~/ros2_ws
+    colcon build --symlink-install
     ```
 
-    !!! danger
-        The commands `catkin build` and `catkin_make` are not meant to be used within the same workspace!
+    !!! note "Symlink"
+        The option `--symlink-install` links the source scripts to the Install space, so we don't have to build again after modification.  
 
     ---
 
-4. Append the following line to the file `~/.bashrc`:
+3. Insert the following line at the end of the `~/.bashrc` file:
 
     ```bash
-    source ~/catkin_ws/devel/setup.bash
+    source ~/ros2_ws/install/setup.bash
     ```
+
+    !!! note "Import to QtCreator"
+        New file or project &rarr; Other project &rarr; ROS Workspace. Select Colcon as Build System and `ros2_ws` as Workspace path.  
+
+    !!! note "Import to CLion"
+        Set the Python interpreter to Python 3.8, `/usr/bin/python3`. Add the follwong path: `/opt/ros/foxy/lib/python3.8/site-packages`. Hozzuk létre a `compile_commands.json` fájlt a `~/ros2_ws/build` könyvtárban az alábbi tartalommal:
+        ```bash
+        [
+        ]
+        ```
+
+    ---
+
+4. Test Hello World:
+
+    ```bash
+    ros2 run ros2_course hello 
+    ```
+
+---   
+
+### 4: Implementing a Publisher in Python
 
 ---
 
-### 4: Implement a Publisher in Python
 
-1. Create folder named `scripts` in the `ros_course` package:
-
-    ```bash
-    cd ~/catkin_ws/src/ros_course
-    mkdir scripts
-    cd scripts
-    ```
-    
-    ---
-    
-2. Navigate to the `scripts` folder and create the file `talker.py`, fill it with the following content:
+1. Navigate to the `ros2_ws/src/ros2_course/ros2_course` folder and create the `talker.py` file with the content below.
 
     ```python
-    import rospy
+    import rclpy
+    from rclpy.node import Node
+    
     from std_msgs.msg import String
-
-    def talker():
-        rospy.init_node('talker', anonymous=True)
-        pub = rospy.Publisher('chatter', String, queue_size=10)
-        
-        rate = rospy.Rate(10) # 10hz
-        
-        while not rospy.is_shutdown():
-            hello_str = "hello world %s" % rospy.get_time()
-            print(hello_str)
-            pub.publish(hello_str)
-            rate.sleep()
-
-
+    
+    
+    class MinimalPublisher(Node):
+    
+        def __init__(self):
+            super().__init__('minimal_publisher')
+            self.publisher_ = self.create_publisher(String, 'chatter', 10)
+            timer_period = 0.5  # seconds
+            self.timer = self.create_timer(timer_period, self.timer_callback)
+            self.i = 0
+    
+        def timer_callback(self):
+            msg = String()
+            msg.data = 'Hello World: %d' % self.i
+            self.publisher_.publish(msg)
+            self.get_logger().info('Publishing: "%s"' % msg.data)
+            self.i += 1
+    
+    
+    def main(args=None):
+        rclpy.init(args=args)
+        minimal_publisher = MinimalPublisher()
+        rclpy.spin(minimal_publisher)
+    
+        # Destroy the node explicitly
+        # (optional - otherwise it will be done automatically
+        # when the garbage collector destroys the node object)
+        minimal_publisher.destroy_node()
+        rclpy.shutdown()
+    
+    
     if __name__ == '__main__':
-        try:
-            talker()
-        except rospy.ROSInterruptException:
-            pass
+        main()
     ```
 
 
     ---
-    
-    
-3. Open `CMakeLists.txt` and find the commented out line starting with `catkin_install_python` (it is near line 167). Uncomment and edit as the following:
 
-    ```cmake
-    catkin_install_python(PROGRAMS scripts/talker.py
-        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-    )
-    ```
-    
-    ---
-        
-        
 
-4. Build the node:
-
-    ```bash
-    cd ~/catkin_ws
-    catkin build
-    ```
-    
-5. Start ROS master and run the node. In separate terminal windows:
-
-    ```bash
-    roscore
-    ```
-    
-    ```bash
-    rosrun ros_course talker.py
-    ```
-
-    ---
-    
-5. Check the output of the node, in a separate terminal:
-    ```bash
-    rostopic echo chatter
-    ```
-
----
-
-### 5: Implement a Subscriber in Python
-
-1. Navigate to the `scripts` folder and create the file `listener.py`:
+3. Add a new entry point in the `setup.py` file:
 
     ```python
-    import rospy
+    'talker = ros2_course.talker:main',
+    ```
+    
+   ---
+
+
+
+4. Build and run the node:
+
+    ```bash
+    cd ~/ros2_ws
+    colcon build --symlink-install
+    ros2 run ros2_course talker
+    ```
+
+
+    ---
+
+5. Check the output of the node using `ros2 topic echo` command or `rqt_gui`.
+
+---
+
+### 5: Implementing a Subscriber in Python
+
+---
+
+1. Navigate to the `ros2_ws/src/ros2_course/ros2_course` folder and create the `listener.py` file with the content below.
+
+    ```python
+    import rclpy
+    from rclpy.node import Node
     from std_msgs.msg import String
 
-    def callback(data):
-        print(rospy.get_caller_id() + "I heard " + data.data)
-    
-    def listener():
 
-        # In ROS, nodes are uniquely named. If two nodes with the same
-        # name are launched, the previous one is kicked off. The
-        # anonymous=True flag means that rospy will choose a unique
-        # name for our 'listener' node so that multiple listeners can
-        # run simultaneously.
-        rospy.init_node('listener', anonymous=True)
-    
-        rospy.Subscriber("chatter", String, callback)
+    class MinimalSubscriber(Node):
 
-        # spin() simply keeps python from exiting until this node is stopped
-        rospy.spin()
+        def __init__(self):
+            super().__init__('minimal_subscriber')
+            self.subscription = self.create_subscription(
+                String,
+                'chatter',
+                self.listener_callback,
+                10)
+            self.subscription  # prevent unused variable warning
+
+        def listener_callback(self, msg):
+            self.get_logger().info('I heard msg: "%s"' % msg.data)
 
 
+    def main(args=None):
+        rclpy.init(args=args)
+        minimal_subscriber = MinimalSubscriber()
+        rclpy.spin(minimal_subscriber)
+
+        # Destroy the node explicitly
+        # (optional - otherwise it will be done automatically
+        # when the garbage collector destroys the node object)
+        minimal_subscriber.destroy_node()
+        rclpy.shutdown()
 
     if __name__ == '__main__':
-        listener()
+        main()
     ```
 
     ---
-    
-    
-2. Modify `CMakeLists.txt`:
 
-    ```cmake
-    catkin_install_python(PROGRAMS scripts/talker.py scripts/listener.py
-        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-    )
+
+2. Add a new entry point in the `setup.py` file:
+
+    ```python
+    'listener = ros2_course.listener:main',
     ```
 
     ---
-    
-3. Build the workspace:
+
+3. Build and run both nodes:
 
     ```bash
-    cd ~/catkin_ws
-    catkin build
+    cd ~/ros2_ws
+    colcon build --symlink-install
+    ros2 run ros2_course talker
     ```
 
-    ---
-    
-4. Start ROS master and run the 2 nodes. In separate terminal windows:
     ```bash
-    roscore
-    ```
-    ```bash
-    rosrun ros_course talker.py
+    ros2 run ros2_course listener
     ```
     
+   ---
+
+
+4. Use `rqt_gui` to display the nodes and topics of the running system: 
+
     ```bash
-    rosrun ros_course listener.py
+    ros2 run rqt_gui rqt_gui
     ```
-
-4. Check the nodes and topic of the system:
-
-    ```bash
-    rosrun rqt_graph rqt_graph
-    ```
-
-
-!!! warning "Warning!"
-    At the end of the lesson, everybody must upload their **sources** to **Moodle** as a zip archive!
-
 
 ---
 
 
-## Links
+## Useful links
 
-- [ROS Tutorials](http://wiki.ros.org/ROS/Tutorials)
-- [Curiosity rover simulation](https://www.tapatalk.com/groups/jpl_opensource_rover/real-curiosity-rover-simulation-in-gazebo-with-ros-t60.html)
-
+- [ROS 2 Tutorials](https://docs.ros.org/en/foxy/Tutorials.html)
+- [What is a ROS 2 package?](https://docs.ros.org/en/eloquent/Tutorials/Creating-Your-First-ROS2-Package.html#what-is-a-ros-2-package)
 
 
 
