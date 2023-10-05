@@ -1,6 +1,6 @@
 ---
 title: Linux, ROS introduction
-author: Nagy Tamás
+author: Tamás Levendovics
 ---
 
 # 02. Linux, ROS introduction

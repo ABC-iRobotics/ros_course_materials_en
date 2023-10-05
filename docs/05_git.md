@@ -1,9 +1,9 @@
 ---
 title: Versioning, Git
-author: Tamas D. Nagy
+author: Tamas Levendovics
 ---
 
-# 04. Versioning, Git
+# 05. Versioning, Git
 
 ---
 

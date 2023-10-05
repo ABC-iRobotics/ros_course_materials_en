@@ -1,9 +1,10 @@
 ---
 title: Python principles, ROS Publisher, ROS Subscriber
-author: Tamas D. Nagy
+author: Tamas Levendovics
 ---
 
 # 03. Python principles, ROS Publisher, ROS Subscriber
+
 
 ---
 
@@ -30,7 +31,7 @@ author: Tamas D. Nagy
 - Object oriented programming
 - Used in: AI, web applications, scientific computing, and many other areas
 - `python3`
-                                     
+
 ---
 
 ### Python syntax
@@ -68,291 +69,280 @@ if __name__ == "__main__":
 
 ---
 
-### 1: Hello, World!
 
-1. Navigate to the `~/catkin_ws/src/ros_course/scripts/` folder and create the file `hello.py`:
+### 1: Move the turtle in a straight line
 
 
-    ```bash
-    cd catkin_ws/src/ros_course/scripts
-    touch hello.py
-    ```
-    
-    ---
-    
-2. Type or copy this line into the file `hello.py`:
+1. Let's write a ROS node that moves the turtle forward along a straight line for a given distance.
+   Let's open a terminal. Let's create `~/ros2_ws/src/ros2_course/ros2_course`
+   the `turtlesim_controller.py` file in our directory:
 
-    ```python
-    print("Hello, World!")
-    ```
-
-    !!! tip
-        **In gedit:** Fix whitespace handling in gedit: Preferences -> Editor -> Insert spaces instead of tabs.
-
-    
-    ---
-
-3. To run the file, `cd` to the `scripts` directory and type:
+   ![](img/turtle_straight.png){:style="width:300px" align=right}
 
     ```bash
-    python3 hello.py
-    ```
-
-
-    !!! tip
-        In the case of issues with permissions, type the following to grant the file permission to execute: `chmod +x hello.py`
-
-
-
-    ---
-    
-    
-4. Modify the script to replace the word "World" with a command line argument:
-
-    ```python
-    import sys
-
-    msg = sys.argv[1]
-    print("Hello," , msg, "!")
-    ```
-
-    
-    ---
-
-5. Run the file:
-
-    ```bash
-    python3 hello.py John
-    ``` 
-
-    ---
-    
-    
-### 2: Moving the turtle straight
-
-
-1.  Write a ROS node which communicates with the `turtlesim_node` and moves the turtle straight forward until it reaches the given distance. Open a terminal and create the file `turtlesim_controller.py` in the folder `~/catkin_ws/src/ros_course/scripts:
-
-
-    ![](img/turtle_straight.png){:style="width:300px" align=right} 
-
-    ```bash
-    cd catkin_ws/src/ros_course/scripts
+    cd ros2_ws/src/ros2_course/ros2_course
     touch turtlesim_controller.py
     ```
 
-   
-    ---
-    
-2. Add `turtlesim_controller.py` to `CMakeLists.txt`:
 
-    ```cmake
-    catkin_install_python(PROGRAMS 
-        scripts/talker.py
-        scripts/listener.py
-        scripts/turtlesim_controller.py
-        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-    )
-    ```
-    
     ---
-    
-3. Copy the skeleton of the program into `turtlesim_controller.py`:
-    
+
+2. Add a new entry point in the `setup.py` file:
+
     ```python
-    import rospy
+    'turtlesim_controller = ros2_course.turtlesim_controller:main',
+    ```
+    
+   ---
+
+
+
+3. Copy the skeleton of the program into `turtlesim_controller.py`:
+
+    ```python
     import math
-
-    class TurtlesimController:
+    import rclpy
+    from rclpy.node import Node
+   
+   
+    class TurtlesimController(Node):
+   
         def __init__(self):
-            # Call init node only once
-            rospy.init_node('turtlesim_controller', anonymous=True)
-            # Define publisher here
-
-
-
-        def go_straight(self, speed, distance, forward):
+            super().__init__('turtlesim_controller')
+   
+   
+        def go_straight(self, speed, distance):
             # Implement straght motion here
-
-
-    if __name__ == '__main__':
-        # Init
+   
+   
+    def main(args=None):
+        rclpy.init(args=args)
         tc = TurtlesimController()
-        # Send turtle on a straight line
-        tc.go_straight(1, 4, True)
+   
+        # Destroy the node explicitly
+        # (optional - otherwise it will be done automatically
+        # when the garbage collector destroys the node object)
+        tc.destroy_node()
+        rclpy.shutdown()
+   
+    if __name__ == '__main__':
+        main()
     ```
     
+   ---
+
+4. Let's start a `turtlesim_node` and then examine the topic,
+   with which we can control. In two separate terminal windows:
+
+    ```bash
+    ros2 run turtlesim turtlesim_node
+    ```
+
+    ```bash
+    ros2 topic list
+    ros2 topic info /turtle1/cmd_vel
+    ros2 interface show geometry_msgs/msg/Twist
+    ```
+
+   Or use`rqt_gui`:
+
+    ```bash
+    ros2 run rqt_gui rqt_gui
+    ```
+
     ---
 
-4. Launch a `turtlesim_node`, then find the topic we can use to control its movement. In three separate terminal windows:
-
-    ```bash
-    roscore
-    ```
-    
-    ```bash
-    rosrun turtlesim turtlesim_node
-    ```
-    
-    ```bash
-    rostopic list
-    rostopic info /turtle1/cmd_vel
-    rosmsg show geometry_msgs/Twist
-    ```
-
-    ---
-    
-5. Import the message type `geometry_msgs/Twist` and create the publisher handle object for the topic named `turtlesim_controller.py`:
+5. Import the message type `geometry_msgs/msg/Twist` and create the publisher in `turtlesim_controller.py`:
 
     ```python
     from geometry_msgs.msg import Twist
     
     #...
     
-    self.twist_pub = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
-    
+    # In the constructor:
+    self.twist_pub = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
     ```
 
     ---
- 
-
-    
-6. Implement the `go_straight` method. Calculate how much time it takes for the turtle to move to the given distance with the given velocity. Publish  and repeat a message to set the velocity, and when the calculated time is up, send another message to set the velocity to 0. A little help on the usage of the API:
 
 
-    
+
+6. We implement the `go_straight` method. Let's calculate how long it takes,
+   so that the turtle covers the given distance at the given speed. Publish a message
+   with which we set the speed, then wait for the calculated time, after that
+   send another message to reset the speed.
+   A little help for using the API:
+
 
     ```python
     # Create and publish msg
     vel_msg = Twist()
-    if forward:
+    if distance > 0:
         vel_msg.linear.x = speed
     else:
         vel_msg.linear.x = -speed
-    vel_msg.linear.y = 0
-    vel_msg.linear.z = 0
-    vel_msg.angular.x = 0
-    vel_msg.angular.y = 0
-    vel_msg.angular.z = 0
-    
+    vel_msg.linear.y = 0.0
+    vel_msg.linear.z = 0.0
+    vel_msg.angular.x = 0.0
+    vel_msg.angular.y = 0.0
+    vel_msg.angular.z = 0.0
+
     # Set loop rate
-    rate = rospy.Rate(100) # Hz
-    
-    # Publish first msg and note time
+    loop_rate = self.create_rate(100, self.get_clock()) # Hz
+
+    # Calculate time
+    # T = ...
+   
+    # Publish first msg and note time when to stop
     self.twist_pub.publish(vel_msg)
-    t0 = rospy.Time.now().to_sec()
+    # self.get_logger().info('Turtle started.')
+    when = self.get_clock().now() + rclpy.time.Duration(seconds=T)
 
     # Publish msg while the calculated time is up
-    while (some condition...) and not(rospy.is_shutdown()):
+    while (some condition...) and rclpy.ok():
         self.twist_pub.publish(vel_msg)
-        # ...and stuff
-        rate.sleep()    # loop rate
-    
-    
-    # Set velocity to 0
-    vel_msg.linear.x = 0
+        # self.get_logger().info('On its way...')
+        rclpy.spin_once(self)   # loop rate
+
+    # turtle arrived, set velocity to 0
+    vel_msg.linear.x = 0.0
     self.twist_pub.publish(vel_msg)
+    # self.get_logger().info('Arrived to destination.')
     ```
     
     ---
-    
-7. Launch the node:
+
+
+7. Build and run the node:
 
     ```bash
-    rosrun ros_course turtlesim_controller.py
+    cd ros2_ws
+    colcon build --symlink-install
+    ros2 run ros2_course turtlesim_controller
     ```
     
-    ---
-    
-   
-### 3: Drawing polygons
+   ---
 
-![](img/turtle_hex.png){:style="width:300px" align=right} 
 
-1. Implement a method to turn the turtle with a given angle in `turtlesim_controller.py` in a similar way to the straight movement. `Omega` refers to the angular velocity.
+### 2: Draw shapes
+
+![](img/turtle_hex.png){:style="width:300px" align=right}
+
+1. Let's implement the method for turning with a given angle a
+   in `turtlesim_controller.py`, similar to straight motion.
 
 
     ```python
-    def turn(self, omega, angle, forward):
+    def turn(self, omega, angle):
             # Implement rotation here
     ```
     
     ---
-    
-2. Implement a method that draws a square with the turtle. Use the methods `go_straight` and `turn`.
+
+2. Let's implement the straight movement method of drawing a square with a turtle
+   and using the methods that perform the turn.
 
     ```python
     def draw_square(self, speed, omega, a):
     ```
-  
+
     ---
-    
-4. Implement a method to draw arbitrary regular polygons.
+
+3. Let's implement the method of drawing any regular shape with a turtle
+   using the methods that perform straight movement and turning.
 
     ```python
     def draw_poly(self, speed, omega, N, a):
     ```
- 
+
     ---
-    
-   
-### 4: Go to method
 
-![](img/turtle_goto.png){:style="width:300px" align=right} 
 
-1. Search for the topic turtlesim which publsihes the pose (position and orientation) of the turtle into: 
+### 3: Go to function
+
+![](img/turtle_goto.png){:style="width:300px" align=right}
+
+1. Let's examine the topic on which `turtlesim_node` publishes its current position.
+
+    ```bash
+    ros2 topic list
+    ros2 topic info /turtle1/pose
+    ros2 interface show turtlesim/msg/Pose
+    ```
+
+
+    Or use `rqt_gui`:  
 
 
     ```bash
-    rostopic list
-    rostopic info /turtle1/pose
-    rosmsg show turtlesim/Pose
+    ros2 run rqt_gui rqt_gui
     ```
     
     --- 
- 
-2. Create a subscriber for the topic and write the callback function:
+
+2. Let's define a subscriber for the topic and write the callback function.
 
     ```python
     # Imports
     from turtlesim.msg import Pose
  
         # Constructor
-        self.pose_subscriber = rospy.Subscriber('/turtle1/pose', Pose, self.cb_pose)
+        self.pose = None
+        self.subscription = self.create_subscription(
+            Pose,
+            '/turtle1/pose',
+            self.cb_pose,
+            10)
     
         # New method for TurtlesimController
         def cb_pose(self, msg):
             self.pose = msg  
     ```
     
-    ---
-    
-3. Implement the method `go_to`. Test it by calling from the main.
+   ---
+
+
+3. We implement the `go_to` method. Let's test it, call it from main.
 
     ```python
-        # ...
+    # ...
 
-        # Go to method
+    # Go to method
         def go_to(self, speed, omega, x, y):
-            # Stuff
-        
-        # Main
-        if __name__ == '__main__':
-            # Init
-            tc = TurtlesimController()
-            # 1 sec sleep so subscriber can get msgs
-            rospy.sleep(1)  
-            tc.go_to(1, 2, 2, 8)
-        tc.go_to(1, 2, 2, 2)
-        tc.go_to(1, 2, 3, 4)
-        tc.go_to(1, 2, 6, 2)    
+            # Wait for position to be received
+            loop_rate = self.create_rate(100, self.get_clock()) # Hz
+            while self.pose is None and rclpy.ok():
+                self.get_logger().info('Waiting for pose...')
+                rclpy.spin_once(self)
+            
+            # Stuff with atan2
+    
+   
+    # Main
+    def main(args=None):
+        rclpy.init(args=args)
+        tc = TurtlesimController()
+    
+        tc.go_to(1.0, 20.0, 2, 8)
+        tc.go_to(1.0, 20.0, 2, 2)
+        tc.go_to(1.0, 20.0, 3, 4)
+        tc.go_to(1.0, 20.0, 6, 2)
+    
+        # Destroy the node explicitly
+        # (optional - otherwise it will be done automatically
+        # when the garbage collector destroys the node object)
+        tc.destroy_node()
+        rclpy.shutdown()  
     ```
-    
-    
-### Bonus exercise: Advanced go to
-    
-Write a more accurate go to method using proportional controller.
-    
+
+   ![](img/turtle_atan2.png){:style="width:600px"}
+
+---
+
+### Extra: Advanced go to
+
+Write a go to function that uses a proportional controller.
+
     
 ---
 
@@ -361,10 +351,8 @@ Write a more accurate go to method using proportional controller.
 
 - [For loops in python](https://www.w3schools.com/python/python_for_loops.asp)
 - [Some python functions](https://docs.python.org/3.4/library/functions.html)
-- [Turtlesim documentation](http://wiki.ros.org/turtlesim)
+- [Turtlesim help](https://docs.ros.org/en/foxy/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html)
 - [atan2](https://en.wikipedia.org/wiki/Atan2)
-
-
 
 
 

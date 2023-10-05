@@ -1,6 +1,6 @@
 ---
 title: Kinematics, Inverse kinematics
-author: Tamas D. Nagy
+author: Tamas Levendovics
 ---
 
 # 07. Kinematics, inverse kinematics. Programming a simulated robot in joint space and task space

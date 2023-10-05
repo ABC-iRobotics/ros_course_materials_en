@@ -1,6 +1,6 @@
 ---
 title: Introduction
-author: Tamas D. Nagy
+author: Tamas Levendovics
 ---
 
 # 01. Introduction

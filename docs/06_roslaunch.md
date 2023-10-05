@@ -1,6 +1,6 @@
 ---
 title: Roslaunch, ROS parameter szerver, Rosbag
-author: Tamas D. Nagy
+author: Tamas Levendovics
 ---
 
 # 08. Roslaunch, ROS parameter szerver, Rosbag

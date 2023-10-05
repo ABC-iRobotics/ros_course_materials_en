@@ -1,9 +1,9 @@
 ---
 title: Principles of robotics. Programming a da Vinci surgical robot in simulated environment. 
-author: Tamas D. Nagy
+author: Tamas Levendovics
 ---
 
-# 05. Principles of robotics. Programming a da Vinci surgical robot in simulated environment. 
+# 04. Principles of robotics. Programming a da Vinci surgical robot in simulated environment. 
 
 ---
 
