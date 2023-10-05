@@ -144,7 +144,7 @@ if __name__ == "__main__":
     ros2 interface show geometry_msgs/msg/Twist
     ```
 
-   Or use`rqt_gui`:
+    Or use`rqt_gui`:
 
     ```bash
     ros2 run rqt_gui rqt_gui
