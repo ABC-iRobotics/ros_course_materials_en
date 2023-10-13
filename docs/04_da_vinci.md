@@ -268,7 +268,6 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
 3. Build and run the node:
 
     ```bash
-    source ros_setup.sh -v 2
     cd ~/ros2_ws
     colcon build --symlink-install
     ros2 run ros2_course psm_grasp 
