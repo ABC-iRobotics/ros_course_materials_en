@@ -224,6 +224,15 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
 2. Add the following line to the end of the `.bashrc` file:
 
     ```bash
+    source ~/dvrk2_ws/install/setup.bash
+    ```
+   
+    ---
+
+3. Run these commands in separate terminals to launch the simulation.
+Do not forget to push the Home button in the DVRK console.
+
+    ```bash
     # dVRK main console
     ros2 run dvrk_robot dvrk_console_json -j ~/dvrk2_ws/install/sawIntuitiveResearchKitAll/share/sawIntuitiveResearchKit/share/console/console-PSM1_KIN_SIMULATED.json
     ```
