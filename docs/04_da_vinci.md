@@ -261,7 +261,7 @@ Do not forget to push the Home button in the DVRK console.
 ---
 
     
-1. Create a new file named `psm_grasp.py` in the `~/ros2_ws/src/ros2_course/ros2_course` folder. Add it to the `CMakeLists.txt`, as usually.
+1. Create a new file named `psm_grasp.py` in the `~/ros2_ws/src/ros2_course/ros2_course` folder. Add the new entry point to the `setup.py`, as usually.
 
     ---
     
@@ -324,7 +324,7 @@ Do not forget to push the Home button in the DVRK console.
 
 ---
 
-1. Write a node that creates a virtual marker that can be grasped publishing`visualization_msgs/Marker` messages. Create a new file named `dummy_marker.py` in the `~/catkin_ws/src/ros_course/scripts` folder. Add it to the `CMakeLists.txt`, as usually. Copy the following code into the file `dummy_marker.py`:
+1. Write a node that creates a virtual marker that can be grasped publishing`visualization_msgs/Marker` messages. Create a new file named `dummy_marker.py` in the `~/ros2_ws/src/ros2_course/ros2_course` folder. Add it to the `setup.py`, as usually. Copy the following code into the file `dummy_marker.py`:
 
     ```python
     import rclpy
