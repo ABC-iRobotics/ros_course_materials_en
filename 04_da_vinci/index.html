@@ -906,7 +906,7 @@ ros2<span class="w"> </span>run<span class="w"> </span>rqt_gui<span class="w"> <
 <hr />
 <ol>
 <li>
-<p>Create a new file named <code>psm_grasp.py</code> in the <code>~/ros2_ws/src/ros2_course/ros2_course</code> folder. Add it to the <code>CMakeLists.txt</code>, as usually.</p>
+<p>Create a new file named <code>psm_grasp.py</code> in the <code>~/ros2_ws/src/ros2_course/ros2_course</code> folder. Add the new entry point to the <code>setup.py</code>, as usually.</p>
 <hr />
 </li>
 <li>
@@ -958,7 +958,7 @@ ros2<span class="w"> </span>run<span class="w"> </span>ros2_course<span class="w
 <hr />
 <ol>
 <li>
-<p>Write a node that creates a virtual marker that can be grasped publishing<code>visualization_msgs/Marker</code> messages. Create a new file named <code>dummy_marker.py</code> in the <code>~/catkin_ws/src/ros_course/scripts</code> folder. Add it to the <code>CMakeLists.txt</code>, as usually. Copy the following code into the file <code>dummy_marker.py</code>:</p>
+<p>Write a node that creates a virtual marker that can be grasped publishing<code>visualization_msgs/Marker</code> messages. Create a new file named <code>dummy_marker.py</code> in the <code>~/ros2_ws/src/ros2_course/ros2_course</code> folder. Add it to the <code>setup.py</code>, as usually. Copy the following code into the file <code>dummy_marker.py</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 <span class="kn">from</span> <span class="nn">visualization_msgs.msg</span> <span class="kn">import</span> <span class="n">Marker</span>
