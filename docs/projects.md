@@ -1,6 +1,6 @@
 ---
 title: Projects
-author: Tamas D. Nagy
+author: Tamas Levendovics
 ---
 
 # Projects
