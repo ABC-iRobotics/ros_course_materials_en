@@ -153,7 +153,7 @@ To pass the course, Tests and the Project must be passed (grade 2). One of the T
 - [Setting up a robot simulation (Gazebo)](https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Gazebo/Gazebo.html)
 - [Gazebo World Examples](https://github.com/gazebosim/gz-sim/tree/gz-sim7/examples/worlds)
 
-![pendulum.png](img%2Fpenulum.png){:style="width:600px"}
+![pendulum.png](img%2Fpendulum.png){:style="width:600px"}
 
 
 Based on discussion.
