@@ -842,23 +842,20 @@ T_{TCP,base}(q_1, \cdots, q_n) = T_{TCP,n-1}(q_{n}) \cdot T_{n-1,n-2}(q_{n-1}) \
 <h3 id="1-ur-install">1: UR install</h3>
 <hr />
 <ol>
-<li>Install the dependencies and the UR driver.</li>
-</ol>
+<li>
+<p>Install the dependencies and the UR driver.</p>
 <p><img align="right" alt="" src="../img/ur_rviz.png" style="width:280px" /></p>
-<pre><code>```bash
-sudo apt update
-sudo apt upgrade
-sudo apt-get install ros-humble-ur python3-pip
-pip3 install kinpy
-```
-
-!!! tip
-   Also download the source of the `kinpy` package, it might be useful for understanding the API: [https://pypi.org/project/kinpy/]()
-
-
----
-</code></pre>
-<ol>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ros-humble-ur<span class="w"> </span>python3-pip
+pip3<span class="w"> </span>install<span class="w"> </span>kinpy
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>Also download the source of the <code>kinpy</code> package, it might be useful for understanding the API: <a href="">https://pypi.org/project/kinpy/</a></p>
+<hr />
+</li>
 <li>
 <p>Download the zip containing your source files from Moodle (<code>ur_ros2_course.zip</code>).
 Copy the <code>view_ur.launch.py</code> file to the <code>ros2_course/launch</code> folder,
@@ -889,7 +886,7 @@ from<span class="w"> </span>glob<span class="w"> </span>import<span class="w"> <
 <hr />
 </li>
 <li>
-<p>Start the simulator, move the wrists using the Joint State Publisher GUI.</p>
+<p>Start the simulator, move the joints using the Joint State Publisher GUI.</p>
 <div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>ros2_course<span class="w"> </span>view_ur.launch.py<span class="w"> </span>ur_type:<span class="o">=</span>ur5e
 </code></pre></div>
 <div class="admonition tip">
@@ -904,9 +901,9 @@ from<span class="w"> </span>glob<span class="w"> </span>import<span class="w"> <
 <ol>
 <li>
 <p>Create a new python source file named <code>ur_controller.py</code> in <code>~/ros2_ws/src/ros2_course/ros2_course</code>
-   folder. Specify the new entry point in <code>setup.py</code> in the usual way.
-   Subscribe to the topic publishing the robot's joint angles (configuration). Create
-   publisher for the topic that can be used to set the joint angles.</p>
+folder. Specify the new entry point in <code>setup.py</code> in the usual way.
+Subscribe to the topic publishing the robot's joint angles (configuration). Create
+publisher for the topic that can be used to set the joint angles.</p>
 <div class="highlight"><pre><span></span><code>/joint_states
 /set_joint_states
 </code></pre></div>
@@ -941,7 +938,7 @@ in the callback function just implemented:</p>
 <hr />
 </li>
 <li>
-<p>Calculate and print the TCP position in the given configuration using the <code>kinpy</code> package.</p>
+<p>Calculate and print the TCP pose in the given configuration using the <code>kinpy</code> package.</p>
 <div class="highlight"><pre><span></span><code><span class="n">p</span> <span class="o">=</span> <span class="n">chain</span><span class="o">.</span><span class="n">forward_kinematics</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </code></pre></div>
 </li>
@@ -950,11 +947,10 @@ in the callback function just implemented:</p>
 <h3 id="4-inverse-kinematics-with-jacobian-inverse-method">4: Inverse kinematics with Jacobian inverse method</h3>
 <hr />
 <p>Write a method that implements the inverse kinematics problem on the robot using the Jacobian inverse method presented in the lecture.
-The orientation is ignored. Move the TCP to the position <code>(0.50, -0.60, 0.20)</code>. Let us diagram the TCP
-trajectory of TCP using Matplotlib.</p>
+The orientation is ignored. Move the TCP to the position <code>(0.50, -0.60, 0.20)</code>.</p>
 <ol>
 <li>
-<p>Write a loop with a stop condition of the appropriate size of <code>delta_r</code> and <code>rclpy.ok()</code>.</p>
+<p>Write a loop with a stop condition for the length of <code>delta_r</code> and <code>rclpy.ok()</code>.</p>
 <hr />
 </li>
 <li>
