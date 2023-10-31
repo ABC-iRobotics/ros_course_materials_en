@@ -3,7 +3,7 @@ title: ROS 2 Launch, Param, Bag
 author: Tamas Levendovics
 ---
 
-# 08. ROS 2 Launch, Param, Bag
+# 06. ROS 2 Launch, Param, Bag
 
 ---
 
