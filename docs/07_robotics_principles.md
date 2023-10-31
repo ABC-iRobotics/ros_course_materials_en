@@ -25,8 +25,8 @@ author: Tamas Levendovics
 - **Orientation:** 3 x 3 rotation matrix
     - additional orientation representations: Euler angles, RPY, angle axis, quaternion
 
-- **Pose** (pose): 4 × 4 transformation matrix
-- **Coordinate system** (frame): zero point, 3 axis, 3 base vector, right-hand rule
+- **Pose:** 4 × 4 transformation matrix
+- **Coordinate frame:** origin, 3 axis, 3 base vector, right-hand rule
 - **Homogeneous transformations:** rotation and translation together
     - e.g. $\mathbf{R}$ for rotation and $\mathbf{v}$ for translation:
 
@@ -37,13 +37,13 @@ $$
 - **Homogeneous coordinates:**
     - **Vector:** add 0, $\mathbf{a_H}=\left[\matrix{\mathbf{a} \\ 0}\right]=\left[\matrix{a_x \\ a_y \\ a_z \\ 0}\right]$
     - **Point:** add 1, $\mathbf{p_H}=\left[\matrix{\mathbf{p} \\ 1}\right]=\left[\matrix{p_x \\ p_y \\ p_z \\ 1}\right]$
-    - Using transformations is simpler:
+    - Applying transformations is simpler:
 
 $$
 \mathbf{q} = \mathbf{R}\mathbf{p} + \mathbf{v} \to \left[\matrix{\mathbf{q} \\ 1}\right] = \left[\matrix{\mathbf{R} & \mathbf{v}\\\mathbf{0} & 1 }\right]\left[\matrix{\mathbf{p} \\ 1}\right]
 $$
 
-- **Degree of freedom** (DoF): number of independent quantities.
+- **Degree of freedom** (DoF): number of independent variables (quantities).
 
 ---
 
@@ -54,13 +54,13 @@ $$
 ![](img/segments.png){:style="width:400px" align=right}
 
 - Robot structure: **segments** (link) and **joints**
-- **Task space** (cartesian space):
+- **Task space** (Cartesian space):
     - Three-dimensional space where the task, trajectories, obstacles, etc. are defined.
     - **TCP** (Tool Center Point): coordinate frame fixed to the end effector
     - **Base/world frame**
 - **Joint space**:
     - Quantities assigned to the robot's joints, which can be interpreted by the robot's low-level control system.
-    - Joint coordinates, velocities, accelerations, torques...
+    - Joint angles, velocities, accelerations, torques...
 
 
 
@@ -78,24 +78,24 @@ $$
 #### Kinematics
 
 !!! abstract "Def. Kinematics"
-Calculating the position of the TCP (or anything else) from the joint coordinates.
+    Calculating the pose of the TCP (or anything else) from the joint coordinates.
 
 
 - Kinematic model
     - Denavit--Hartenberg (DH) convention
     - URDF (Unified Robotics Description Format, XML-based)
 
-If the coordinate systems assigned to the segments are $base, 1, 2, 3, ..., TCP$, the transfomrms between adjacent segments $i$ and $i+1$ are $T_{i+1,i}(q_{i+1})$ (which is a function of the angle of the joint between them), the transfomrms between the base frame and TCP can be written up (for a robot with $n$ joints):
+If the coordinate systems assigned to the segments are $base, 1, 2, 3, ..., TCP$, the transfomrms between adjacent segments $i$ and $i+1$ are $T_{i+1,i}(q_{i+1})$ (which is a function of the angle of the joint between them), the transfomrs between the base frame and TCP can be written as (for a robot with $n$ joints):
 
-$$
-T_{TCP,base}(q_1, \cdots, q_n) = T_{TCP,n-1}(q_{n}) \cdot T_{n-1,n-2}(q_{n-1}) \cdots T_{2,1}(q_2) \cdot T_{1,base}(q_1) \cdot base
-$$
+    $$
+    T_{TCP,base}(q_1, \cdots, q_n) = T_{TCP,n-1}(q_{n}) \cdot T_{n-1,n-2}(q_{n-1}) \cdots T_{2,1}(q_2) \cdot T_{1,base}(q_1) \cdot base
+    $$
 
 
 #### Inverse kinematics
 
 !!! abstract "Def. Inverse kinematics"
-Compute joint coordinates to achieve (desired) TCP (or any other) pose.
+    Calculate the joint coordinates to achieve (desired) TCP (or any other) pose.
 
 ---
 
@@ -103,7 +103,7 @@ Compute joint coordinates to achieve (desired) TCP (or any other) pose.
 
 
 !!! abstract "Def. Differential inverse kinematics"
-Which change in the wrist coordinates achieves the desired **small change** in the TCP pose (rotation and translation).
+    Which change in the joint coordinates achieves the desired **small change** in the TCP pose (rotation and translation).
 
 
 - **Jacobi matrix** (Jacobian): a matrix of first-order partial derivatives of a vector-valued function.
@@ -124,11 +124,11 @@ Which change in the wrist coordinates achieves the desired **small change** in t
     \left[\matrix{\mathbf{v} \\ \mathbf{\omega}}\right] =\mathbf{J}(\mathbf{q})\cdot \mathbf{\dot{q}}
     $$
 
-    ,ahol $\mathbf{v}$ a TCP lineáris sebessége, $\mathbf{\omega}$ a TCP szögsebessége, $\mathbf{q}$ pedig a robot konfigurációja.
+    ,where $\mathbf{v}$ is the linear velocity of the TCP, $\mathbf{\omega}$ is the angular velocity of the TCP, and $\mathbf{q}$ is the configuration of the robot.
 
 
-!!! abstract "Def. Konfiguráció"
-    A robot pillanatnyi csuklószögeiből képzett vektor vagy tömb.
+!!! abstract "Def. Configuration"
+    The vector or array containing the current joint angles of the robot.
 
 
 
