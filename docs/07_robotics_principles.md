@@ -157,9 +157,11 @@ $$
 
 ---
 
+
 1. Install the dependencies and the UR driver.
 
-   ![](img/ur_rviz.png){:style="width:280px" align=right}
+    ![](img/ur_rviz.png){:style="width:280px" align=right}
+
 
     ```bash
     sudo apt update
@@ -168,11 +170,14 @@ $$
     pip3 install kinpy
     ```
 
+
     !!! tip
        Also download the source of the `kinpy` package, it might be useful for understanding the API: [https://pypi.org/project/kinpy/]()
 
 
+
     ---
+
 
 2. Download the zip containing your source files from Moodle (`ur_ros2_course.zip`).
 Copy the `view_ur.launch.py` file to the `ros2_course/launch` folder,
@@ -207,7 +212,7 @@ Add the following lines to `setup.py` (launch and entry point):
 
     ---
 
-3. Start the simulator, move the wrists using the Joint State Publisher GUI.
+3. Start the simulator, move the joints using the Joint State Publisher GUI.
 
     ```bash
     ros2 launch ros2_course view_ur.launch.py ur_type:=ur5e
@@ -224,9 +229,9 @@ Add the following lines to `setup.py` (launch and entry point):
 ---
 
 1. Create a new python source file named `ur_controller.py` in `~/ros2_ws/src/ros2_course/ros2_course`
-   folder. Specify the new entry point in `setup.py` in the usual way.
-   Subscribe to the topic publishing the robot's joint angles (configuration). Create
-   publisher for the topic that can be used to set the joint angles.
+folder. Specify the new entry point in `setup.py` in the usual way.
+Subscribe to the topic publishing the robot's joint angles (configuration). Create
+publisher for the topic that can be used to set the joint angles.
 
     ```bash
     /joint_states
@@ -270,7 +275,7 @@ in the callback function just implemented:
     
     ---
 
-3. Calculate and print the TCP position in the given configuration using the `kinpy` package.
+3. Calculate and print the TCP pose in the given configuration using the `kinpy` package.
 
 
     ```python
@@ -286,10 +291,10 @@ in the callback function just implemented:
 ---
 
 Write a method that implements the inverse kinematics problem on the robot using the Jacobian inverse method presented in the lecture.
-The orientation is ignored. Move the TCP to the position `(0.50, -0.60, 0.20)`. Let us diagram the TCP
-trajectory of TCP using Matplotlib.
+The orientation is ignored. Move the TCP to the position `(0.50, -0.60, 0.20)`.
 
-1. Write a loop with a stop condition of the appropriate size of `delta_r` and `rclpy.ok()`.
+
+1. Write a loop with a stop condition for the length of `delta_r` and `rclpy.ok()`.
 
     ---
 
