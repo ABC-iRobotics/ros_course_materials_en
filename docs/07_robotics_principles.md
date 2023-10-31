@@ -172,7 +172,7 @@ $$
 
 
     !!! tip
-       Also download the source of the `kinpy` package, it might be useful for understanding the API: [https://pypi.org/project/kinpy/]()
+        Also download the source of the `kinpy` package, it might be useful for understanding the API: [https://pypi.org/project/kinpy/]()
 
 
 
