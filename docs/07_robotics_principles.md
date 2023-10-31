@@ -6,15 +6,14 @@ author: Tamas Levendovics
 # 09. Kinematics, inverse kinematics, Programming of a simulated robotic arm
 
 
+!!! warning
+**Test 2** on **December 8.**
+
 ---
 
 ## Rehearsal
 
 ---
-
-!!! warning
-    **Test 2** on **December 8.**
-
 
 
 
