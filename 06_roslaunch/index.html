@@ -585,19 +585,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-using-the-above-example-lets-set-the-background-color-also-using-command-line-arguments" class="md-nav__link">
-    5. Using the above example, let's set the background color also using command line argument(s).
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Using the above example, let's set the background color also using command line argument(s).">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#bonus-2-rosbag" class="md-nav__link">
     Bonus 2: Rosbag
@@ -1028,8 +1015,11 @@ ros2<span class="w"> </span>launch<span class="w"> </span>ros2_course<span class
 </code></pre></div>
 <hr />
 </li>
+<li>
+<p>Using the example above, let's set the background color also using command line argument(s).</p>
+</li>
 </ol>
-<h2 id="5-using-the-above-example-lets-set-the-background-color-also-using-command-line-arguments">5. Using the above example, let's set the background color also using command line argument(s).</h2>
+<hr />
 <h3 id="bonus-2-rosbag">Bonus 2: Rosbag</h3>
 <hr />
 <ol>
@@ -1038,14 +1028,14 @@ ros2<span class="w"> </span>launch<span class="w"> </span>ros2_course<span class
    record the contents of the topics in a rosbag file.</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span>ros2<span class="w"> </span>bag<span class="w"> </span>record<span class="w"> </span>--all
 </code></pre></div>
-</li>
-</ol>
-<p>!!! tip "Syntax"
-   The filename and the topics to record can also be set, e.g.:
-   <div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>bag<span class="w"> </span>record<span class="w"> </span>-o<span class="w"> </span>turtle_bagfile_1<span class="w"> </span>/turtle1/cmd_vel<span class="w"> </span>/turtle1/pose
-</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Syntax</p>
+<p>The filename and the topics to record can also be set, e.g.:</p>
+</div>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>bag<span class="w"> </span>record<span class="w"> </span>-o<span class="w"> </span>turtle_bagfile_1<span class="w"> </span>/turtle1/cmd_vel<span class="w"> </span>/turtle1/pose
+</code></pre></div>
 <hr />
-<ol>
+</li>
 <li>
 <p>Use the following command to query the properties of the bag file:</p>
 <div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>bag<span class="w"> </span>info<span class="w"> </span>&lt;PATH_TO_BAGFILE&gt;
