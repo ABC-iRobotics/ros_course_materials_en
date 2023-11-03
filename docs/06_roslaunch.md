@@ -194,12 +194,13 @@ author: Tamas Levendovics
 
     ---
 
-2. Add the `turtlesim_controller` node written in the previous lesson to the launch file.
-   The turtle to be controlled can be set using `namespace` or `remappings`.
+2. Add the `turtlesim_controller` node written in the previous lesson to the launch file, so the first turtle
+is controlled by this node, and the second copies its movement.
+The turtle to be controlled can be set using `namespace` or `remappings`.
     
-   ---
+    ---
 
-5. Build the workspace:
+3. Build the workspace:
 
     ```bash
     cd ros2_ws
@@ -209,7 +210,7 @@ author: Tamas Levendovics
 
     ---
 
-6. launch the new launch file:
+4. launch the new launch file:
 
     ```bash
     ros2 launch ros2_course turtlesim_controller_launch.py
