@@ -415,6 +415,8 @@ The turtle to be controlled can be set using `namespace` or `remappings`.
     ---
 
 5. Using the above example, let's set the background color also using command line argument(s).
+
+
 ---
 
 ### Bonus 2: Rosbag
@@ -428,13 +430,17 @@ The turtle to be controlled can be set using `namespace` or `remappings`.
         ros2 bag record --all
     ```
 
-   !!! tip "Syntax"
-   The filename and the topics to record can also be set, e.g.:
-   ```bash
-   ros2 bag record -o turtle_bagfile_1 /turtle1/cmd_vel /turtle1/pose
-   ```
+    !!! tip "Syntax"
+        The filename and the topics to record can also be set, e.g.:
+   
+
+
+    ```bash
+    ros2 bag record -o turtle_bagfile_1 /turtle1/cmd_vel /turtle1/pose
+    ```
     
-   ---
+    ---
+
 
 2. Use the following command to query the properties of the bag file:
 
