@@ -408,13 +408,16 @@ The turtle to be controlled can be set using `namespace` or `remappings`.
 
 4. Run the launch file by setting the arguments:
 
+
     ```bash
     ros2 launch ros2_course turtlesim_controller_param_launch.py speed:=100.0 omega:=60.0
     ```
 
+
     ---
 
-5. Using the above example, let's set the background color also using command line argument(s).
+
+5. Using the example above, let's set the background color also using command line argument(s).
 
 
 ---
