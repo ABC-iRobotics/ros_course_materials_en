@@ -278,7 +278,7 @@ author: Tamas Levendovics
 
 ---
 
-### 4: Turtlesim controller launch and substitutions
+### Bonus 1: Turtlesim controller launch and substitutions
 
 ---
 
@@ -416,7 +416,7 @@ author: Tamas Levendovics
 5. Using the above example, let's set the background color also using command line argument(s).
 ---
 
-### 5: Rosbag
+### Bonus 2: Rosbag
 
 ---
 
