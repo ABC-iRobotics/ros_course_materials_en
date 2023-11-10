@@ -1,7 +1,7 @@
 site_name: Programming robots in ROS
 site_url: https://abc-irobotics.github.io/ros_course_materials_en/
 site_description: Programming robots in ROS
-site_author: Tamas D. Nagy
+site_author: Tamas Levendovics
 
 nav:
     - Home: index.md

@@ -3,7 +3,7 @@ title: Kinematics, inverse kinematics
 author: Tamas Levendovics
 ---
 
-# 09. Kinematics, inverse kinematics, Programming of a simulated robotic arm
+# 07. Kinematics, inverse kinematics, Programming of a simulated robotic arm
 
 
 !!! warning
