@@ -220,7 +220,7 @@ Add the following lines to `setup.py` (launch and entry point):
 
     ---
 
-3. Start the simulator, move the joints using the Joint State Publisher GUI.
+4. Start the simulator, move the joints using the Joint State Publisher GUI.
 
     ```bash
     ros2 launch ros2_course view_ur.launch.py ur_type:=ur5e
