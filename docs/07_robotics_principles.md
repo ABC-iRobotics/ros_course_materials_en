@@ -220,7 +220,17 @@ Add the following lines to `setup.py` (launch and entry point):
 
     ---
 
-4. Start the simulator, move the joints using the Joint State Publisher GUI.
+4. Build the workspace as usual:
+
+    ```bash
+    cd ~/ros2_ws
+    colcon build --symlink-install
+    ```
+
+
+    ---
+
+5. Start the simulator, move the joints using the Joint State Publisher GUI.
 
     ```bash
     ros2 launch ros2_course view_ur.launch.py ur_type:=ur5e
