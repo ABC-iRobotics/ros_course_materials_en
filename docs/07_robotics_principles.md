@@ -211,6 +211,15 @@ Add the following lines to `setup.py` (launch and entry point):
 
     ---
 
+3. Add the `ros2launch` dependency to the `package.xml` file:
+
+    ```bash
+    <exec_depend>ros2launch</exec_depend>
+    ```
+   
+
+    ---
+
 3. Start the simulator, move the joints using the Joint State Publisher GUI.
 
     ```bash
