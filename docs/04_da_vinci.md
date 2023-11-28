@@ -213,7 +213,7 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
     ```bash
     mkdir -p ~/dvrk2_ws/src
     cd ~/dvrk2_ws/src                
-    vcs import --input https://raw.githubusercontent.com/jhu-dvrk/dvrk_robot_ros2/main/dvrk.vcs --recursive
+    vcs import --input https://raw.githubusercontent.com/jhu-dvrk/dvrk_robot_ros2/devel/dvrk-2.2.vcs --recursive    cd ~/dvrk2_ws
     cd ~/dvrk2_ws
     colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release   
     source ~/dvrk2_ws/install/setup.bash
