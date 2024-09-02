@@ -38,18 +38,6 @@ The projects are graded based on the follwoing aspects:
 
 ---
 
-## Schedule
-
----
-
-| Week | Date    | Event                                          |
-|:----:|---------|------------------------------------------------|
-|  7.  | oct. 27 | Announcement of project topics. Project lab I. |
-| 12.  | dec. 1  | Project lab II.                                |
-| 14.  | dec. 15 | Project presentations.                         |
-
----
-
 ### Grading
 
 Personal attendance on the classes is mandatory (min 70%).

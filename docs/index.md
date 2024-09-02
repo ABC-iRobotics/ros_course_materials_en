@@ -8,22 +8,23 @@
 
 ---
 
-| Week  | Date         | Topic                                                                                                                                                                                                    | Test                         |
-|:-----:|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-|  1.   | Sept 15      | [Requirements. ROS introduction. Setup the development environment.](01_intro.md)                                                                                                                        | -                            |
-|  2.   | Sept 22      | [Setup the development environment. Linux principles. ROS principles. Running examples. ROS package. Basics of ROS communication, implementation of publisher and subscriber.](02_linux_ros_principles.md) | Project topic announcements. |
-|  4.   | Oct 6        | [Python principles. Practicing ROS communication, solving examples.](03_python_principles.md)                                                                                                            | -                            |
-|  5.   | Oct 13       | [Principles of robotics. Programming a da Vinci surgical robot in simulated environment I.](04_da_vinci.md)                                                                                                                                                          | -                            |
-|  6.   | Oct 20       | [Principles of robotics. Programming a da Vinci surgical robot in simulated environment II.](04_da_vinci.md)                                                                                                                                                        | -                            |
-|  7.   | Oct 27       | Project labor I.                                                                                                   | **Test 1**                   |
-|  8.   | Nov 3        | [ROS 2 Launch, Param, Bag](05_roslaunch.md)                                                                                            | -                            |
-|  9.   | Nov 10       | [Kinematics, inverse kinematics, programming a simulated robot arm in joint space and task space I.](06_robotics_principles.md)                                                                          | -                            |
-|  10.  | Nov 17       | [Kinematics, inverse kinematics, programming a simulated robot arm in joint space and task space II.](06_robotics_principles.md)                                                                         | -                            |
-|  11.  | Nov 24       | [Kinematics, inverse kinematics, programming a simulated robot arm in joint space and task space III.](06_robotics_principles.md)                                                                        | -                            |
-|  12.  | Dec 1        | [Versioning, Git.](07_git.md) Project labor II.                                                                                                                                                                                        | -                            |
-|  13.  | Dec 8        | -                                                                                                                                                                                                        | **Test 2**                   |
-|  14.  | Dec 15       | Project presentations.                                                                                                                                                                                   | **Test retake**              |
-| 14+1. | Dec 19 (Tue) | -                                                                                                                                                                                                        | **Mid-term replacement**     |
+| Week  | Date    | Topic                                                                                                                                                                                                      | Test                       |
+|:-----:|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|
+|  1.   | Sept 13 | [Requirements. ROS introduction. Setup the development environment. Lab tour.](01_intro.md)                                                                                                                | -                          |
+|  2.   | Sept 20 | [Setup the development environment. Linux principles. ROS principles. Running examples. ROS package. Basics of ROS communication, implementation of publisher and subscriber.](02_linux_ros_principles.md) | Project topic announcements. |
+|  3.   | Sept 27 | Break                                                                                                                                                                                                      | -                          |
+|  4.   | Oct 4   | [Python principles. Practicing ROS communication, solving examples.](03_python_principles.md)                                                                                                              | -                          |
+|  5.   | Oct 11  | [Principles of robotics. Programming a da Vinci surgical robot in simulated environment I.](04_da_vinci.md)                                                                                                | -                          |
+|  6.   | Oct 18  | [Principles of robotics. Programming a da Vinci surgical robot in simulated environment II.](04_da_vinci.md)                                                                                               | -                          |
+|  7.   | Oct 25  | Project labor I.                                                                                                                                                                                           | **Test 1**                 |
+|  8.   | Nov 1   | Break                                                                                                                                                                                                      | -                          |
+|  9.   | Nov 8   | [ROS 2 Launch, Param, Bag](05_roslaunch.md)                                                                                                                                                                | -                          |
+|  10.  | Nov 15  | [Kinematics, inverse kinematics, programming a simulated robot arm in joint space and task space I.](06_robotics_principles.md)                                                                            | -                          |
+|  11.  | Nov 22  | Break                                                                                                                                                                                                      | -                          |
+|  12.  | Nov 29  | [Kinematics, inverse kinematics, programming a simulated robot arm in joint space and task space II.](06_robotics_principles.md)                                                                           | -                          |
+|  13.  | Dec 6   | [Versioning, Git.](07_git.md) Project labor II.                                                                                                                                                            | **Test 2**                 |
+|  14.  | Dec 13  | Project presentations.                                                                                                                                                                                     | **Test retake**            |
+| 14+1. | ?       | -                                                                                                                                                                                                          | **Mid-term replacement**   |
 
 
 !!! warning
@@ -48,7 +49,7 @@
 
 Personal attendance on the classes is mandatory (min 70%).
 
-To pass the course, Tests and the Project must be passed (grade 2). One of the Test can be taken again.
+To pass the course, Tests and the Project must be passed (grade 2). Test retake is on the 14th week of the semester.
 
 
 !!! abstract "Grade"
