@@ -23,7 +23,7 @@ author: Tamas Levendovics
 
 ### What is ROS?
 
-![](https://moveit.ros.org/assets/images/logo/ROS_logo.png){:style="width:300px" align=right}
+![](https://www.theconstruct.ai/wp-content/uploads/2015/10/rosLarge.png){:style="width:300px" align=right}
 
 - Open-source, robotics themed middleware
 - Modularity, reusability (drivers, algorithms, libraries, ...)
