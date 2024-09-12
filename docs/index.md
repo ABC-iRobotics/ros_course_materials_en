@@ -2,7 +2,44 @@
 
 ---
 
+### Course Supervisor
+Dr. Péter Galambos    
+[peter.galambos@irob.uni-obuda.hu](mailto:peter.galambos@irob.uni-obuda.hu)
 
+---
+
+### Teachers
+Tamás Levendovics   
+[tamas.levendovics@irob.uni-obuda.hu](mailto:tamas.levendovics@irob.uni-obuda.hu)
+
+Borsa Détár    
+[detar.borsa@gmail.com](mailto:detar.borsa@gmail.com)
+
+---
+
+## Course Requirements
+
+---
+
+### Project
+
+- Proved to be the student's own work
+- Running results valid output
+- Grading: completeness of the soultion, proper ROS communication, proper structure of the program, quality of implementation, documentation
+
+---
+
+### Grading
+
+Personal attendance on the classes is mandatory (min 70%).
+
+To pass the course, Tests and the Project must be passed (grade 2). Test retake is on the 14th week of the semester.
+
+
+!!! abstract "Grade"
+	$Jegy = (Test1 + Test2 + 2 \times Project) / 4$ 
+	
+	
 
 ## Schedule
 
@@ -32,44 +69,6 @@
 
 ---
 
-
-## Course Requirements
-
----
-
-### Project
-
-- Proved to be the student's own work
-- Running results valid output
-- Grading: completeness of the soultion, proper ROS communication, proper structure of the program, quality of implementation, documentation
-
----
-
-### Grading
-
-Personal attendance on the classes is mandatory (min 70%).
-
-To pass the course, Tests and the Project must be passed (grade 2). Test retake is on the 14th week of the semester.
-
-
-!!! abstract "Grade"
-	$Jegy = (Test1 + Test2 + 2 \times Project) / 4$ 
-	
-	
-### Course Supervisor
-Dr. Péter Galambos    
-[peter.galambos@irob.uni-obuda.hu](mailto:peter.galambos@irob.uni-obuda.hu)
-
----
-
-### Teachers
-Tamás Levendovics   
-[tamas.levendovics@irob.uni-obuda.hu](mailto:tamas.levendovics@irob.uni-obuda.hu)
-
-Borsa Détár    
-[detar.borsa@gmail.com](mailto:detar.borsa@gmail.com)
-
----
 
 ### Antal Bejczy Center for Intelligent Robotics (BARK/IROB)
 
