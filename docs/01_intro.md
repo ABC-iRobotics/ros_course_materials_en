@@ -13,6 +13,8 @@ author: Tamas Levendovics
 
 ### The definition of robot
 
+![](img/what_is_a_robot_2.webp){:style="width:1024"}
+
 - **Joseph Engelberger, pioneer in industrial robotics:** *"I can't define a robot, but I know one when I see one."*
 - **Wikipedia:** *"A robot is a machine—especially one programmable by a computer— capable of carrying out a complex series of actions automatically. Robots can be guided by an external control device or the control may be embedded within. Robots may be constructed on the lines of human form, but most robots are machines designed to perform a task with no regard to their aesthetics."*
 - **ISO 8373:2012 Robots and robotic devices – Vocabulary, FDIS 2012:** *"A robot is an actuated mechanism programmable in two or more axes with a degree of autonomy, moving within its environment, to perform intended tasks."*
@@ -23,7 +25,10 @@ author: Tamas Levendovics
 
 ### What is ROS?
 
-![](https://www.theconstruct.ai/wp-content/uploads/2015/10/rosLarge.png){:style="width:300px" align=right}
+![](https://moveit.ros.org/assets/images/logo/ROS_logo.png){:style="width:300px" align=right}
+
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/639236696?h=740f412ce5" width="640" height="360" frameborder="0"    allowfullscreen></iframe>
+
 
 - Open-source, robotics themed middleware
 - Modularity, reusability (drivers, algorithms, libraries, ...)
@@ -32,7 +37,6 @@ author: Tamas Levendovics
 - Ubuntu Linux (except ROS 2)
 - Great community
 
-![](https://upload.wikimedia.org/wikipedia/commons/4/43/Ros_Equation.png)
 
 ---
 
