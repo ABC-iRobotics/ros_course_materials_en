@@ -1,3 +1,8 @@
+---
+title: Programming robots in ROS - Course Information
+author: Tamas Levendovics
+---
+
 ## Course Information
 
 ---

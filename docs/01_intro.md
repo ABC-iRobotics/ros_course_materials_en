@@ -38,13 +38,15 @@ author: Tamas Levendovics
 
 ### History
 
+![](https://www.freshconsulting.com/wp-content/uploads/2022/06/path-planning-1024x693.jpg){:style="width:300px" align=right}
+
+
 - Mid 2000s, Stanford: robotics themed, flexible, dynamic framework for prototype development
 - 2007, Willow Garage: incubation, the core of ROS under BSD license
 - Spread in robotics reserach, PR2
 - 2012: Industrial robotics, ROS-Industrial
 - 2017: ROS 2
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/mDwZ21Zia8s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 
@@ -116,7 +118,7 @@ Setup locale.
     
 ---
 
-### További csomagok
+### Further packages
 
 
 1. We will also need the following packages during the semester, so these should be installed as well:
@@ -181,7 +183,7 @@ Setup locale.
 - [https://www.ros.org/](https://www.ros.org/)
 - [ROS 2 Humble installation](https://docs.ros.org/en/humble/Installation.html)
 - [QtCreator + ROS plugin](https://ros-qtc-plugin.readthedocs.io/en/latest/_source/How-to-Install-Users.html)
-- [IROB virtual tour](https://www.youtube.com/watch?v=8XmKGWBV5Nw)
+
 
 
 
