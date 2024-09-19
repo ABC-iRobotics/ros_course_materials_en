@@ -71,7 +71,7 @@ author: Tamás Levendovics
 ---
 
 !!! abstract "Colcon workspace"
-A folder where packages are modified, built, and installed.
+    A folder where packages are modified, built, and installed.
 
 
 
@@ -136,13 +136,13 @@ workspace [label=<
 
 
 !!! Abstract "ROS package principle"
-Enough functionality to be useful, but not too much that the package is heavyweight and difficult to use from other software.
+    Enough functionality to be useful, but not too much that the package is heavyweight and difficult to use from other software.
 
 !!! Tip "ROS dependencies"
-After cloning a new package, use the following command to install depenencies:
-```bash
-rosdep install --from-paths src --ignore-src -r -y
-```
+    After cloning a new package, use the following command to install depenencies:
+    ```bash
+    rosdep install --from-paths src --ignore-src -r -y
+    ```
 
 ---
 
@@ -166,7 +166,7 @@ rosdep install --from-paths src --ignore-src -r -y
 - `ros2 run turtlesim turtlesim_node`
 
 !!! note "CMake"
-For CMake packages (C++), the package contents will be different.
+    For CMake packages (C++), the package contents will be different.
 
 
 ```graphviz dot packages.png
@@ -256,11 +256,11 @@ edge [color=Black, style=solid, arrowhead=open] //All the lines look like this
 - Terminal usage more dominant
 
 !!! tip "Suggestion"
-Install **Terminator** terminal emulator:
-```bash
-sudo apt update
-sudo apt install terminator
-```
+    Install **Terminator** terminal emulator:
+    ```bash
+    sudo apt update
+    sudo apt install terminator
+    ```
 
 
 ---
