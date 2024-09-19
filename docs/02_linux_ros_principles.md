@@ -9,54 +9,6 @@ author: Tamás Levendovics
 
 ## Lecture
 
----
-
-### Linux principles
-
----
-
-![](https://images.idgesg.net/images/article/2017/05/linux-distros-100724403-large.jpg){:style="width:400px" align=right}
-
-- (Was) the only OS supported by ROS
-- Security
-- Efficieny
-- Open-source
-- Community support
-- User freedom
-- Distributions: **Ubuntu**, Linux Mint, Debian, etc.
-- Terminal usage more dominant
-
-!!! tip "Suggestion"
-    Install **Terminator** terminal emulator:
-    ```bash
-    sudo apt update
-    sudo apt install terminator
-    ```
-
-
----
-
-### Linux commands
-
----
-
-See some basic commands below:
-
-- Run as administrator with `sudo`
-- Manual of command `man`, e.g. `man cp`
-- Package management `apt`, e.g. `apt update`, `apt install`
-- Navigation `cd`
-- List directory contents `ls`
-- Create file `touch`
-- Copy file `cp`
-- Move file `mv`
-- Remove file `rm`
-- Make directory `mkdir`
-- Remove directory `rmdir`
-- Make a file executable `chmod +x <filename>`
-- Safe restart: Crtl + Alt + PrtScr + REISUB
-- If not sure, just google the command
-
 
 ---
 
@@ -84,12 +36,42 @@ See some basic commands below:
 
 ---
 
+---
+
+#### ROS node
+
+---
+
+![](https://github.com/ABC-iRobotics/irob-saf/raw/master/docs/irob-autosurg-blockdiagram.png){:style="width:600px" align=right}
+
+- Executable part of ROS:
+    - python scripts
+    - compiled C++ code
+- A process that performs computation
+- Inter-node communication:
+    - ROS topics (streams)
+    - ROS parameter server
+    - Remote Procedure Calls (RPC)
+    - ROS services
+    - ROS actions
+- Meant to operate at a fine-grained scale
+- Typically, a robot control system consists of many nodes, like:
+    - Trajectory planning
+    - Localization
+    - Read sensory data
+    - Process sensory data
+    - Motor control
+    - User interface
+    - etc.
+
+---
+
 #### ROS workspace
 
 ---
 
 !!! abstract "Colcon workspace"
-    A folder where packages are modified, built, and installed.
+A folder where packages are modified, built, and installed.
 
 
 
@@ -154,13 +136,13 @@ workspace [label=<
 
 
 !!! Abstract "ROS package principle"
-    Enough functionality to be useful, but not too much that the package is heavyweight and difficult to use from other software.
+Enough functionality to be useful, but not too much that the package is heavyweight and difficult to use from other software.
 
 !!! Tip "ROS dependencies"
-    After cloning a new package, use the following command to install depenencies:
-    ```bash
-    rosdep install --from-paths src --ignore-src -r -y
-    ```
+After cloning a new package, use the following command to install depenencies:
+```bash
+rosdep install --from-paths src --ignore-src -r -y
+```
 
 ---
 
@@ -184,7 +166,7 @@ workspace [label=<
 - `ros2 run turtlesim turtlesim_node`
 
 !!! note "CMake"
-    For CMake packages (C++), the package contents will be different.
+For CMake packages (C++), the package contents will be different.
 
 
 ```graphviz dot packages.png
@@ -228,31 +210,6 @@ cmake [label=<
 }
 ```
 
----
-
-#### ROS node
-
----
-
-- Executable part of ROS:
-    - python scripts
-    - compiled C++ code
-- A process that performs computation
-- Inter-node communication:
-    - ROS topics (streams)
-    - ROS parameter server
-    - Remote Procedure Calls (RPC)
-    - ROS services
-    - ROS actions
-- Meant to operate at a fine-grained scale
-- Typically, a robot control system consists of many nodes, like:
-    - Trajectory planning
-    - Localization
-    - Read sensory data
-    - Process sensory data
-    - Motor control
-    - User interface
-    - etc.
 
 ---
 
@@ -283,6 +240,56 @@ edge [color=Black, style=solid, arrowhead=open] //All the lines look like this
 ---
 
 
+### Linux principles
+
+---
+
+![](https://images.idgesg.net/images/article/2017/05/linux-distros-100724403-large.jpg){:style="width:400px" align=right}
+
+- (Was) the only OS supported by ROS
+- Security
+- Efficieny
+- Open-source
+- Community support
+- User freedom
+- Distributions: **Ubuntu**, Linux Mint, Debian, etc.
+- Terminal usage more dominant
+
+!!! tip "Suggestion"
+Install **Terminator** terminal emulator:
+```bash
+sudo apt update
+sudo apt install terminator
+```
+
+
+---
+
+### Linux commands
+
+---
+
+See some basic commands below:
+
+- Run as administrator with `sudo`
+- Manual of command `man`, e.g. `man cp`
+- Package management `apt`, e.g. `apt update`, `apt install`
+- Navigation `cd`
+- List directory contents `ls`
+- Create file `touch`
+- Copy file `cp`
+- Move file `mv`
+- Remove file `rm`
+- Make directory `mkdir`
+- Remove directory `rmdir`
+- Make a file executable `chmod +x <filename>`
+- Safe restart: Crtl + Alt + PrtScr + REISUB
+- If not sure, just google the command
+
+
+---
+
+
 
 #### Environmental setup file
 
@@ -296,7 +303,6 @@ edge [color=Black, style=solid, arrowhead=open] //All the lines look like this
 ```bash
 source ~/ros2_ws/install/setup.bash
 ```
-
 
 
 ---
