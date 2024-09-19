@@ -423,7 +423,7 @@ source ~/ros2_ws/install/setup.bash
         New file or project &rarr; Other project &rarr; ROS Workspace. Select Colcon as Build System and `ros2_ws` as Workspace path.  
 
     !!! note "Import to CLion"
-        Set the Python interpreter to Python 3.8, `/usr/bin/python3`. Add the follwong path: `/opt/ros/foxy/lib/python3.8/site-packages`. Hozzuk létre a `compile_commands.json` fájlt a `~/ros2_ws/build` könyvtárban az alábbi tartalommal:
+        Set the Python interpreter to Python 3.8, `/usr/bin/python3`. Add the follwong path: `/opt/ros/foxy/lib/python3.8/site-packages`. Create the file `compile_commands.json` in the directory `~/ros2_ws/build` with the following content:
         ```bash
         [
         ]
