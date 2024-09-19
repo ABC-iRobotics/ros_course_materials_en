@@ -9,8 +9,56 @@ author: Tamás Levendovics
 
 ## Lecture
 
+---
+### Linux principles
 
 ---
+
+![](https://images.idgesg.net/images/article/2017/05/linux-distros-100724403-large.jpg){:style="width:400px" align=right}
+
+- (Was) the only OS supported by ROS
+- Security
+- Efficieny
+- Open-source
+- Community support
+- User freedom
+- Distributions: **Ubuntu**, Linux Mint, Debian, etc.
+- Terminal usage more dominant
+
+!!! tip "Suggestion"
+    Install **Terminator** terminal emulator:
+    ```bash
+    sudo apt update
+    sudo apt install terminator
+    ```
+
+
+---
+
+### Linux commands
+
+---
+
+See some basic commands below:
+
+- Run as administrator with `sudo`
+- Manual of command `man`, e.g. `man cp`
+- Package management `apt`, e.g. `apt update`, `apt install`
+- Navigation `cd`
+- List directory contents `ls`
+- Create file `touch`
+- Copy file `cp`
+- Move file `mv`
+- Remove file `rm`
+- Make directory `mkdir`
+- Remove directory `rmdir`
+- Make a file executable `chmod +x <filename>`
+- Safe restart: Crtl + Alt + PrtScr + REISUB
+- If not sure, just google the command
+
+
+---
+
 
 ### ROS 1 &rarr; ROS 2
 
@@ -135,20 +183,15 @@ workspace [label=<
 
 
 
-!!! Abstract "ROS package principle"
-    Enough functionality to be useful, but not too much that the package is heavyweight and difficult to use from other software.
-
-!!! Tip "ROS dependencies"
-    After cloning a new package, use the following command to install depenencies:
-    ```bash
-    rosdep install --from-paths src --ignore-src -r -y
-    ```
-
 ---
 
 #### ROS package
 
 ---
+
+
+!!! Abstract "ROS package principle"
+    Enough functionality to be useful, but not too much that the package is heavyweight and difficult to use from other software.
 
 - Main unit to organize software in ROS
 - Buildable and redistributable unit of ROS code
@@ -164,6 +207,13 @@ workspace [label=<
     - `/<package_name>` - a directory with the same name as your package, used by ROS 2 tools to find your package, contains `__init__.py`
     - Anything else
 - `ros2 run turtlesim turtlesim_node`
+
+
+!!! Tip "ROS dependencies"
+    After cloning a new package, use the following command to install depenencies:
+    ```bash
+    rosdep install --from-paths src --ignore-src -r -y
+    ```
 
 !!! note "CMake"
     For CMake packages (C++), the package contents will be different.
@@ -235,56 +285,6 @@ edge [color=Black, style=solid, arrowhead=open] //All the lines look like this
    amentcmake->CMake->g
 }
 ```
-
-
----
-
-
-### Linux principles
-
----
-
-![](https://images.idgesg.net/images/article/2017/05/linux-distros-100724403-large.jpg){:style="width:400px" align=right}
-
-- (Was) the only OS supported by ROS
-- Security
-- Efficieny
-- Open-source
-- Community support
-- User freedom
-- Distributions: **Ubuntu**, Linux Mint, Debian, etc.
-- Terminal usage more dominant
-
-!!! tip "Suggestion"
-    Install **Terminator** terminal emulator:
-    ```bash
-    sudo apt update
-    sudo apt install terminator
-    ```
-
-
----
-
-### Linux commands
-
----
-
-See some basic commands below:
-
-- Run as administrator with `sudo`
-- Manual of command `man`, e.g. `man cp`
-- Package management `apt`, e.g. `apt update`, `apt install`
-- Navigation `cd`
-- List directory contents `ls`
-- Create file `touch`
-- Copy file `cp`
-- Move file `mv`
-- Remove file `rm`
-- Make directory `mkdir`
-- Remove directory `rmdir`
-- Make a file executable `chmod +x <filename>`
-- Safe restart: Crtl + Alt + PrtScr + REISUB
-- If not sure, just google the command
 
 
 ---
