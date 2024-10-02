@@ -77,7 +77,8 @@ if __name__ == "__main__":
    Let's open a terminal. Let's create `~/ros2_ws/src/ros2_course/ros2_course`
    the `turtlesim_controller.py` file in our directory:
 
-   ![](img/turtle_straight.png){:style="width:300px" align=right}
+
+    ![](img/turtle_straight.png){:style="width:300px" align=right}
 
 
     ```bash
