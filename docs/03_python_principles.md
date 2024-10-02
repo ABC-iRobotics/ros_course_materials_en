@@ -79,6 +79,7 @@ if __name__ == "__main__":
 
    ![](img/turtle_straight.png){:style="width:300px" align=right}
 
+
     ```bash
     cd ros2_ws/src/ros2_course/ros2_course
     touch turtlesim_controller.py
