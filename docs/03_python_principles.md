@@ -94,7 +94,7 @@ if __name__ == "__main__":
     'turtlesim_controller = ros2_course.turtlesim_controller:main',
     ```
     
-   ---
+    ---
 
 
 
@@ -130,7 +130,7 @@ if __name__ == "__main__":
         main()
     ```
     
-   ---
+    ---
 
 4. Let's start a `turtlesim_node` and then examine the topic,
    with which we can control. In two separate terminal windows:
