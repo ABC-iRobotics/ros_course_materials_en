@@ -604,20 +604,16 @@
 <hr />
 <h3 id="1-move-the-turtle-in-a-straight-line">1: Move the turtle in a straight line</h3>
 <ol>
-<li>Let's write a ROS node that moves the turtle forward along a straight line for a given distance.
+<li>
+<p>Let's write a ROS node that moves the turtle forward along a straight line for a given distance.
    Let's open a terminal. Let's create <code>~/ros2_ws/src/ros2_course/ros2_course</code>
-   the <code>turtlesim_controller.py</code> file in our directory:</li>
-</ol>
+   the <code>turtlesim_controller.py</code> file in our directory:</p>
 <p><img align="right" alt="" src="../img/turtle_straight.png" style="width:300px" /></p>
-<pre><code>```bash
-cd ros2_ws/src/ros2_course/ros2_course
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ros2_ws/src/ros2_course/ros2_course
 touch turtlesim_controller.py
-```
-
-
----
-</code></pre>
-<ol>
+</code></pre></div>
+<hr />
+</li>
 <li>
 <p>Add a new entry point in the <code>setup.py</code> file:</p>
 <div class="highlight"><pre><span></span><code><span class="s1">&#39;turtlesim_controller = ros2_course.turtlesim_controller:main&#39;</span><span class="p">,</span>
