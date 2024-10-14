@@ -12,7 +12,7 @@ author: Tamas Levendovics
 --- 
 
 !!! warning
-	**Test 1** (ROS principles, publisher, subscriber. Python principles. Principles of robotics.) **October 27.**
+	**Test 1** (ROS principles, publisher, subscriber. Python principles. Principles of robotics.) **October 25.**
 
 
 
@@ -206,14 +206,23 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QksAVT0YMEo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
+1. Install dependencies:
 
-1. Clone the dVRK (da Vinci Reserach Kit) using `vcs` into a new workspace, then build it:
+   
+    ```bash
+    sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion libcppunit-dev libqt5xmlpatterns5-dev libbluetooth-dev python3-pyudev gfortran-9 # dVRK
+    sudo apt install ros-humble-joint-state-publisher* ros-humble-xacro # ROS
+    ```
+
+    ---
+    
+2. Clone the dVRK (da Vinci Reserach Kit) using `vcs` into a new workspace, then build it:
 
 
     ```bash
     mkdir -p ~/dvrk2_ws/src
     cd ~/dvrk2_ws/src                
-    vcs import --input https://raw.githubusercontent.com/jhu-dvrk/dvrk_robot_ros2/devel/dvrk-2.2.vcs --recursive    cd ~/dvrk2_ws
+    vcs import --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-dvrk-2.3.0.vcs --recursive
     cd ~/dvrk2_ws
     colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release   
     source ~/dvrk2_ws/install/setup.bash
@@ -221,7 +230,8 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
 
     ---
     
-2. Add the following line to the end of the `.bashrc` file:
+3. Add the following line to the end of the `.bashrc` file:
+
 
     ```bash
     source ~/dvrk2_ws/install/setup.bash
@@ -229,8 +239,9 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
    
     ---
 
-3. Run these commands in separate terminals to launch the simulation.
+4. Run these commands in separate terminals to launch the simulation.
 Do not forget to push the Home button in the DVRK console.
+
 
     ```bash
     # dVRK main console
