@@ -222,9 +222,9 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
     ```bash
     mkdir -p ~/dvrk2_ws/src
     cd ~/dvrk2_ws/src                
-    vcs import --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-dvrk-2.3.0.vcs --recursive
+    vcs import --recursive --input https://raw.githubusercontent.com/jhu-dvrk/dvrk-github-workflow/main/vcs/ros2-dvrk-2.2.1.vcs
     cd ~/dvrk2_ws
-    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release   
+    colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release   
     source ~/dvrk2_ws/install/setup.bash
     ```
 
@@ -276,7 +276,7 @@ Do not forget to push the Home button in the DVRK console.
 
     ---
     
-2. Check the topics and nodes of the simulator using the commands learned earlier (`rostopic list`, `rosrun rqt_graph rqt_graph`, etc.). PSM1 publishes the pose of the TCP and the angle of the jaws into the topics below. Subscribe to these topic in `psm_grasp.py` and store the current values into variables.
+2. Check the topics and nodes of the simulator using the commands learned earlier (`ros2 topic list`, `ros2 topic echo`, `ros2 run rqt_gui rqt_gui`, etc.). PSM1 publishes the pose of the TCP and the angle of the jaws into the topics below. Subscribe to these topic in `psm_grasp.py` and store the current values into variables.
 
     ```bash
     /PSM1/measured_cp
