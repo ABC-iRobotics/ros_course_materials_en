@@ -12,7 +12,7 @@ author: Tamas Levendovics
 --- 
 
 !!! warning
-	**Test 1** (ROS principles, publisher, subscriber. Python principles. Principles of robotics.) **October 27.**
+	**Test 1** (ROS principles, publisher, subscriber. Python principles. Principles of robotics.) **October 25.**
 
 
 
