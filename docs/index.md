@@ -8,13 +8,13 @@ author: Tamas Levendovics
 ---
 
 ### Course Supervisor
-Dr. Péter Galambos    
+Prof. Dr. Péter Galambos    
 [peter.galambos@irob.uni-obuda.hu](mailto:peter.galambos@irob.uni-obuda.hu)
 
 ---
 
 ### Teachers
-Tamás Levendovics   
+Dr. Tamás Levendovics   
 [tamas.levendovics@irob.uni-obuda.hu](mailto:tamas.levendovics@irob.uni-obuda.hu)
 
 Borsa Détár    
