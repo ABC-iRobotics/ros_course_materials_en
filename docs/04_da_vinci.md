@@ -1,6 +1,7 @@
 ---
 title: Principles of robotics. Programming a da Vinci surgical robot in simulated environment. 
 author: Tamas Levendovics
+fontsize: 9pt
 ---
 
 # 04. Principles of robotics. Programming a da Vinci surgical robot in simulated environment. 
@@ -113,7 +114,7 @@ $$
 - Python library
 - High dimension arrays and matrices
 - Mathematical functions
-
+\footnotesize
 ```python
 import numpy as np
 
