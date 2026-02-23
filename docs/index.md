@@ -77,8 +77,9 @@ To pass the course, Tests and the Project must be passed (grade 2). Test retake 
 !!! abstract "Grade"
 $Jegy = (Test1 + Test2 + 2 \times Project) / 4$
 
+---
 
-### Antal Bejczy Center for Intelligent Robotics (BARK/IROB)
+## Antal Bejczy Center for Intelligent Robotics (BARK/IROB)
 
 
 ![](img/bark_logo.png){:style="width:550px"}
@@ -91,7 +92,7 @@ $Jegy = (Test1 + Test2 + 2 \times Project) / 4$
 
 ---
 
-### irob-saf
+## irob-saf
 
 (iRob Surgical Automation Framework)
 
@@ -104,8 +105,3 @@ $Jegy = (Test1 + Test2 + 2 \times Project) / 4$
 
 ---
 
-### PlatypOUs
-
-[https://github.com/ABC-iRobotics/PlatypOUs-Mobile-Robot-Platform](https://github.com/ABC-iRobotics/PlatypOUs-Mobile-Robot-Platform)
-
----
