@@ -44,8 +44,6 @@ author: Tamas Levendovics
 
 ![](https://www.freshconsulting.com/wp-content/uploads/2022/06/path-planning-1024x693.jpg){:style="width:300px" align=right}
 
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/639236696?h=740f412ce5" width="640" height="360" frameborder="0"    allowfullscreen></iframe>
-
 
 - Mid 2000s, Stanford: robotics themed, flexible, dynamic framework for prototype development
 - 2007, Willow Garage: incubation, the core of ROS under BSD license
