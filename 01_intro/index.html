@@ -21,8 +21,15 @@
         <link rel="next" href="../02_linux_ros_principles/">
       
       
+        
+          <link rel="alternate" href="https://abc-irobotics.github.io/ros_course_materials_en/" hreflang="en">
+        
+          <link rel="alternate" href="https://abc-irobotics.github.io/ros_course_materials_hu/" hreflang="hu">
+        
+      
+      
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -30,10 +37,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -58,7 +65,6 @@
 
     
     
-    
 <meta name="google-site-verification" content="FvdynuQ7bWRSdFbJqOCTL5_UtXGGjBoTuHhiUGoEb7Q" />
 
   </head>
@@ -66,10 +72,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="aubergine">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -90,7 +98,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Programming robots in ROS" class="md-header__button md-logo" aria-label="Programming robots in ROS" data-md-component="logo">
       
@@ -120,7 +130,33 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="aubergine"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="aubergine"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
       <div class="md-header__option">
@@ -150,11 +186,13 @@
 </div>
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -186,6 +224,7 @@
     </div>
   </div>
 </div>
+      
     
     
   </nav>
@@ -196,69 +235,6 @@
       
       
         
-          
-            
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
-        
-  
-    
-  
-  Home
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
-          
-  
-  Materials
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../projects/" class="md-tabs__link">
-        
-  
-    
-  
-  Projects
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
           
         
       
@@ -273,12 +249,10 @@
                     
 
 
-  
-
 
   
 
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Programming robots in ROS" class="md-nav__button md-logo" aria-label="Programming robots in ROS" data-md-component="logo">
       
@@ -301,9 +275,16 @@
       <a href=".." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -313,49 +294,6 @@
     
       
       
-  
-  
-    
-  
-  
-  
-    
-    
-    
-      
-        
-        
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
-    Materials
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            Materials
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
   
   
     
@@ -373,9 +311,16 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
+    
+  
     1. Introduction
+  
+
+    
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -384,9 +329,16 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     1. Introduction
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -409,7 +361,9 @@
         <li class="md-nav__item">
   <a href="#robot-operating-system-ros-introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Robot Operating System (ROS) introduction
+      
+        Robot Operating System (ROS) introduction
+      
     </span>
   </a>
   
@@ -419,7 +373,9 @@
           <li class="md-nav__item">
   <a href="#the-definition-of-robot" class="md-nav__link">
     <span class="md-ellipsis">
-      The definition of robot
+      
+        The definition of robot
+      
     </span>
   </a>
   
@@ -428,7 +384,9 @@
           <li class="md-nav__item">
   <a href="#what-is-ros" class="md-nav__link">
     <span class="md-ellipsis">
-      What is ROS?
+      
+        What is ROS?
+      
     </span>
   </a>
   
@@ -437,7 +395,9 @@
           <li class="md-nav__item">
   <a href="#history" class="md-nav__link">
     <span class="md-ellipsis">
-      History
+      
+        History
+      
     </span>
   </a>
   
@@ -451,7 +411,9 @@
         <li class="md-nav__item">
   <a href="#development-system-build-homework" class="md-nav__link">
     <span class="md-ellipsis">
-      Development system build -- homework
+      
+        Development system build -- homework
+      
     </span>
   </a>
   
@@ -459,9 +421,39 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#wsl-installation-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WSL Installation (optional)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WSL Installation (optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-for-installing-ubuntu-2204-on-wsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steps for installing Ubuntu 22.04 on WSL:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ros-2-humble-hawksbill" class="md-nav__link">
     <span class="md-ellipsis">
-      ROS 2 Humble Hawksbill
+      
+        ROS 2 Humble Hawksbill
+      
     </span>
   </a>
   
@@ -470,7 +462,9 @@
           <li class="md-nav__item">
   <a href="#further-packages" class="md-nav__link">
     <span class="md-ellipsis">
-      Further packages
+      
+        Further packages
+      
     </span>
   </a>
   
@@ -479,7 +473,9 @@
           <li class="md-nav__item">
   <a href="#ide" class="md-nav__link">
     <span class="md-ellipsis">
-      IDE
+      
+        IDE
+      
     </span>
   </a>
   
@@ -493,7 +489,9 @@
         <li class="md-nav__item">
   <a href="#links" class="md-nav__link">
     <span class="md-ellipsis">
-      Links
+      
+        Links
+      
     </span>
   </a>
   
@@ -506,10 +504,9 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -518,19 +515,25 @@
       <a href="../02_linux_ros_principles/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     2. Linux and ROS principles
+  
+
+    
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -539,19 +542,25 @@
       <a href="../03_python_principles/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     3. Python principles, ROS Publisher, ROS Subscriber
+  
+
+    
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -560,19 +569,25 @@
       <a href="../04_da_vinci/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     4. Principles of robotics, da Vinci
+  
+
+    
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -581,40 +596,25 @@
       <a href="../05_roslaunch/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     5. Roslaunch, msg, action, service
+  
+
+    
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06_robotics_principles/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6. Kinematics, inverse kinematics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -623,20 +623,73 @@
       <a href="../07_git/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    7. Versioning, Git
+    
+  
+    6. Versioning, Git
+  
+
+    
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
+    
       
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_robotics_principles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Kinematics, inverse kinematics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_service_action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. ROS Service, ROS Action concept, and their use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -651,9 +704,16 @@
       <a href="../projects/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Projects
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -671,9 +731,11 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="01_intro.pdf" title="PDF Export"><svg style="height: 1.2rem; width: 1.2rem;" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm76.45 211.36l-96.42 95.7c-6.65 6.61-17.39 6.61-24.04 0l-96.42-95.7C73.42 337.29 80.54 320 94.82 320H160v-80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v80h65.18c14.28 0 21.4 17.29 11.27 27.36zM377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"></path></svg></a>
                 
                   
+
 
 
 <h1 id="01-introduction">01. Introduction</h1>
@@ -705,10 +767,12 @@
 <hr />
 <h3 id="history">History</h3>
 <p><img align="right" alt="" src="https://www.freshconsulting.com/wp-content/uploads/2022/06/path-planning-1024x693.jpg" style="width:300px" /></p>
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/639236696?h=740f412ce5" width="640" height="360" frameborder="0"    allowfullscreen></iframe>
+
 <ul>
 <li>Mid 2000s, Stanford: robotics themed, flexible, dynamic framework for prototype development</li>
 <li>2007, Willow Garage: incubation, the core of ROS under BSD license</li>
-<li>Spread in robotics reserach, PR2</li>
+<li>Spread in robotics research, PR2</li>
 <li>2012: Industrial robotics, ROS-Industrial</li>
 <li>2017: ROS 2</li>
 </ul>
@@ -717,34 +781,58 @@
 <hr />
 <p>Recommended environment:</p>
 <ul>
-<li>Ubuntu 22.04</li>
+<li>Ubuntu 22.04 (native or WSL)</li>
 <li>ROS2 Humble</li>
-<li><em>IDE: QtCreator</em></li>
+<li><em>IDE: QtCreator/CLion/VSCode</em></li>
 </ul>
+<hr />
+<h3 id="wsl-installation-optional">WSL Installation (optional)</h3>
+<p>If you are using Windows, you can easily set up a Linux environment through WSL (Windows Subsystem for Linux) from the Microsoft Store. This method allows you to use a native Ubuntu environment while still working within Windows.</p>
+<p>If you use native Linux, skip this one and jump to the section <em>ROS 2 Humble Hawksbill</em>.</p>
+<h4 id="steps-for-installing-ubuntu-2204-on-wsl">Steps for installing Ubuntu 22.04 on WSL:</h4>
+<ol>
+<li>
+<p><strong>Install WSL</strong> (if not already installed):</p>
+<ul>
+<li>Open PowerShell as Administrator and run the following command to install WSL:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>wsl<span class="w"> </span>--install
+</code></pre></div>
+<ul>
+<li>This command installs WSL and sets Ubuntu as the default Linux distribution. If WSL is already installed but Ubuntu is not, follow the next step to install Ubuntu from the Microsoft Store.</li>
+</ul>
+</li>
+<li>
+<p><strong>Install Ubuntu 22.04 from Microsoft Store</strong>:</p>
+<ul>
+<li>Open the <a href="https://aka.ms/wslstore">Microsoft Store</a> and search for "Ubuntu 22.04".</li>
+<li>Select <strong>Ubuntu 22.04</strong> from the list of results and click <strong>Install</strong>.</li>
+<li>After installation, open Ubuntu 22.04 from the Start Menu and follow the setup instructions.</li>
+</ul>
+</li>
+</ol>
 <hr />
 <h3 id="ros-2-humble-hawksbill">ROS 2 Humble Hawksbill</h3>
 <p><img align="right" alt="" src="https://www.therobotreport.com/wp-content/uploads/2022/05/ros-humble-hawksbill-featured.jpg" style="width:300px" /></p>
-<p>Setup locale.</p>
-<pre><code>```bash
-locale  # check for UTF-8
-
-sudo apt update &amp;&amp; sudo apt install locales
-sudo locale-gen en_US en_US.UTF-8
-sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-locale  # verify settings
-```
-
----
-</code></pre>
 <ol>
+<li>
+<p>Setup locale.</p>
+<div class="highlight"><pre><span></span><code>locale<span class="w">  </span><span class="c1"># check for UTF-8</span>
+
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>locales
+sudo<span class="w"> </span>locale-gen<span class="w"> </span>en_US<span class="w"> </span>en_US.UTF-8
+sudo<span class="w"> </span>update-locale<span class="w"> </span><span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF-8<span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+<span class="nb">export</span><span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+
+locale<span class="w">  </span><span class="c1"># verify settings</span>
+</code></pre></div>
+<hr />
+</li>
 <li>
 <p>ROS 2 Humble install</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>software-properties-common
 sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>universe
-sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span>
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>curl
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span>-y
 sudo<span class="w"> </span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/ros/rosdistro/master/ros.key<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/ros-archive-keyring.gpg
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu </span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$UBUNTU_CODENAME</span><span class="k">)</span><span class="s2"> main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/ros2.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
 sudo<span class="w"> </span>apt<span class="w"> </span>update
@@ -801,6 +889,13 @@ sudo<span class="w"> </span>./qtcreator-ros-bionic-latest-offline-installer.run
 <li>
 <p>Visual Studio</p>
 <p>Microsoft Visual Studio also supports source code for ROS, this IDE can also be used during the semester.</p>
+<p><strong>Launching Visual Studio Code (VSCode) on WSL</strong>:</p>
+<p>Install Visual Studio Code (if not already installed). Once installed, you can launch it from your <strong>WSL terminal</strong> by typing:</p>
+<div class="highlight"><pre><span></span><code>code<span class="w"> </span>.
+</code></pre></div>
+<p>This will open VSCode in the current directory, allowing you to edit your ROS 2 code directly.</p>
+<p><strong>Install the WSL extension for VSCode</strong>:</p>
+<p>Open VSCode and go to the Extensions view (by clicking the Extensions icon in the left sidebar). Search for "Remote - WSL" and install the extension by Microsoft. This allows you to run and edit code directly in the WSL environment from within VSCode.</p>
 </li>
 </ol>
 <hr />
@@ -816,7 +911,11 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <ul>
 <li><a href="https://www.ros.org/">https://www.ros.org/</a></li>
 <li><a href="https://docs.ros.org/en/humble/Installation.html">ROS 2 Humble installation</a></li>
+<li><a href="http://wiki.ros.org/Distributions">ROS Distributions</a></li>
+<li><a href="http://wiki.ros.org/ROS/Tutorials">http://wiki.ros.org/ROS/Tutorials</a></li>
+<li><a href="https://www.jetbrains.com/community/education/#students">CLion hallgatói licensz</a></li>
 <li><a href="https://ros-qtc-plugin.readthedocs.io/en/latest/_source/How-to-Install-Users.html">QtCreator + ROS plugin</a></li>
+<li><a href="https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Installation-Windows.html">ROS 2 Humble installation on WSL</a></li>
 </ul>
 
 
@@ -850,7 +949,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2022 <a href="mailto:tamas.daniel.nagy@irob.uni-obuda.hu">Tamas D. Nagy</a>.
+      Copyright &copy; 2026 <a href="mailto:tamas.daniel.nagy@irob.uni-obuda.hu">Tamas Levendovics</a>.
     </div>
   
   
@@ -871,10 +970,13 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "toc.integrate"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["toc.integrate"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../javascripts/mathjax.js"></script>
       

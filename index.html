@@ -19,8 +19,15 @@
         <link rel="next" href="01_intro/">
       
       
+        
+          <link rel="alternate" href="https://abc-irobotics.github.io/ros_course_materials_en/" hreflang="en">
+        
+          <link rel="alternate" href="https://abc-irobotics.github.io/ros_course_materials_hu/" hreflang="hu">
+        
+      
+      
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -28,10 +35,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -56,7 +63,6 @@
 
     
     
-    
 <meta name="google-site-verification" content="FvdynuQ7bWRSdFbJqOCTL5_UtXGGjBoTuHhiUGoEb7Q" />
 
   </head>
@@ -64,10 +70,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="aubergine">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -76,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#course-information" class="md-skip">
+        <a href="#contacts" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +96,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="Programming robots in ROS" class="md-header__button md-logo" aria-label="Programming robots in ROS" data-md-component="logo">
       
@@ -118,7 +128,33 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="aubergine"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="aubergine"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
       <div class="md-header__option">
@@ -148,11 +184,13 @@
 </div>
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -184,6 +222,7 @@
     </div>
   </div>
 </div>
+      
     
     
   </nav>
@@ -194,69 +233,6 @@
       
       
         
-          
-            
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-    
-  
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
-        
-  
-    
-  
-  Home
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="01_intro/" class="md-tabs__link">
-          
-  
-  Materials
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="projects/" class="md-tabs__link">
-        
-  
-    
-  
-  Projects
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
           
         
       
@@ -271,12 +247,10 @@
                     
 
 
-  
-
 
   
 
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="." title="Programming robots in ROS" class="md-nav__button md-logo" aria-label="Programming robots in ROS" data-md-component="logo">
       
@@ -306,9 +280,16 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
+    
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -317,9 +298,16 @@
       <a href="." class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -338,28 +326,34 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#course-information" class="md-nav__link">
+  <a href="#contacts" class="md-nav__link">
     <span class="md-ellipsis">
-      Course Information
+      
+        Contacts
+      
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Course Information">
+    <nav class="md-nav" aria-label="Contacts">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#course-supervisor" class="md-nav__link">
     <span class="md-ellipsis">
-      Course Supervisor
+      
+        Course Supervisor
+      
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#teachers" class="md-nav__link">
+  <a href="#teacher" class="md-nav__link">
     <span class="md-ellipsis">
-      Teachers
+      
+        Teacher
+      
     </span>
   </a>
   
@@ -371,9 +365,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#group-timetable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Group Timetable
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schedule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#course-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Course Requirements
+      
+        Course Requirements
+      
     </span>
   </a>
   
@@ -383,7 +401,9 @@
           <li class="md-nav__item">
   <a href="#project" class="md-nav__link">
     <span class="md-ellipsis">
-      Project
+      
+        Project
+      
     </span>
   </a>
   
@@ -392,31 +412,20 @@
           <li class="md-nav__item">
   <a href="#grading" class="md-nav__link">
     <span class="md-ellipsis">
-      Grading
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
-        <li class="md-nav__item">
-  <a href="#schedule" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schedule
+        Grading
+      
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Schedule">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#antal-bejczy-center-for-intelligent-robotics-barkirob" class="md-nav__link">
     <span class="md-ellipsis">
-      Antal Bejczy Center for Intelligent Robotics (BARK/IROB)
+      
+        Antal Bejczy Center for Intelligent Robotics (BARK/IROB)
+      
     </span>
   </a>
   
@@ -425,7 +434,9 @@
           <li class="md-nav__item">
   <a href="#irob-saf" class="md-nav__link">
     <span class="md-ellipsis">
-      irob-saf
+      
+        irob-saf
+      
     </span>
   </a>
   
@@ -434,7 +445,9 @@
           <li class="md-nav__item">
   <a href="#platypous" class="md-nav__link">
     <span class="md-ellipsis">
-      PlatypOUs
+      
+        PlatypOUs
+      
     </span>
   </a>
   
@@ -459,61 +472,29 @@
   
   
   
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Materials
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            Materials
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="01_intro/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     1. Introduction
+  
+
+    
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -522,19 +503,25 @@
       <a href="02_linux_ros_principles/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     2. Linux and ROS principles
+  
+
+    
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -543,19 +530,25 @@
       <a href="03_python_principles/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     3. Python principles, ROS Publisher, ROS Subscriber
+  
+
+    
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -564,19 +557,25 @@
       <a href="04_da_vinci/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     4. Principles of robotics, da Vinci
+  
+
+    
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -585,40 +584,25 @@
       <a href="05_roslaunch/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     5. Roslaunch, msg, action, service
+  
+
+    
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="06_robotics_principles/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6. Kinematics, inverse kinematics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -627,20 +611,73 @@
       <a href="07_git/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    7. Versioning, Git
+    
+  
+    6. Versioning, Git
+  
+
+    
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
+    
       
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_robotics_principles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Kinematics, inverse kinematics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_service_action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. ROS Service, ROS Action concept, and their use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -655,9 +692,16 @@
       <a href="projects/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Projects
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -675,41 +719,43 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="index.pdf" title="PDF Export"><svg style="height: 1.2rem; width: 1.2rem;" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm76.45 211.36l-96.42 95.7c-6.65 6.61-17.39 6.61-24.04 0l-96.42-95.7C73.42 337.29 80.54 320 94.82 320H160v-80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v80h65.18c14.28 0 21.4 17.29 11.27 27.36zM377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"></path></svg></a>
                 
                   
 
 
+
   <h1>Home</h1>
 
-<h2 id="course-information">Course Information</h2>
+<h2 id="contacts">Contacts</h2>
 <hr />
 <h3 id="course-supervisor">Course Supervisor</h3>
-<p>Prof. Dr. Péter Galambos  <br />
+<p>Prof. Dr. Peter Galambos  <br />
 <a href="mailto:peter.galambos@irob.uni-obuda.hu">peter.galambos@irob.uni-obuda.hu</a></p>
 <hr />
-<h3 id="teachers">Teachers</h3>
-<p>Dr. Tamás Levendovics <br />
+<h3 id="teacher">Teacher</h3>
+<p>Dr. Tamas Levendovics <br />
 <a href="mailto:tamas.levendovics@irob.uni-obuda.hu">tamas.levendovics@irob.uni-obuda.hu</a></p>
-<p>Borsa Détár  <br />
-<a href="mailto:detar.borsa@gmail.com">detar.borsa@gmail.com</a></p>
 <hr />
-<h2 id="course-requirements">Course Requirements</h2>
+<h2 id="group-timetable">Group Timetable</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Group</th>
+<th>Time</th>
+<th>Room</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Group 1</strong></td>
+<td><strong>Tuesday 10:45-13:20</strong></td>
+<td>BA.1.10</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h3 id="project">Project</h3>
-<ul>
-<li>Proved to be the student's own work</li>
-<li>Running results valid output</li>
-<li>Grading: completeness of the soultion, proper ROS communication, proper structure of the program, quality of implementation, documentation</li>
-</ul>
-<hr />
-<h3 id="grading">Grading</h3>
-<p>Personal attendance on the classes is mandatory (min 70%).</p>
-<p>To pass the course, Tests and the Project must be passed (grade 2). Test retake is on the 14th week of the semester.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Grade</p>
-<p><span class="arithmatex">\(Jegy = (Test1 + Test2 + 2 \times Project) / 4\)</span> </p>
-</div>
 <h2 id="schedule">Schedule</h2>
 <hr />
 <table>
@@ -724,85 +770,85 @@
 <tbody>
 <tr>
 <td style="text-align: center;">1.</td>
-<td>Sept 13</td>
-<td><a href="01_intro/">Requirements. ROS introduction. Setup the development environment. Lab tour.</a></td>
+<td>Feb 17</td>
+<td>Cancelled</td>
 <td>-</td>
 </tr>
 <tr>
 <td style="text-align: center;">2.</td>
-<td>Sept 20</td>
-<td><a href="02_linux_ros_principles/">Setup the development environment. Linux principles. ROS principles. Running examples. ROS package. Basics of ROS communication, implementation of publisher and subscriber.</a></td>
+<td>Feb 24</td>
+<td><a href="01_intro/">Requirements. ROS introduction. Setup the development environment. Lab tour.</a></td>
 <td>Project topic announcements.</td>
 </tr>
 <tr>
 <td style="text-align: center;">3.</td>
-<td>Sept 27</td>
-<td>Break</td>
+<td>March 3</td>
+<td><a href="02_linux_ros_principles/">Setup the development environment. Linux principles. ROS principles. Running examples. ROS package. Basics of ROS communication, implementation of publisher and subscriber.</a></td>
 <td>-</td>
 </tr>
 <tr>
 <td style="text-align: center;">4.</td>
-<td>Oct 4</td>
+<td>March 10</td>
 <td><a href="03_python_principles/">Python principles. Practicing ROS communication, solving examples.</a></td>
 <td>-</td>
 </tr>
 <tr>
 <td style="text-align: center;">5.</td>
-<td>Oct 11</td>
+<td>March 17</td>
 <td><a href="04_da_vinci/">Principles of robotics. Programming a da Vinci surgical robot in simulated environment I.</a></td>
 <td>-</td>
 </tr>
 <tr>
 <td style="text-align: center;">6.</td>
-<td>Oct 18</td>
+<td>March 24</td>
 <td><a href="04_da_vinci/">Principles of robotics. Programming a da Vinci surgical robot in simulated environment II.</a></td>
 <td>-</td>
 </tr>
 <tr>
 <td style="text-align: center;">7.</td>
-<td>Oct 25</td>
-<td>Project labor I.</td>
-<td><strong>Test 1</strong></td>
-</tr>
-<tr>
-<td style="text-align: center;">8.</td>
-<td>Nov 1</td>
-<td>Break</td>
-<td>-</td>
-</tr>
-<tr>
-<td style="text-align: center;">9.</td>
-<td>Nov 8</td>
+<td>March 31</td>
 <td><a href="05_roslaunch/">ROS 2 Launch, Param, Bag</a></td>
 <td>-</td>
 </tr>
 <tr>
+<td style="text-align: center;">8.</td>
+<td>Apr 7</td>
+<td><a href="07_git/">Versioning, Git.</a> Project labor I.</td>
+<td><strong>Test 1</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">9.</td>
+<td>Apr 14</td>
+<td>Break</td>
+<td>-</td>
+</tr>
+<tr>
 <td style="text-align: center;">10.</td>
-<td>Nov 15</td>
+<td>Apr 21</td>
 <td><a href="06_robotics_principles/">Kinematics, inverse kinematics, programming a simulated robot arm in joint space and task space I.</a></td>
 <td>-</td>
 </tr>
 <tr>
 <td style="text-align: center;">11.</td>
-<td>Nov 22</td>
-<td>Break</td>
-<td>-</td>
-</tr>
-<tr>
-<td style="text-align: center;">12.</td>
-<td>Nov 29</td>
+<td>Apr 28</td>
 <td><a href="06_robotics_principles/">Kinematics, inverse kinematics, programming a simulated robot arm in joint space and task space II.</a></td>
 <td>-</td>
 </tr>
 <tr>
+<td style="text-align: center;">12.</td>
+<td>May 5</td>
+<td><a href="08_service_action/">ROS Service, ROS Action concept, and their use.</a></td>
+<td>-</td>
+</tr>
+<tr>
 <td style="text-align: center;">13.</td>
-<td>Dec 6</td>
-<td><a href="07_git/">Versioning, Git.</a> Project labor II.</td>
+<td>May 12</td>
+<td>Project labor II.</td>
 <td><strong>Test 2</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">14.</td>
-<td>Dec 13</td>
+<td>May 19</td>
 <td>Project presentations.</td>
 <td><strong>Test retake</strong></td>
 </tr>
@@ -819,6 +865,22 @@
 <p>The schedule may change during the semester!</p>
 </div>
 <hr />
+<h2 id="course-requirements">Course Requirements</h2>
+<hr />
+<h3 id="project">Project</h3>
+<ul>
+<li>Proved to be the student's own work</li>
+<li>Running results valid output</li>
+<li>Grading: completeness of the solution, proper ROS communication, proper structure of the program, quality of implementation, documentation</li>
+</ul>
+<hr />
+<h3 id="grading">Grading</h3>
+<p>Personal attendance on the classes is mandatory (min 70%).</p>
+<p>To pass the course, Tests and the Project must be passed (grade 2). Test retake is on the 14th week of the semester.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Grade</p>
+</div>
+<p><span class="arithmatex">\(Jegy = (Test1 + Test2 + 2 \times Project) / 4\)</span></p>
 <h3 id="antal-bejczy-center-for-intelligent-robotics-barkirob">Antal Bejczy Center for Intelligent Robotics (BARK/IROB)</h3>
 <p><img alt="" src="img/bark_logo.png" style="width:550px" /></p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8XmKGWBV5Nw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -868,7 +930,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2022 <a href="mailto:tamas.daniel.nagy@irob.uni-obuda.hu">Tamas D. Nagy</a>.
+      Copyright &copy; 2026 <a href="mailto:tamas.daniel.nagy@irob.uni-obuda.hu">Tamas Levendovics</a>.
     </div>
   
   
@@ -889,10 +951,13 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "toc.integrate"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["toc.integrate"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="javascripts/mathjax.js"></script>
       
