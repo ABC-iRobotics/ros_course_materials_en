@@ -44,10 +44,12 @@ author: Tamas Levendovics
 
 ![](https://www.freshconsulting.com/wp-content/uploads/2022/06/path-planning-1024x693.jpg){:style="width:300px" align=right}
 
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/639236696?h=740f412ce5" width="640" height="360" frameborder="0"    allowfullscreen></iframe>
+
 
 - Mid 2000s, Stanford: robotics themed, flexible, dynamic framework for prototype development
 - 2007, Willow Garage: incubation, the core of ROS under BSD license
-- Spread in robotics reserach, PR2
+- Spread in robotics research, PR2
 - 2012: Industrial robotics, ROS-Industrial
 - 2017: ROS 2
 
@@ -60,9 +62,34 @@ author: Tamas Levendovics
 
 Recommended environment:
     
-- Ubuntu 22.04
+- Ubuntu 22.04 (native or WSL)
 - ROS2 Humble
-- *IDE: QtCreator*
+- *IDE: QtCreator/CLion/VSCode*
+
+---
+
+### WSL Installation (optional)
+
+If you are using Windows, you can easily set up a Linux environment through WSL (Windows Subsystem for Linux) from the Microsoft Store. This method allows you to use a native Ubuntu environment while still working within Windows.
+
+If you use native Linux, skip this one and jump to the section _ROS 2 Humble Hawksbill_.
+
+#### Steps for installing Ubuntu 22.04 on WSL:
+
+1. **Install WSL** (if not already installed):
+    - Open PowerShell as Administrator and run the following command to install WSL:
+
+    ```bash
+    wsl --install
+    ```
+
+    - This command installs WSL and sets Ubuntu as the default Linux distribution. If WSL is already installed but Ubuntu is not, follow the next step to install Ubuntu from the Microsoft Store.
+
+2. **Install Ubuntu 22.04 from Microsoft Store**:
+     - Open the [Microsoft Store](https://aka.ms/wslstore) and search for "Ubuntu 22.04".
+     - Select **Ubuntu 22.04** from the list of results and click **Install**.
+     - After installation, open Ubuntu 22.04 from the Start Menu and follow the setup instructions.
+
 
 ---
 
@@ -71,7 +98,7 @@ Recommended environment:
 ![](https://www.therobotreport.com/wp-content/uploads/2022/05/ros-humble-hawksbill-featured.jpg){:style="width:300px" align=right}
 
 
-Setup locale.
+1. Setup locale.
 
     ```bash
     locale  # check for UTF-8
@@ -92,8 +119,7 @@ Setup locale.
     ```bash
     sudo apt install software-properties-common
     sudo add-apt-repository universe
-    sudo apt update 
-    sudo apt install curl
+    sudo apt update && sudo apt install curl -y
     sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
     sudo apt update
@@ -170,6 +196,21 @@ Setup locale.
 
     Microsoft Visual Studio also supports source code for ROS, this IDE can also be used during the semester.
 
+    **Launching Visual Studio Code (VSCode) on WSL**:
+
+    Install Visual Studio Code (if not already installed). Once installed, you can launch it from your **WSL terminal** by typing:
+
+    ```bash
+    code .
+    ```
+
+    This will open VSCode in the current directory, allowing you to edit your ROS 2 code directly.
+
+    **Install the WSL extension for VSCode**:
+
+    Open VSCode and go to the Extensions view (by clicking the Extensions icon in the left sidebar). Search for "Remote - WSL" and install the extension by Microsoft. This allows you to run and edit code directly in the WSL environment from within VSCode.
+
+
 ---
 
 !!! tip "Suggestion"
@@ -186,7 +227,11 @@ Setup locale.
 
 - [https://www.ros.org/](https://www.ros.org/)
 - [ROS 2 Humble installation](https://docs.ros.org/en/humble/Installation.html)
+- [ROS Distributions](http://wiki.ros.org/Distributions)
+- [http://wiki.ros.org/ROS/Tutorials](http://wiki.ros.org/ROS/Tutorials)
+- [CLion hallgatói licensz](https://www.jetbrains.com/community/education/#students)
 - [QtCreator + ROS plugin](https://ros-qtc-plugin.readthedocs.io/en/latest/_source/How-to-Install-Users.html)
+- [ROS 2 Humble installation on WSL](https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Installation-Windows.html)
 
 
 

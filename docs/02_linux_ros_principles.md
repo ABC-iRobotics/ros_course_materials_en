@@ -14,8 +14,6 @@ author: Tamás Levendovics
 
 ---
 
-![](https://images.idgesg.net/images/article/2017/05/linux-distros-100724403-large.jpg){:style="width:400px" align=right}
-
 - (Was) the only OS supported by ROS
 - Security
 - Efficieny

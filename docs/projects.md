@@ -29,7 +29,7 @@ The projects are graded based on the follwoing aspects:
 - Running results valid output
 - Usage of versioning, usage of GitHub/GitLab/other repository
 - Grading: 
-    - completeness of the soultion
+    - completeness of the solution
     - proper ROS communication
     - proper structure of the program
     - quality of implementation
@@ -46,7 +46,7 @@ To pass the course, Tests and the Project must be passed (grade 2). One of the T
 
 
 !!! abstract "Grade"
-	$Jegy = (Test1 + Test2 + 2 \times Project) / 4$ 
+	$Grade = (Test1 + Test2 + 2 \times Project) / 4$ 
 	
 ---
 
@@ -75,7 +75,7 @@ To pass the course, Tests and the Project must be passed (grade 2). One of the T
 
 - [PlatypOUs GitHub](https://github.com/ABC-iRobotics/PlatypOUs-Mobile-Robot-Platform)
 
-![](https://www.mdpi.com/sensors/sensors-22-02284/article_deploy/html/images/sensors-22-02284-g001.png){:style="width:600px"}
+![](https://rosz.uni-obuda.hu/wp-content/uploads/2023/08/PICT_20211008_160426-1024x684.jpg){:style="width:600px"}
 
 #### D. Any mobile robot
 
