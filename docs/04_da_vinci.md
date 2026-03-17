@@ -208,6 +208,7 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
    
     ```bash
     sudo apt install python3-vcstool python3-colcon-common-extensions python3-pykdl libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev libbluetooth-dev libhidapi-dev python3-pyudev gfortran-9 ros-humble-joint-state-publisher* ros-humble-xacro
+    sudo apt install ros-humble-joint-state-publisher* ros-humble-xacro # ROS
     ```
 
     ---
