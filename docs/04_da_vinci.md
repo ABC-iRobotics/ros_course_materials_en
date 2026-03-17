@@ -12,10 +12,6 @@ fontsize: 9pt
 
 --- 
 
-!!! warning
-	**Test 1** (ROS principles, publisher, subscriber. Python principles. Principles of robotics.) **October 25.**
-
-
 
 
 ### Rigid body motion
@@ -114,7 +110,7 @@ $$
 - Python library
 - High dimension arrays and matrices
 - Mathematical functions
-\footnotesize
+
 ```python
 import numpy as np
 
@@ -211,8 +207,7 @@ The da Vinci Surgical System is used to perform minimally invasive surgeries by 
 
    
     ```bash
-    sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion libcppunit-dev libqt5xmlpatterns5-dev libbluetooth-dev python3-pyudev gfortran-9 # dVRK
-    sudo apt install ros-humble-joint-state-publisher* ros-humble-xacro # ROS
+    sudo apt install python3-vcstool python3-colcon-common-extensions python3-pykdl libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev libbluetooth-dev libhidapi-dev python3-pyudev gfortran-9 ros-humble-joint-state-publisher* ros-humble-xacro
     ```
 
     ---
@@ -253,17 +248,11 @@ Do not forget to push the Home button in the DVRK console.
     # ROS 2 joint and robot state publishers
     ros2 launch dvrk_model dvrk_state_publisher.launch.py arm:=PSM1
     ```
-
+   
 
     ```bash
     # RViz
     ros2 run rviz2 rviz2 -d ~/dvrk2_ws/install/dvrk_model/share/dvrk_model/rviz/PSM1.rviz
-    ```
-
-
-    ```bash
-    # rqt_gui
-    ros2 run rqt_gui rqt_gui
     ```
 
     ---
@@ -316,6 +305,7 @@ Do not forget to push the Home button in the DVRK console.
     ```python
     def move_tcp_to(self, target, v, dt):
     ```
+   
     !!! tip
          Use the function `np.linspace(start, stop, num)` to create the array of **t** values (T). This function can also be used to create the linear trajectory along the axes **x, y, z** in separate arrays X, Y and Z.
 
@@ -330,6 +320,16 @@ Do not forget to push the Home button in the DVRK console.
     
     ![](img/lin.png){:style="width:700px" align=right}
     
+ 
+
+    !!! note
+        Some values tends to stuck in the simulator. Thus, at the beginning of the program, it is a good idea to reset the arm:
+        ```python
+        #Reset the arm
+        psm.move_tcp_to([0.0, 0.0, -0.12], 0.01, 0.01)
+        psm.move_jaw_to(0.0, 0.1, 0.01)
+        ```
+
     ---
     
 ### 4. Dummy marker
@@ -345,7 +345,7 @@ Do not forget to push the Home button in the DVRK console.
     
     class DummyMarker(Node):
         def __init__(self, position):
-            super().__init__('minimal_publisher')
+            super().__init__('dummy_marker_publisher')
             self.position = position
             self.publisher_ = self.create_publisher(Marker, 'dummy_target_marker', 10)
             timer_period = 0.1  # seconds
@@ -413,13 +413,15 @@ Do not forget to push the Home button in the DVRK console.
 
 2. Implement a method in `psm_grasp.py` to grasp the generated marker with PSM1.
 
-    !!! note
-        Some values tends to stuck in the simulator. Thus, at the beginning of the program, it is a good idea to reset the arm:
-        ```python
-        #Reset the arm
-        psm.move_tcp_to([0.0, 0.0, -0.12], 0.01, 0.01)
-        psm.move_jaw_to(0.0, 0.1, 0.01)
-        ```
+
+### Homework: Moving the gripper along a circular trajectory
+
+1. Create a virtual marker in the shape of a disk
+
+    ---
+
+2. Guide the tip of the gripper along the perimeter of the disk (implement a method that moves the gripper along a circular arc with radius r).
+
 
 
 ---
