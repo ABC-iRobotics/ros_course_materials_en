@@ -429,7 +429,7 @@ Do not forget to push the Home button in the DVRK console.
 
 ## Links
 
-- [Download and compile dVRK 2](https://github.com/jhu-dvrk/sawIntuitiveResearchKit/wiki/BuildROS2)
+- [Download and compile dVRK 2](https://dvrk.readthedocs.io/main/pages/software/compilation/ros2.html)
 - [Marker examples](https://www.programcreek.com/python/example/88812/visualization_msgs.msg.Marker)
 - [Numpy vector magnitude](https://numpy.org/doc/stable/reference/generated/numpy.linalg.norm.html)
 - [Numpy linspace](https://numpy.org/doc/stable/reference/generated/numpy.linspace.html)
