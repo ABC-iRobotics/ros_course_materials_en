@@ -415,7 +415,7 @@ Do not forget to push the Home button in the DVRK console.
 2. Implement a method in `psm_grasp.py` to grasp the generated marker with PSM1.
 
 
-### Homework: Moving the gripper along a circular trajectory
+### Homework A: Moving the gripper along a circular trajectory
 
 1. Create a virtual marker in the shape of a disk
 
@@ -423,7 +423,9 @@ Do not forget to push the Home button in the DVRK console.
 
 2. Guide the tip of the gripper along the perimeter of the disk (implement a method that moves the gripper along a circular arc with radius r).
 
+### Homework B: Complete the exercises of the other class
 
+- [Fejlett ROS: 04. Robotikai alapfogalmak, da Vinci sebészrobot programozása szimulált környezetben](https://abc-irobotics.github.io/advanced_ros_course_materials_hu/04_da_vinci/)
 
 ---
 
