@@ -816,7 +816,7 @@ T_{TCP,base}(q_1, \cdots, q_n) = T_{TCP,n-1}(q_{n}) \cdot T_{n-1,n-2}(q_{n-1}) \
 <ol>
 <li>Calculate the difference between the desired and the current position: <span class="arithmatex">\(\Delta\mathbf{r} = \mathbf{r}_{desired} - \mathbf{r}_0\)</span></li>
 <li>Calculate the difference in rotations: <span class="arithmatex">\(\Delta\mathbf{R} = \mathbf{R}_{desired}\mathbf{R}_{0}^{T}\)</span>, then convert to axis angle representation <span class="arithmatex">\((\mathbf{t},\phi)\)</span></li>
-<li>Compute <span class="arithmatex">\(\Delta\mathbf{ q}=\mathbf{J}^{-1}(\mathbf{q_0})\cdot \left[\matrix{k_1 \cdot \Delta\mathbf{r} \\ k_2 \cdot \Delta\mathbf{t}\phi}\right]\)</span>, where the inverse can be pseudo-inverse or transposed</li>
+<li>Compute <span class="arithmatex">\(\Delta\mathbf{ q}=\mathbf{J}^{-1}(\mathbf{q_0})\cdot \left[\matrix{k_1 \cdot \Delta\mathbf{r} \\ k_2 \cdot \mathbf{t}\Delta\phi}\right]\)</span>, where the inverse can be pseudo-inverse or transposed</li>
 <li><span class="arithmatex">\(\mathbf{q}_{better} = \mathbf{q}_{0} + \Delta\mathbf{q}\)</span></li>
 </ol>
 <hr />
