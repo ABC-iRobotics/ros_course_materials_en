@@ -7,7 +7,7 @@ author: Tamas Levendovics
 
 
 !!! warning
-    **Test 1** on **April 7.**
+    **Test 2** on **May 12.**
 
 ---
 
